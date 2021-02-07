@@ -70,7 +70,18 @@ module.exports = function (/* ctx */) {
     devServer: {
       https: false,
       port: 8088,
-      open: true // opens browser window automatically
+      proxy:{
+        '/api': {
+          target: 'http://127.0.0.1:8000/api/v1/docx/',
+          changeOrigin: true,
+          pathRewrite: {
+            '^/api': ''
+          }
+        }
+        },
+
+      open: true, // opens browser window automatically
+
     },
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
