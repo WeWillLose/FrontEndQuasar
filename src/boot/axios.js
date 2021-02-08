@@ -1,6 +1,7 @@
 import Vue from 'vue'
-import axios from 'axios'
 
-Vue.prototype.$axios = axios
 
-export {axios}
+import docxApi from "src/api/api"
+
+Vue.prototype.docxApi = docxApi
+

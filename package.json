@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "A Quasar Framework app",
   "productName": "FrontEnd",
-  "author": "WeWillLose <artem2001sarg@mail.ru>",
+  "author": "WeWillLose <artem2001sarg@gmail.ru>",
   "private": true,
   "scripts": {
     "test": "echo \"No test specified\" && exit 0"
@@ -14,7 +14,8 @@
     "core-js": "^3.6.5",
     "form-data": "^3.0.0",
     "js-file-download": "^0.4.12",
-    "quasar": "^1.0.0"
+    "quasar": "^1.0.0",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0"
