@@ -11,6 +11,7 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
+    "axios-https-proxy-fix": "^0.17.1",
     "core-js": "^3.6.5",
     "form-data": "^3.0.0",
     "js-file-download": "^0.4.12",

@@ -4,12 +4,12 @@
       <q-header elevated >
         <q-toolbar class="q-my-sm">
             <q-toolbar-title><q-icon size="xl" name="description" class="q-mr-sm q-pb-sm"></q-icon>Parser.docx</q-toolbar-title>
+          <router-link to="/form">/form</router-link>
         </q-toolbar>
       </q-header>
         <q-page-container>
           <router-view/>
         </q-page-container>
-
     </div>
   </q-layout>
 </template>

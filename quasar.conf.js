@@ -77,6 +77,13 @@ module.exports = function (/* ctx */) {
           pathRewrite: {
             '^/api': ''
           }
+        },
+        '/api/form': {
+          target: 'http://127.0.0.1:8000/form',
+          changeOrigin: true,
+          pathRewrite: {
+            '^/api/form': '/form'
+          }
         }
         },
 

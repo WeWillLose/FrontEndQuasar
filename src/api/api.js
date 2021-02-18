@@ -8,5 +8,6 @@ export default {
     ,{ responseType:'blob',
       headers: {
         'Content-Type': 'multipart/form-data'}
-  })
+    }),
+  getform: () =>resource.get('/api/form'),
 }
