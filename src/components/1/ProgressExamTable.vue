@@ -1,30 +1,34 @@
 <template>
     <div id="q-app">
       <div class="q-pa-sm q-gutter-sm">
-        <q-table title="Успеваемость по предметам, вынессеным на екзаменны" :data="data" :columns="columns">
-          <template v-slot:bottom>
+        <q-table title="Успеваемость по предметам, вынессеным на екзаменны" :hide-no-data="true" :data="getRows1" :columns="getColumns1">
+          <template v-slot:top-right>
             <div>
              <q-btn dense color="secondary" label="Добавить строку" @click="show_dialog = true" no-caps ></q-btn>
             </div>
             <div class="q-pa-sm q-gutter-sm">
               <q-dialog v-model="show_dialog">
-                <q-card>
+                <q-card class="add-row-dialog">
                   <q-card-section>
                     <div class="text-h6">Добавить строку</div>
                   </q-card-section>
 
-                  <q-card-section>
-                    <div class="row q-gutter-md">
-                      <q-input  type="text"clearable v-model="editedItem.group" label="Группа" hidden disable></q-input>
-                      <q-input  type="text" v-model="editedItem.subject" label="Учебные дисциплины"></q-input>
-                      <q-input  type="number" v-model="editedItem.amount" label="Колво студентов"></q-input>
-                      <q-input  type="number" v-model="editedItem.mark5" label="Оценок 5"></q-input>
-                      <q-input  type="number" v-model="editedItem.mark4" label="Оценок 4"></q-input>
-                      <q-input  type="number" v-model="editedItem.mark3" label="Оценок 3"></q-input>
-                      <q-input  type="number" v-model="editedItem.mark2" label="Оценок 2"></q-input>
-                      <q-input  type="number" v-model="editedItem.progress" label="Успеваемость"></q-input>
-                      <q-input type="number" v-model="editedItem.quality" label="Качество зананий"></q-input>
-                      <q-input type="textarea" v-model="editedItem.unsuccs" label="Неуспевающие"></q-input>
+                  <q-card-section class="">
+                    <div class="row q-gutter-md q-ma-md">
+                      <q-input  type="text"clearable v-model="getEditedItem1.group" label="Группа"></q-input>
+                      <q-input  type="text" v-model="getEditedItem1.subject" label="Дисциплина"></q-input>
+                      <q-input  type="number" v-model="getEditedItem1.amount" label="Колво студентов"></q-input>
+                    </div>
+                    <div class="row q-gutter-md  q-ma-md">
+                      <q-input  type="number" v-model="getEditedItem1.mark5" label="Оценок 5"></q-input>
+                      <q-input  type="number" v-model="getEditedItem1.mark4" label="Оценок 4"></q-input>
+                      <q-input  type="number" v-model="getEditedItem1.mark3" label="Оценок 3"></q-input>
+                      <q-input  type="number" v-model="getEditedItem1.mark2" label="Оценок 2"></q-input>
+                    </div>
+                    <div class="row q-gutter-md  q-ma-md" >
+                      <q-input  type="number" v-model="getEditedItem1.progress" label="Успеваемость"></q-input>
+                      <q-input type="number" v-model="getEditedItem1.quality" label="Качество зананий"></q-input>
+                      <q-input type="textarea" v-model="getEditedItem1.unsuccs" label="Неуспевающие"></q-input>
                     </div>
                   </q-card-section>
 
@@ -81,133 +85,31 @@
 </template>
 
 <script>
-
+import {mapGetters} from 'vuex'
   export default {
+  computed:{
+    ...mapGetters('progress_exam',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
+  },
     methods: {
       addRow() {
-        if (this.editedIndex > -1) {
-          Object.assign(this.data[this.editedIndex], this.editedItem);
-        } else {
-          this.data.push(this.editedItem);
-        }
+        this.$store.commit('progress_exam/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
         this.close()
       },
       deleteItem(item) {
-        const index = this.data.indexOf(item);
-        console.log(this.data)
-        confirm("Are you sure you want to delete this item?") &&
-        this.data.splice(index, 1);
+        confirm("Вы уверены что хотите удалить строку") && this.$store.commit('progress_exam/deleteItem1',item)
       },
       editItem(item) {
-        this.editedIndex = this.data.indexOf(item);
-        this.editedItem = Object.assign({}, item);
+        this.$store.commit('progress_exam/editItem1',item)
         this.show_dialog = true;
       },
       close () {
         this.show_dialog = false
-        setTimeout(() => {
-          this.editedItem = Object.assign({}, this.defaultItem)
-          this.editedIndex = -1
-        }, 300)
+        setTimeout(() => {this.$store.commit('progress_exam/setDefault1')}, 300)
       }
     },
     data() {
       return {
         show_dialog: false,
-        editedIndex: -1,
-        editedItem: {
-          id:-1,
-          group: "",
-          subject: "",
-          amount: 0,
-          mark5: 0,
-          mark4: 0,
-          mark3: 0,
-          mark2: 0,
-          progress: 0,
-          quality: 0,
-          unsuccs: "",
-        },
-        defaultItem: {
-          id:-1,
-          group: "",
-          subject: "",
-          amount: 0,
-          mark5: 0,
-          mark4: 0,
-          mark3: 0,
-          mark2: 0,
-          progress: 0,
-          quality: 0,
-          unsuccs: "",
-        },
-        columns: [
-          {
-            name: "group",
-            required: true,
-            label: "Группа",
-            align: "left",
-            field:"group"
-          },
-          {
-            name: "subject",
-            align: "center",
-            label: "Дисциплина",
-            field: "subject",
-            style:"width:200px"
-          },
-          {
-            name: "amount",
-            align: "center",
-            label: "Кол-во студентов",
-            field: "amount",
-
-          },
-          { name: "mark5", label: "Оценок 5", field: "mark5", align: "center",},
-          { name: "mark4", label: "Оценок 4", field: "mark4", align: "center",},
-          { name: "mark3", label: "Оценок 3", field: "mark3", align: "center", },
-          { name: "mark2", label: "Оценок 2", field: "mark2", align: "center",},
-          {
-            name: "progress",
-            label: "Успеваемость %",
-            field: "progress",
-            align: "center",
-
-          },
-          {
-            name: "quality",
-            label: "Качество знаний %",
-            field: "quality",
-            align: "center",
-          },
-          {
-            name: "unsuccs",
-            label: "Неуспевающие студенты",
-            field: "unsuccs",
-            align: "center",
-          },
-          {
-            name: "actions",
-            label: "Actions",
-            field: "actions",
-            align: "center",
-          }
-        ],
-        data: [
-          {
-            id:1,
-            group: "2-1 A9",
-            subject: "История",
-            amount: 24,
-            mark5: 9,
-            mark4: 11,
-            mark3: 3,
-            mark2: 0,
-            progress: 96,
-            quality: 83,
-            unsuccs: "Грудинин",
-          },
-        ]
       };
     }
   }

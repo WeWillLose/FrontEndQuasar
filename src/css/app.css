@@ -37,7 +37,9 @@ bg_second{
 bg_third{
   background-color: #303841;
 }
-
+.add-row-dialog{
+  max-width: 1000px!important;
+}
 /*1st Color*/
 /* #F5F5F5*/
 /*2nd Color*/

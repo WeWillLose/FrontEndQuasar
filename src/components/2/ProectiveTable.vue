@@ -73,7 +73,6 @@
       },
       deleteItem(item) {
         const index = this.data.indexOf(item);
-        console.log(this.data)
         confirm("Are you sure you want to delete this item?") &&
         this.data.splice(index, 1);
       },
@@ -95,13 +94,11 @@
         show_dialog: false,
         editedIndex: -1,
         editedItem: {
-          id:-1,
           interesting: "",
           proof: "",
           score: 0,
         },
         defaultItem: {
-          id:-1,
           interesting: "",
           proof: "",
           score: 0,
@@ -135,13 +132,11 @@
         ],
         data: [
           {
-            id:1,
             interesting: "Учатсие обучающихся в конференциях",
             proof: "",
             score: 0,
           },
           {
-            id:2,
             interesting:"Участие обучающихся в проектах, в т.ч. ВКР",
             proof: "",
             score: 0,
