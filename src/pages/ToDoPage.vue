@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import ToDoList from "components/ToDoList";
+    import ToDoList from "components/ToDo/ToDoList";
     export default {
       components: {ToDoList}
     }

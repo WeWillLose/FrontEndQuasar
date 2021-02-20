@@ -12,8 +12,8 @@
 
 <script>
   import {mapGetters} from "vuex";
-  import ToDo from "components/ToDo";
-  import CardDialog from "components/2/CardDialog";
+  import ToDo from "./ToDo";
+  import CardDialog from "./CardDialog";
 
   export default {
     components: {CardDialog, ToDo},

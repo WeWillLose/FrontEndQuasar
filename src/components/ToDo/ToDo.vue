@@ -52,7 +52,7 @@
 </template>
 
 <script>
-  import CardDialog from "components/2/CardDialog";
+  import CardDialog from "./CardDialog";
 
   export default {
     components: {CardDialog},
