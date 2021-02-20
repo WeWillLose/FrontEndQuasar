@@ -73,7 +73,6 @@
       },
       deleteItem(item) {
         const index = this.data.indexOf(item);
-        console.log(this.data)
         confirm("Are you sure you want to delete this item?") &&
         this.data.splice(index, 1);
       },
