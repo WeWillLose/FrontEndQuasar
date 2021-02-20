@@ -24,7 +24,7 @@
         </div>
       </q-card-section>
 
-      <q-card-actions v-if="item.text.trim()">
+      <q-card-actions v-if="item.text">
         <q-space/>
         <q-btn
           color="grey"
@@ -62,13 +62,15 @@
         show_dialog: false
       }
     },
+    computed:{
+    },
     methods:{
       showEdit(){
         this.$refs.card_dialog.edit()
       },
       showDelete(){
         confirm("Are you sure you want to delete this item?") &&
-        this.$store.commit('to_do/deleteItem',this.item)
+        this.$store.dispatch('to_do/deleteItemAction',this.item)
       }
     }
   }

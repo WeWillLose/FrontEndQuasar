@@ -43,7 +43,10 @@ bg_third{
 .to_do-dialog{
   min-width: 400px!important;
 }
-
+.my-card{
+  width: 100%;
+  width: 250px;
+}
 /*1st Color*/
 /* #F5F5F5*/
 /*2nd Color*/

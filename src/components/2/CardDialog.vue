@@ -7,7 +7,7 @@
 
       <q-card-section >
         <div class="dialog">
-          <q-input  type="text" v-model="getEditedItem.title" label="Заголовок" maxlength="30"></q-input>
+          <q-input   type="text" v-model="getEditedItem.title" label="Заголовок" maxlength="30"></q-input>
           <q-input  type="textarea" v-model="getEditedItem.description" label="Описание" maxlength="50"></q-input>
           <q-input  type="textarea"  v-model="getEditedItem.text" label="Текст"></q-input>
           <q-input  type="text"  v-model="getEditedItem.id" class="hidden" disable ></q-input>
@@ -40,13 +40,12 @@
           if(this.item){
             this.$store.commit('to_do/setEditedItem', this.item)
           }else{
-            this.$store.commit('to_do/setEditedItem',{})
+            this.$store.commit('to_do/setEditedItem',this.getDefault)
           }
           this.show_dialog = true
         },
         addItem(){
-          console.log(this.getEditedItem)
-          this.$store.commit('to_do/addItem',this.getEditedItem)
+          this.$store.dispatch('to_do/addItemAction',this.getEditedItem)
         },
         cancel(){
           this.show_dialog = false
