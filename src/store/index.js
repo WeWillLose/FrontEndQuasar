@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import progress_exam from './report_tables/ProgressExam/index'
 import progress from './report_tables/Progress/index'
 import comment from './report_tables/Comment/index'
+import to_do from './to_do/index'
 
 
 Vue.use(Vuex)
@@ -19,6 +20,7 @@ export default function (/* { ssrContext } */) {
       progress_exam,
       progress,
       comment,
+      to_do,
     }
   })
 

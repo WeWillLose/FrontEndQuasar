@@ -5,6 +5,7 @@
         <q-toolbar class="q-my-sm">
             <q-toolbar-title><q-icon size="xl" name="description" class="q-mr-sm q-pb-sm"></q-icon>Parser.docx</q-toolbar-title>
           <router-link to="/form">/form</router-link>
+          <router-link to="/main">/main</router-link>
         </q-toolbar>
       </q-header>
         <q-page-container>
