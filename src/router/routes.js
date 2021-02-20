@@ -6,9 +6,8 @@ const routes = [
     children: [
       { path: '', component: () => import('pages/Index.vue') },
       { path: '/form', component: () => import('pages/Report.vue') },
-      { path: '/main', component: () => import('pages/MainPage.vue') },
+      { path: '/todo', component: () => import('pages/ToDoPage.vue') },
     ]
-
   },
 
   // Always leave this as last one,

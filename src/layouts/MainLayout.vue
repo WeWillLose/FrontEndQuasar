@@ -2,11 +2,7 @@
   <q-layout view="lHh Lpr lFf">
     <div class="text_main">
       <q-header elevated >
-        <q-toolbar class="q-my-sm">
-            <q-toolbar-title><q-icon size="xl" name="description" class="q-mr-sm q-pb-sm"></q-icon>Parser.docx</q-toolbar-title>
-          <router-link to="/form">/form</router-link>
-          <router-link to="/main">/main</router-link>
-        </q-toolbar>
+        <tool-bar/>
       </q-header>
         <q-page-container>
           <router-view/>
@@ -16,60 +12,12 @@
 </template>
 
 <script>
-  import EssentialLink from 'components/EssentialLink.vue'
-
-  const linksData = [
-    {
-      title: 'Docs',
-      caption: 'quasar.dev',
-      icon: 'school',
-      link: 'https://quasar.dev'
-    },
-    {
-      title: 'Github',
-      caption: 'github.com/quasarframework',
-      icon: 'code',
-      link: 'https://github.com/quasarframework'
-    },
-    {
-      title: 'Discord Chat Channel',
-      caption: 'chat.quasar.dev',
-      icon: 'chat',
-      link: 'https://chat.quasar.dev'
-    },
-    {
-      title: 'Forum',
-      caption: 'forum.quasar.dev',
-      icon: 'record_voice_over',
-      link: 'https://forum.quasar.dev'
-    },
-    {
-      title: 'Twitter',
-      caption: '@quasarframework',
-      icon: 'rss_feed',
-      link: 'https://twitter.quasar.dev'
-    },
-    {
-      title: 'Facebook',
-      caption: '@QuasarFramework',
-      icon: 'public',
-      link: 'https://facebook.quasar.dev'
-    },
-    {
-      title: 'Quasar Awesome',
-      caption: 'Community Quasar projects',
-      icon: 'favorite',
-      link: 'https://awesome.quasar.dev'
-    }
-  ];
-
+  import ToolBar from "components/ToolBar/ToolBar";
   export default {
     name: 'MainLayout',
-    components: {EssentialLink},
+    components: {ToolBar},
     data() {
       return {
-        leftDrawerOpen: false,
-        essentialLinks: linksData
       }
     }
   }
