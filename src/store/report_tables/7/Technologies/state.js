@@ -1,31 +1,30 @@
 export default {
   editedIndex: -1,
   editedItem: {
-    title: "",
-    quantity: 0,
+    name: "",
+    application: "",
     score: 0,
   },
   defaultItem: {
-    title: "",
-    quantity: 0,
+    name: "",
+    application: "",
     score: 0,
   },
   columns: [
     {
-      name: "title",
-      label: "Название",
-      align: "center",
-      field:"title"
+      name: "name",
+      label: "Название технологии",
+      align: "left",
+      field:"name"
     },
     {
-      name: "quantity",
+      name: "application",
+      label: "",
       align: "center",
-      label: "Характеристика состояния",
-      field: "quantity",
+      field:"application"
     },
     {
       name: "score",
-      required: true,
       align: "center",
       label: "Баллы",
       field: "score",
@@ -34,8 +33,8 @@ export default {
   ],
   rows: [
     {
-      title: "",
-      quantity: 0,
+      name: "Практическое применение",
+      application: "",
       score: 0,
     },
   ]
