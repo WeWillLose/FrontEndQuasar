@@ -53,6 +53,7 @@
 
 <script>
   import CardDialog from "./CardDialog";
+  import {mapActions} from "vuex";
 
   export default {
     components: {CardDialog},
@@ -69,9 +70,11 @@
         this.$refs.card_dialog.edit()
       },
       showDelete(){
-        confirm("Are you sure you want to delete this item?") &&
-        this.$store.dispatch('to_do/deleteItemAction',this.item)
-      }
+          confirm("Are you sure you want to delete this item?") &&
+          this.$store.dispatch('to_do/deleteItemAction',this.item).catch(t=>this.$q.notify({
+            type: 'negative', message: `Произошла ошибка`
+          }))
+    },
     }
   }
 </script>

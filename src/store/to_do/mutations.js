@@ -19,6 +19,10 @@ export default {
   deleteItem(state,item){
     const index = state.to_do_list.indexOf(item)
     state.to_do_list.splice(index, 1);
+  },
+  setToDo(state,toDoes){
+    toDoes.forEach(t=> t['expanded'] = false)
+    state.to_do_list = toDoes
   }
 
 }
