@@ -16,8 +16,7 @@ export default {
     state.editedItem = Object.assign({}, item);
   },
   setDefault1: (state) =>{
-      state.editedItem = Object.assign({}, state.defaultItem)
-      state.editedIndex = -1
-    },
+    state.editedItem = Object.assign({}, state.defaultItem)
+    state.editedIndex = -1
+  },
 }
-
