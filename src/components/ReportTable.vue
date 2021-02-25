@@ -5,6 +5,9 @@
     <comment-table/>
     <creation-table/>
     <proective-table/>
+    <div align="right" class="q-ma-md">
+      <q-btn class="" color="black" @click="saveToServer">Save</q-btn>
+    </div>
   </div>
 </template>
 
@@ -18,15 +21,12 @@
   export default {
     components: {ProectiveTable, CommentTable, CreationTable, ProgressTable, ProgressExamTable},
     methods: {
+      saveToServer(){
 
-    },
-    created() {
-      var tables = document.getElementsByTagName('table');
-      for (var i = 0; i < tables.length; i++) {
-        this.resizableGrid(tables[i]);
       }
+    },
 
-    }
+
   }
 </script>
 

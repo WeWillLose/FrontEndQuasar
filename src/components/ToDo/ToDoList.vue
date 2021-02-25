@@ -23,25 +23,17 @@
       }
     },
     computed: {
-      // ...mapGetters('to_do', ['getToDoList'])
-      getToDoList(){
-        return this.$store.state.to_do.to_do_list
-      }
+      ...mapGetters('to_do', ['getToDoList'])
     },
     methods: {
       showDialog() {
         this.$refs.card_dialog.edit()
       },
       init(){
-        try{
-          this.$store.dispatch('to_do/getToDoFromServer')
-        }catch (e) {
-          console.log(e)
-        }
+          this.$store.dispatch('to_do/getToDoFromServer').catch(t=>this.$q.notify({type:'negative',message:'Ошибка получения данных от сервера'}))
       }
     },
     mounted(){
-      console.log("create")
       this.init()
     }
   }
