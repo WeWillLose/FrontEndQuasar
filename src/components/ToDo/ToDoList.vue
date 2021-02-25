@@ -23,12 +23,26 @@
       }
     },
     computed: {
-      ...mapGetters('to_do', ['getToDoList'])
+      // ...mapGetters('to_do', ['getToDoList'])
+      getToDoList(){
+        return this.$store.state.to_do.to_do_list
+      }
     },
     methods: {
       showDialog() {
         this.$refs.card_dialog.edit()
+      },
+      init(){
+        try{
+          this.$store.dispatch('to_do/getToDoFromServer')
+        }catch (e) {
+          console.log(e)
+        }
       }
+    },
+    mounted(){
+      console.log("create")
+      this.init()
     }
   }
 </script>

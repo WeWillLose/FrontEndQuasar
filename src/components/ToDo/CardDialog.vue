@@ -45,7 +45,9 @@
           this.show_dialog = true
         },
         addItem(){
-          this.$store.dispatch('to_do/addItemAction',this.getEditedItem)
+            this.$store.dispatch('to_do/addItemAction',this.getEditedItem).catch(t=>this.$q.notify({
+              type: 'negative', message: `Произошла ошибка`
+            }))
         },
         cancel(){
           this.show_dialog = false
