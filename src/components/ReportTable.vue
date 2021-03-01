@@ -17,13 +17,22 @@
   import CreationTable from "components/2/CreationTable";
   import CommentTable from "components/1/CommentTable";
   import ProectiveTable from "components/2/ProectiveTable";
+  import {mapGetters} from "vuex";
+  import api from "src/api/api";
 
   export default {
     components: {ProectiveTable, CommentTable, CreationTable, ProgressTable, ProgressExamTable},
+    computed:{
+      ...mapGetters({
+        comment: "comment/getData",
+        progress:'progress/getData',
+        progress_exam:'progress_exam/getData',
+      })
+    },
     methods: {
       saveToServer(){
-
-      }
+       api.sendDocxFiles(Object.assign({},this.comment,this.progress,this.progress_exam))
+      },
     },
 
 

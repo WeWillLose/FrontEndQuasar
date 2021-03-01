@@ -9,6 +9,10 @@ const routes = [
       { path: '/todo', component: () => import('pages/ToDoPage.vue') },
     ]
   },
+  {
+    path:"/login",
+    component:()=> import('layouts/LoginLayout')
+  },
 
   // Always leave this as last one,
   // but you can also remove it
@@ -17,5 +21,6 @@ const routes = [
     component: () => import('pages/Error404.vue')
   }
 ]
+
 
 export default routes
