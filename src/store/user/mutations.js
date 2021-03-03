@@ -17,6 +17,7 @@ export default {
     state.is_login = false
     localStorage.removeItem("user")
     localStorage.setItem('is_login',state.is_login)
+    localStorage.removeItem('SESSION')
   }
 }
 

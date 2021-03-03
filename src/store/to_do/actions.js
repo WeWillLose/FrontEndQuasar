@@ -14,11 +14,14 @@ export default {
     if(index > -1){
       const res = await api.updateToDo(item)
       const data = res.data
+      data['expanded'] = false
+
       console.log(data)
       context.commit('editItem',{item:data,index:index})
     }else{
       const res = await api.createToDo(item)
       const data = res.data
+      data['expanded'] = false
       context.commit('addItem',data)
     }
   },
