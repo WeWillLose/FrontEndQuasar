@@ -42,7 +42,6 @@
       },
       watch:{
         files:function(){
-          console.log(this.isBtnDisabled)
           this.isBtnDisabled = !(this.files && this.files.length != 0);
         }
       },
@@ -71,7 +70,7 @@
         },
         async handleFilesUpload(){
           let formData = new FormData()
-          console.log(this.files)
+
           this.files.forEach(f=>formData.append(f.name, f))
           try{
             let response = await this.docxApi.sendDocxFiles(formData)

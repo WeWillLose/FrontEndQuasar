@@ -1,4 +1,5 @@
 export default {
+  name:'comment',
   editedIndex: -1,
   editedItem: {
     proof: "",
@@ -10,11 +11,11 @@ export default {
   },
   columns: [
     {
-      name: "coment",
+      name: "comment",
       required: true,
       label: "Коментарии",
       align: "left",
-      field:"coment"
+      field:"comment"
     },
     {
       name: "score",
@@ -26,7 +27,7 @@ export default {
   ],
   rows: [
     {
-      proof: "",
+      comment: "",
       score: 0,
     },
   ]

@@ -98,7 +98,6 @@
         this.close()
       },
       deleteItem(item) {
-        console.log(this.$store.state.progress.rows)
         confirm("Вы уверены что хотите удалить строку") && this.$store.commit('progress/deleteItem1',item)
       },
       editItem(item) {

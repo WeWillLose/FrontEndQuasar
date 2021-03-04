@@ -5,8 +5,8 @@
 
         <template v-slot:body="props">
           <q-tr :props="props">
-            <q-td key="coment" :props="props">
-              <q-input type="textarea" v-model="props.row.coment" dense autofocus r></q-input>
+            <q-td key="comment" :props="props">
+              <q-input type="textarea" v-model="props.row.comment" dense autofocus r></q-input>
             </q-td>
             <q-td key="score" :props="props">
               <q-input type="number" v-model="props.row.score" dense autofocus></q-input>

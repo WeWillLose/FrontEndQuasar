@@ -13,5 +13,10 @@ export default {
   },
   getEditedItem1: state=>{
     return state.editedItem
+  },
+  getData: state =>{
+    let dict = {}
+    dict[state.name] = state.rows
+    return dict
   }
 }

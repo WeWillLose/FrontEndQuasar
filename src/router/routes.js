@@ -7,7 +7,12 @@ const routes = [
       { path: '', component: () => import('pages/Index.vue') },
       { path: '/form', component: () => import('pages/Report.vue') },
       { path: '/todo', component: () => import('pages/ToDoPage.vue') },
+      { path: '/admin', component: () => import('pages/Admin.vue') },
     ]
+  },
+  {
+    path:"/login",
+    component:()=> import('layouts/LoginLayout')
   },
 
   // Always leave this as last one,
@@ -17,5 +22,6 @@ const routes = [
     component: () => import('pages/Error404.vue')
   }
 ]
+
 
 export default routes

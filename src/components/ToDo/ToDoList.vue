@@ -30,7 +30,7 @@
         this.$refs.card_dialog.edit()
       },
       init(){
-          this.$store.dispatch('to_do/getToDoFromServer').catch(t=>this.$q.notify({type:'negative',message:'Ошибка получения данных от сервера'}))
+          this.$store.dispatch('to_do/getToDoFromServer').catch(t=>this.$q.notify({type:'negative',message:t}))
       }
     },
     mounted(){

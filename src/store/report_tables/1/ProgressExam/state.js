@@ -1,4 +1,5 @@
 export default {
+  name:'progress_exam',
     editedIndex:-1,
     editedItem:{
       group: "",
