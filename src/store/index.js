@@ -4,6 +4,7 @@ import report_tables from './report_tables/index'
 import to_do from './to_do/index'
 import user from './user/index'
 import User from "src/store/user/model/User";
+import admin_table from "src/store/admin/userTable/index";
 
 
 Vue.use(Vuex)
@@ -20,6 +21,7 @@ export default function (/* { ssrContext } */) {
       report_tables,
       to_do,
       user,
+      admin_table,
     },
     mutations:{
       init(state){

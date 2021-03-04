@@ -1,5 +1,5 @@
 <template>
-  <q-page class="bg_gradient flex full-height ">
+  <q-page class="bg_gradient flex full-height">
     <ReportTable/>
   </q-page>
 </template>

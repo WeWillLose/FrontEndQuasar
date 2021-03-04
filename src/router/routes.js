@@ -7,6 +7,7 @@ const routes = [
       { path: '', component: () => import('pages/Index.vue') },
       { path: '/form', component: () => import('pages/Report.vue') },
       { path: '/todo', component: () => import('pages/ToDoPage.vue') },
+      { path: '/admin', component: () => import('pages/Admin.vue') },
     ]
   },
   {

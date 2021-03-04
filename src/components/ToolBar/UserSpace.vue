@@ -15,7 +15,7 @@
         <q-btn to="login" class="text_main">Войти</q-btn>
       </div>
     </template>
-    <q-btn @click="show">sout</q-btn>
+
   </div>
 </template>
 
@@ -25,7 +25,7 @@
     export default {
       name: "UserSpace",
       computed: {
-        ...mapGetters('user', ['isLogin', 'getName'])
+        ...mapGetters('user', ['isLogin', 'getName','isAdmin'])
       },
       methods:{
         logout(){
@@ -38,7 +38,8 @@
 
         },
         show(){
-          console.log(this.$store.state.user.user)
+          console.log(this.$store.state.user.user.roles)
+          console.log(this.$store.getters["user/isAdmin"])
         }
       }
     }

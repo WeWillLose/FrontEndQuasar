@@ -20,12 +20,25 @@
         </q-item>
       </q-list>
     </q-btn-dropdown>
+    <template v-if="isAdmin">
+      <q-btn-dropdown auto-close stretch flat label="Администрирование" class="text_main">
+        <q-list>
+          <q-item clickable to="/admin">
+            <q-item-section>Аккаунты</q-item-section>
+          </q-item>
+        </q-list>
+      </q-btn-dropdown>
+    </template>
   </div>
 </template>
 
 <script>
+  import {mapGetters} from 'vuex'
   export default {
-    name: "DropDowns"
+    name: "DropDowns",
+    computed:{
+      ...mapGetters('user',['isAdmin'])
+    }
   }
 </script>
 
