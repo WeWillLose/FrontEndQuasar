@@ -1,5 +1,7 @@
 import comment from './1/Comment/index'
 import progress_exam from "./1/ProgressExam"
+import creation_table from "./2/CreationTable"
+import proective_table from "./2/ProectiveTable"
 import progress from "./1/Progress"
 import class_rooms from "./3/ClassRooms"
 import complex from "./3/Complex"
@@ -12,9 +14,9 @@ import circle from "./4/Circle"
 import events from "./4/Events"
 import institutions from "./4/Institutions"
 import plan4 from "./4/Plan"
-import plan5 from "./5/Plan"
+import planGroup from "./5/PlanGroup"
 import activity from "./5/Activity"
-import escort from "./5/Escort"
+import obz  from "./5/OBZ"
 import cool_hours from "./5/Сoolhours"
 import contest from "./6/Contest"
 import participation from "./6/Participation"
@@ -24,12 +26,14 @@ import technologies from "./7/Technologies"
 import experience from "./8/Experience"
 import interaction from "./9/Interaction"
 import subject from "./10/Subject"
-import mo from "./11/MO"
+import manual from "./11/Manual"
 
 export default {
   modules:{
     comment,
     progress_exam,
+    creation_table,
+    proective_table,
     progress,
     complex,
     class_rooms,
@@ -42,9 +46,9 @@ export default {
     institutions,
     plan4,
     events,
-    plan5,
+    planGroup,
     activity,
-    escort,
+    obz,
     cool_hours,
     contest,
     participation,
@@ -52,7 +56,7 @@ export default {
     self_education,
     technologies,
     experience,
-    mo,
+    manual,
     interaction,
     subject,
   }

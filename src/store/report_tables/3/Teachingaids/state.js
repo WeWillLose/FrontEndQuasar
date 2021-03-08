@@ -20,7 +20,7 @@ export default {
       align: "center",
       label: "Баллы",
       field: "score",
-      style: "width:100px"
+      style: "width:50px"
     },
   ],
   rows: [

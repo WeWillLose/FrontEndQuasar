@@ -33,6 +33,7 @@
 
 <script>
     import api from "src/api/api";
+    import notifyApi from "src/api/notifyApi";
 
     export default {
       name:"LoginForm",
@@ -48,14 +49,11 @@
           this.password = null
         },
         onSubmit(){
-          this.$store.dispatch('user/loginAction',{"username":this.username, "password":this.password}).then(t=>this.$router.push("/"))
-            .catch(err=>
-            this.$q.notify({
-            type:"negative",
-            message: err
-          }))
+          this.$store.dispatch('user/loginAction',{"username":this.username, "password":this.password})
+            .then(t=>this.$router.push("/"))
+            .catch(err=> notifyApi.showErrorNotify(err.message))
+          }
         }
-      }
     }
 </script>
 

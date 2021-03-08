@@ -9,14 +9,14 @@
 </template>
 
 <script>
-    import DropDowns from "./DropDowns";
-    import UserSpace from "components/ToolBar/UserSpace";
+  import DropDowns from "./DropDowns"
+  import UserSpace from "components/ToolBar/UserSpace"
 
-    export default {
-        name: "ToolBar",
-      components: {UserSpace, DropDowns},
+  export default {
+    name: "ToolBar",
+    components: {UserSpace, DropDowns},
 
-    }
+  }
 </script>
 
 <style scoped>

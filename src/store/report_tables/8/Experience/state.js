@@ -3,11 +3,13 @@ export default {
   editedItem: {
     name: "",
     application: "",
+    level: "",
     score: 0,
   },
   defaultItem: {
     name: "",
     application: "",
+    level: "",
     score: 0,
   },
   columns: [
@@ -18,8 +20,14 @@ export default {
       field:"name"
     },
     {
+      name: "level",
+      label: "Уровень",
+      align: "center",
+      field:"level"
+    },
+    {
       name: "application",
-      label: "",
+      label: "Тема выступления, публикации",
       align: "center",
       field:"application"
     },
@@ -33,13 +41,9 @@ export default {
   ],
   rows: [
     {
-      name: "Уровень",
+      name: "",
       application: "",
-      score: 0,
-    },
-    {
-      name: "Тема выступления, публикации",
-      application: "",
+      level: "",
       score: 0,
     },
   ]

@@ -17,7 +17,7 @@ export default {
     },
     {
       name: "score",
-      align: "center",
+      align: "right",
       label: "Баллы",
       field: "score",
       style: "width:100px"

@@ -1,23 +1,23 @@
 export default {
   editedIndex: -1,
   editedItem: {
-    namecontest: "",
+    name: "",
     level: "",
     result: "",
     score: 0,
   },
   defaultItem: {
-    namecontest: "",
+    name: "",
     level: "",
     result: "",
     score: 0,
   },
   columns: [
     {
-      name: "namecontest",
+      name: "name",
       label: "Название конкурса, конференции, проекта",
       align: "center",
-      field: "namecontest"
+      field: "name"
     },
     {
       name: "level",
@@ -41,7 +41,7 @@ export default {
   ],
   rows: [
     {
-      namecontest: "",
+      name: "",
       level: "",
       result: "",
       score: 0,

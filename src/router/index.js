@@ -34,13 +34,16 @@ router.beforeEach((to, from, next) => {
   // redirect to login page if not logged in and trying to access a restricted page
   const publicPages = ['/login'];
   const authRequired = !publicPages.includes(to.path);
-  const loggedIn = localStorage.getItem('is_login') == "true";
+  let loggedIn = false;
+  try{
+    loggedIn = localStorage.getItem('is_login') == "true";
+  }catch (e) {
+    console.error("In beforeEach" + e)
+  }
 
   if (authRequired && !loggedIn) {
     return next('/login');
   }
-
-
   next();
 })
 

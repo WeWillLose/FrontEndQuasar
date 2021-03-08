@@ -13,7 +13,7 @@ export default {
       name: "role",
       label: "Роль преподавателя в сопровождении обучающихся в учебном процессе и внеклассной работе",
       align: "center",
-      field:"institutions"
+      field: "role"
     },
     {
       name: "score",

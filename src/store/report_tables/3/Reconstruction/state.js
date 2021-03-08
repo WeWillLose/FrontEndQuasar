@@ -22,6 +22,12 @@ export default {
       field: "score",
       style: "width:100px"
     },
+    {
+      name: "actions",
+      label: "Actions",
+      field: "actions",
+      align: "center",
+    }
   ],
   rows: [
     {

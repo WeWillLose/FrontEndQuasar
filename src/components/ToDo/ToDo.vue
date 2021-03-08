@@ -54,6 +54,7 @@
 <script>
   import CardDialog from "./CardDialog";
   import {mapActions} from "vuex";
+  import notifyApi from "src/api/notifyApi";
 
   export default {
     components: {CardDialog},
@@ -71,9 +72,7 @@
       },
       showDelete(){
           confirm("Are you sure you want to delete this item?") &&
-          this.$store.dispatch('to_do/deleteItemAction',this.item).catch(t=>this.$q.notify({
-            type: 'negative', message: `Произошла ошибка`
-          }))
+          this.$store.dispatch('to_do/deleteItemAction',this.item).catch(t=>notifyApi.showErrorNotify("Произошла ошибка"))
     },
     }
   }

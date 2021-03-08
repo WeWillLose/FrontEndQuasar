@@ -3,7 +3,7 @@ export default {
   editedItem: {
     typework: "",
     MDK: "",
-    smaterials: "",
+    materials: "",
     score: 0,
   },
   defaultItem: {
@@ -37,38 +37,28 @@ export default {
       field: "score",
       style: "width:100px"
     },
-    {
-      name: "actions",
-      label: "Actions",
-      field: "actions",
-      align: "center",
-    }
   ],
   rows: [
     {
-      interesting: "Теоретический материал",
-      typework: "",
+      typework: "Теоретический материал",
       MDK: "",
       smaterials: "",
       score: 0,
     },
     {
-      interesting:"Комплекты КОС, тесты",
-      typework: "",
+      typework: "Комплекты КОС, тесты",
       MDK: "",
       smaterials: "",
       score: 0,
     },
     {
-      interesting:"Электронные презентаци",
-      typework: "",
+      typework: "Электронные презентаци",
       MDK: "",
       smaterials: "",
       score: 0,
     },
     {
-      interesting:"Видеоматериалы",
-      typework: "",
+      typework: "Видеоматериалы",
       MDK: "",
       smaterials: "",
       score: 0,

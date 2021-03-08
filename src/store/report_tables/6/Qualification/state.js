@@ -19,7 +19,7 @@ export default {
     },
     {
       name: "date",
-      label: "Обоснование",
+      label: "Дата прохождения",
       align: "center",
       field:"date"
     },
