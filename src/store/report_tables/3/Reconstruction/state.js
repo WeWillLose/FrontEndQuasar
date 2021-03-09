@@ -1,4 +1,5 @@
 export default {
+  name:'reconstruction',
   editedIndex: -1,
   editedItem: {
     reconstruction: "",

@@ -1,4 +1,5 @@
 export default {
+  name:'circle',
   editedIndex: -1,
   editedItem: {
     group: "",

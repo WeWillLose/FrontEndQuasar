@@ -1,4 +1,5 @@
 export default {
+  name:'contest',
   editedIndex: -1,
   editedItem: {
     name: "",

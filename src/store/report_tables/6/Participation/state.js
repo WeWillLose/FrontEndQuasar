@@ -1,4 +1,5 @@
 export default {
+  name:'participation',
   editedIndex: -1,
   editedItem: {
     methodical: "",

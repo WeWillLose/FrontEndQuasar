@@ -1,4 +1,5 @@
 export default {
+  name:'manual',
   editedIndex: -1,
   editedItem: {
     quantity: "",

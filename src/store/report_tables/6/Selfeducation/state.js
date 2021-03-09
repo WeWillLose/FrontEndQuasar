@@ -1,4 +1,5 @@
 export default {
+  name:'selfeducation',
   editedIndex: -1,
   editedItem: {
     selfeducation: "",

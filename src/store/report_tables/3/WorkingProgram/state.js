@@ -1,4 +1,5 @@
 export default {
+  name:'working_program',
   editedIndex: -1,
   editedItem: {
     name: "",

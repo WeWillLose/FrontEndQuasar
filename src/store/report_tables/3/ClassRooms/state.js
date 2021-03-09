@@ -1,4 +1,5 @@
 export default {
+  name:'class_rooms',
   editedIndex: -1,
   editedItem: {
     class: "",

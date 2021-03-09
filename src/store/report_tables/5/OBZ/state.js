@@ -1,4 +1,5 @@
 export default {
+  name:'obz',
   editedIndex: -1,
   editedItem: {
     role: "",

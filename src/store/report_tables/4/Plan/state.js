@@ -1,4 +1,5 @@
 export default {
+  name:'plan',
   editedIndex: -1,
   editedItem: {
     level: "",

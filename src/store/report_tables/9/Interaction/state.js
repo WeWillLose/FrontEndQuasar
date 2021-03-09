@@ -1,4 +1,5 @@
 export default {
+  name:'interaction',
   editedIndex: -1,
   editedItem: {
     type: "",

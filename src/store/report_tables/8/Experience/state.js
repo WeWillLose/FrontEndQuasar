@@ -1,4 +1,5 @@
 export default {
+  name:'experience',
   editedIndex: -1,
   editedItem: {
     name: "",

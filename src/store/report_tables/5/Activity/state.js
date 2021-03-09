@@ -1,4 +1,5 @@
 export default {
+  name:'activity',
   editedIndex: -1,
   editedItem: {
     name: "",

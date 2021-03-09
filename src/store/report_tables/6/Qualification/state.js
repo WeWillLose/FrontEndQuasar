@@ -1,4 +1,5 @@
 export default {
+  name:'qualification',
   editedIndex: -1,
   editedItem: {
     qualification: "",

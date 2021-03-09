@@ -1,4 +1,5 @@
 export default {
+  name:'coolhours',
   editedIndex: -1,
   editedItem: {
     theme: "",

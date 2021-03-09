@@ -1,4 +1,5 @@
 export default {
+  name:'institutions',
   editedIndex: -1,
   editedItem: {
     institutions: "",

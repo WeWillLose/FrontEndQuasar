@@ -1,4 +1,5 @@
 export default {
+  name:'programs',
   editedIndex: -1,
   editedItem: {
     title: "",

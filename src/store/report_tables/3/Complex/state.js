@@ -1,4 +1,5 @@
 export default {
+  name:'complex',
   editedIndex: -1,
   editedItem: {
     typework: "",

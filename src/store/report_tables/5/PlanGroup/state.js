@@ -1,4 +1,5 @@
 export default {
+  name:'plan_group',
   editedIndex: -1,
   editedItem: {
     presence: "",

@@ -1,4 +1,5 @@
 export default {
+  name:'seminars',
   editedIndex: -1,
   editedItem: {
     name: "",
