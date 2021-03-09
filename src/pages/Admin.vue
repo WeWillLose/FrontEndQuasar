@@ -8,56 +8,65 @@
           <div class="q-pa-sm q-gutter-sm">
             <q-dialog v-model="new_user_dialog">
               <q-card class="add-row-dialog">
+                <q-form
+                @submit="addRow">
                 <q-card-section>
                   <div class="text-h6">Добавить Пользователя</div>
                 </q-card-section>
                 <q-card-section class="">
                   <div class="row q-gutter-md q-ma-md">
-                    <q-input  type="text" label="Логин" v-model="geEditedUser.username"></q-input>
-                    <q-input  v-if="show_password" type="text" label="Пароль" v-model="geEditedUser.password"></q-input>
+                    <q-input  :rules="[v=>!!v || 'Заполните поле', v=>v.length > 4 || 'Логин должен быть длинее 4 символов']" type="text" label="Логин" v-model="geEditedUser.username"></q-input>
+                    <q-input  :rules="[v=>!!v || 'Заполните поле', v=>v.length > 6 || 'Пароль должен быть длинее 6 символов']" v-if="show_password" type="text" label="Пароль" v-model="geEditedUser.password"></q-input>
                     <q-input  type="text" label="Имя" v-model="geEditedUser.firstName"></q-input>
                     <q-input  type="text" label="Фамилия" v-model="geEditedUser.lastName"></q-input>
                   </div>
                 </q-card-section>
                 <q-card-actions align="right">
-                  <q-btn flat label="OK" color="primary" v-close-popup @click="addRow" ></q-btn>
+                  <q-btn flat label="OK" color="primary" type="submit"></q-btn>
                 </q-card-actions>
+                </q-form>
               </q-card>
             </q-dialog>
 
             <q-dialog v-model="edit_user_dialog">
               <q-card class="add-row-dialog">
+                <q-form
+                  @submit="editUser">
                 <q-card-section>
-                  <div class="text-h6">Изменить Пользователя</div>
+                  <div class="text-h6">Изменить пользователя</div>
                 </q-card-section>
                 <q-card-section class="">
                   <div class="row q-gutter-md q-ma-md">
                     <q-input  v-model="geEditedUser.id" class="hidden" readonly></q-input>
-                    <q-input  type="text" label="Логин" v-model="geEditedUser.username"></q-input>
+                    <q-input  :rules="[v=>!!v || 'Заполните поле', v=>v.length > 4 || 'Логин должен быть длинее 4 символов']" type="text" label="Логин" v-model="geEditedUser.username"></q-input>
                     <q-input  type="text" label="Имя" v-model="geEditedUser.firstName"></q-input>
                     <q-input  type="text" label="Фамилия" v-model="geEditedUser.lastName"></q-input>
                   </div>
                 </q-card-section>
                 <q-card-actions align="right">
-                  <q-btn flat label="OK" color="primary" v-close-popup @click="editUser" ></q-btn>
+                  <q-btn flat label="OK" color="primary" type="submit" ></q-btn>
                 </q-card-actions>
+              </q-form>
               </q-card>
             </q-dialog>
 
             <q-dialog v-model="reset_password_dialog">
               <q-card class="add-row-dialog">
+                <q-form
+                @submit="resetPassword">
                 <q-card-section>
-                  <div class="text-h6">Изменить Пользователя</div>
+                  <div class="text-h6">Сбросить пароль</div>
                 </q-card-section>
                 <q-card-section class="">
                   <div class="row q-gutter-md q-ma-md">
                     <q-input  v-model="geEditedUser.id" class="hidden" readonly></q-input>
-                    <q-input  type="text" label="Пароль" v-model="geEditedUser.password"></q-input>
+                    <q-input  :rules="[v=>!!v || 'Заполните поле', v=>v.length > 6 || 'Пароль должен быть длинее 6 символов']" type="text" label="Пароль" v-model="geEditedUser.password"></q-input>
                   </div>
                 </q-card-section>
                 <q-card-actions align="right">
-                  <q-btn flat label="OK" color="primary" v-close-popup @click="resetPassword" ></q-btn>
+                  <q-btn flat label="OK" color="primary" type="submit" ></q-btn>
                 </q-card-actions>
+                </q-form>
               </q-card>
             </q-dialog>
 
@@ -66,16 +75,16 @@
           <template v-slot:body="props">
             <q-tr :props="props">
               <q-td key="id" :props="props">
-                <q-input  v-model="props.row.id" class="hidden" readonly></q-input>
+                <q-tr  :props="props" dense autofocus>{{props.row.id}}</q-tr>
               </q-td>
               <q-td key="username" :props="props">
-                <q-input type="text" v-model="props.row.username" dense autofocus></q-input>
+                <q-tr  :props="props" dense autofocus>{{props.row.username}}</q-tr>
               </q-td>
               <q-td key="firstName" :props="props">
-                <q-input type="text" v-model="props.row.firstName" dense autofocus></q-input>
+                <q-tr  :props="props" dense autofocus>{{props.row.firstName}}</q-tr>
               </q-td>
               <q-td key="lastName" :props="props">
-                <q-input type="text" v-model="props.row.lastName" dense autofocus></q-input>
+                <q-tr  :props="props" dense autofocus>{{props.row.lastName}}</q-tr>
               </q-td>
               <q-td key="actions" :props="props" auto-width>
                 <q-btn color="blue" label="Изменить данные" @click="showEditUserDialog(props.row)" size=sm no-caps></q-btn>
@@ -115,7 +124,7 @@
             name: "firstName",
             align: "center",
             label: "Имя",
-            field: "score",
+            field: "firstName",
           },
           {
             name: "lastName",
@@ -164,13 +173,16 @@
         this.edit_user_dialog = true;
       },
       addRow(){
+        this.new_user_dialog = false;
         this.$store.dispatch('admin_table/registrationUser',this.geEditedUser).catch(t=>notifyApi.showErrorNotify(t))
         this.show_password = false;
       },
       editUser(){
+        this.edit_user_dialog = false;
         this.$store.dispatch('admin_table/editUser',this.geEditedUser).catch(t=>notifyApi.showErrorNotify(t))
       },
       resetPassword(){
+        this.reset_password_dialog = false;
         this.$store.dispatch('admin_table/resetPassword',this.geEditedUser).catch(t=>notifyApi.showErrorNotify(t))
       }
     },

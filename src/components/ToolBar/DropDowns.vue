@@ -29,13 +29,6 @@
         </q-list>
       </q-btn-dropdown>
     </template>
-    <q-btn-dropdown auto-close stretch flat label="Администрирование" class="text_main">
-      <q-list>
-        <q-item clickable to="/test">
-          <q-item-section>Аккаунты</q-item-section>
-        </q-item>
-      </q-list>
-    </q-btn-dropdown>
   </div>
 </template>
 
