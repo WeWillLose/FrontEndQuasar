@@ -1,5 +1,5 @@
 export default {
-  name:'Proective',
+  name:'proective',
   editedIndex: -1,
   editedItem: {
     interesting: "",

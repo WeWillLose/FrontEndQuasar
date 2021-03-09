@@ -27,6 +27,7 @@ import experience from "./8/Experience"
 import interaction from "./9/Interaction"
 import subject from "./10/Subject"
 import manual from "./11/Manual"
+import seminars from "./6/Seminars"
 
 export default {
   modules:{
@@ -59,5 +60,6 @@ export default {
     manual,
     interaction,
     subject,
+    seminars,
   }
 }

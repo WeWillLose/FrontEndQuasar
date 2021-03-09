@@ -49,7 +49,7 @@ export default {
       },
       { name: "mark5", label: "Оценок 5", field: "mark5", align: "center",},
       { name: "mark4", label: "Оценок 4", field: "mark4", align: "center",},
-      { name: "mark3", label: "Оценок 3", field: "mark3", align: "center", },
+      { name: "mark3", label: "Оценок 3", field: "mark3", align: "center",},
       { name: "mark2", label: "Оценок 2", field: "mark2", align: "center",},
       {
         name: "progress",

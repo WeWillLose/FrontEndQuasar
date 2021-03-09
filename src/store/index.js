@@ -5,8 +5,7 @@ import to_do from './to_do/index'
 import user from './user/index'
 import User from "src/store/user/model/User";
 import admin_table from "src/store/admin/userTable/index";
-import class_rooms from './report_tables/3/ClassRooms/index'
-import programs from './report_tables/3/Programs/index'
+
 
 
 Vue.use(Vuex)

@@ -1,5 +1,5 @@
 export default {
-  name:'Creation',
+  name:'creation',
   editedIndex: -1,
   editedItem: {
     interesting: "",

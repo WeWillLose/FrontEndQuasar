@@ -12,7 +12,7 @@ export default {
   columns: [
     {
       name: "name",
-      label: "Название мероприятия ",
+      label: "Название мероприятия",
       align: "center",
       field:"name"
     },

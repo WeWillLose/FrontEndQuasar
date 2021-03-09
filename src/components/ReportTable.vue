@@ -18,14 +18,37 @@
                    max="3000"/>
         </div>
       </div>
-
       <progress-exam-table/>
       <progress-table/>
       <comment-table/>
       <creation-table/>
       <proective-table/>
+      <working-program-table/>
       <class-rooms-table/>
       <programs-table/>
+      <reconstruction-table/>
+      <complex-table/>
+      <teachingaids-table/>
+      <education-table/>
+      <s-d-o-table/>
+      <plan-table/>
+      <circle-table/>
+      <institutions-table/>
+      <events-table/>
+      <plan-group-table/>
+      <coolhours-table/>
+      <activity-table/>
+      <o-b-z-table/>
+      <selfeducation-table/>
+      <qualification-table/>
+      <seminars-table/>
+      <participation-table/>
+      <contest-table/>
+      <technologies-table/>
+      <experience-table/>
+      <interaction-table/>
+      <subject-table/>
+      <manual-table/>
       <div class="column items-end q-ma-md">
         <div class="col">
           <q-btn type="submit" color="dark" label="Сохранить"/>
@@ -47,9 +70,57 @@
   import {mapGetters} from "vuex";
   import api from "src/api/api";
   import notifyApi from "src/api/notifyApi";
+  import WorkingProgramTable from "components/report_tables/3/WorkingProgramTable";
+  import ReconstructionTable from "components/report_tables/3/ReconstructionTable";
+  import ComplexTable from "components/report_tables/3/ComplexTable";
+  import TeachingaidsTable from "components/report_tables/3/TeachingaidsTable";
+  import EducationTable from "components/report_tables/3/EducationTable";
+  import SDOTable from "components/report_tables/3/SDOTable";
+  import PlanTable from "components/report_tables/4/PlanTable";
+  import CircleTable from "components/report_tables/4/CircleTable";
+  import InstitutionsTable from "components/report_tables/4/InstitutionsTable";
+  import EventsTable from "components/report_tables/4/EventsTable";
+  import PlanGroupTable from "components/report_tables/5/PlanGroupTable";
+  import CoolhoursTable from "components/report_tables/5/CoolhoursTable";
+  import ActivityTable from "components/report_tables/5/ActivityTable";
+  import OBZTable from "components/report_tables/5/OBZTable";
+  import SelfeducationTable from "components/report_tables/6/SelfeducationTable";
+  import QualificationTable from "components/report_tables/6/QualificationTable";
+  import SeminarsTable from "components/report_tables/6/SeminarsTable";
+  import ParticipationTable from "components/report_tables/6/ParticipationTable";
+  import ContestTable from "components/report_tables/6/ContestTable";
+  import TechnologiesTable from "components/report_tables/7/TechnologiesTable";
+  import ExperienceTable from "components/report_tables/8/ExperienceTable";
+  import InteractionTable from "components/report_tables/9/InteractionTable";
+  import SubjectTable from "components/report_tables/10/SubjectTable";
+  import ManualTable from "components/report_tables/11/ManualTable";
 
   export default {
     components: {
+      ManualTable,
+      SubjectTable,
+      InteractionTable,
+      ExperienceTable,
+      TechnologiesTable,
+      ContestTable,
+      ParticipationTable,
+      SeminarsTable,
+      QualificationTable,
+      SelfeducationTable,
+      OBZTable,
+      ActivityTable,
+      CoolhoursTable,
+      PlanGroupTable,
+      EventsTable,
+      InstitutionsTable,
+      CircleTable,
+      PlanTable,
+      SDOTable,
+      EducationTable,
+      TeachingaidsTable,
+      ComplexTable,
+      ReconstructionTable,
+      WorkingProgramTable,
       ProectiveTable,
       CommentTable,
       CreationTable,
