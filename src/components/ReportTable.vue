@@ -3,18 +3,24 @@
     <q-form
     @submit="onSubmit">
       <div class="q-ma-md">
-        <q-input label="ФИО" v-model="fio" :rules="[v=>!!v||'Поле обязательно']"></q-input>
+        <q-input label="ФИО" v-model="fio"
+
+        ></q-input>
       </div>
       <div class="q-ma-md">
-        <q-select :rules="[v=>!!v||'Поле обязательно']" filled v-model="model" :options="options" label="Квартал"/>
+        <q-select
+
+          filled v-model="model" :options="options" label="Квартал"/>
       </div>
       <div class="row">
         <div class="q-ma-md col">
           <q-input type="number" v-model="year1" min="2000" max="3000"
-                   :rules="[v=> (v > 2000 && v<3000) || 'Год не корректен']"/>
+
+          />
         </div>
         <div class="q-ma-md col">
-          <q-input type="number" v-model="year2" min="2000" :rules="[v=> (v > 2000 && v<3000) || 'Год не корректен']"
+          <q-input type="number" v-model="year2" min="2000"
+
                    max="3000"/>
         </div>
       </div>
@@ -60,6 +66,10 @@
 </template>
 
 <script>
+  // :rules="[v=>!!v||'Поле обязательно']"
+  // :rules="[v=>!!v||'Поле обязательно']"
+  // :rules="[v=> (v > 2000 && v<3000) || 'Год не корректен']"
+  // :rules="[v=> (v > 2000 && v<3000) || 'Год не корректен']"
   import ProgressExamTable from "components/report_tables/1/ProgressExamTable";
   import ProgressTable from "components/report_tables/1/ProgressTable";
   import CreationTable from "components/report_tables/2/CreationTable";
@@ -149,10 +159,12 @@
     },
     methods: {
       saveToServer() {
-        api.sendDocxFiles(Object.assign({}, this.comment, this.progress, this.progress_exam))
+        console.log(Object.assign({}, this.comment, this.progress, this.progress_exam))
       },
       onSubmit(){
-        console.log(this.comment)
+        let dict=  {}
+        dict["data"] = Object.assign({}, this.comment, this.progress, this.progress_exam)
+        api.sentData(dict)
       }
     },
 

@@ -10,11 +10,12 @@ import reconstruction from "./3/Reconstruction"
 import sdo from "./3/SDO"
 import programs from "./3/Programs"
 import teaching_aids from "./3/Teachingaids"
+import working_program from "./3/WorkingProgram"
 import circle from "./4/Circle"
 import events from "./4/Events"
 import institutions from "./4/Institutions"
-import plan4 from "./4/Plan"
-import planGroup from "./5/PlanGroup"
+import plan from "./4/Plan"
+import plan_group from "./5/PlanGroup"
 import activity from "./5/Activity"
 import obz  from "./5/OBZ"
 import cool_hours from "./5/Сoolhours"
@@ -39,15 +40,16 @@ export default {
     complex,
     class_rooms,
     education,
+    working_program,
     reconstruction,
     sdo,
     programs,
     teaching_aids,
     circle,
     institutions,
-    plan4,
+    plan,
     events,
-    planGroup,
+    plan_group,
     activity,
     obz,
     cool_hours,
