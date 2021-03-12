@@ -104,6 +104,34 @@
   import InteractionTable from "components/report_tables/9/InteractionTable";
   import SubjectTable from "components/report_tables/10/SubjectTable";
   import ManualTable from "components/report_tables/11/ManualTable";
+  import creation_table from "src/store/report_tables/2/CreationTable";
+  import proective_table from "src/store/report_tables/2/ProectiveTable";
+  import complex from "src/store/report_tables/3/Complex";
+  import class_rooms from "src/store/report_tables/3/ClassRooms";
+  import education from "src/store/report_tables/3/Education";
+  import working_program from "src/store/report_tables/3/WorkingProgram";
+  import reconstruction from "src/store/report_tables/3/Reconstruction";
+  import sdo from "src/store/report_tables/3/SDO";
+  import programs from "src/store/report_tables/3/Programs";
+  import teaching_aids from "src/store/report_tables/3/Teachingaids";
+  import circle from "src/store/report_tables/4/Circle";
+  import institutions from "src/store/report_tables/4/Institutions";
+  import plan from "src/store/report_tables/4/Plan";
+  import events from "src/store/report_tables/4/Events";
+  import plan_group from "src/store/report_tables/5/PlanGroup";
+  import activity from "src/store/report_tables/5/Activity";
+  import obz from "src/store/report_tables/5/OBZ";
+  import cool_hours from "src/store/report_tables/5/Сoolhours";
+  import contest from "src/store/report_tables/6/Contest";
+  import participation from "src/store/report_tables/6/Participation";
+  import qualification from "src/store/report_tables/6/Qualification";
+  import self_education from "src/store/report_tables/6/Selfeducation";
+  import technologies from "src/store/report_tables/7/Technologies";
+  import experience from "src/store/report_tables/8/Experience";
+  import manual from "src/store/report_tables/11/Manual";
+  import interaction from "src/store/report_tables/9/Interaction";
+  import subject from "src/store/report_tables/10/Subject";
+  import seminars from "src/store/report_tables/6/Seminars";
 
   export default {
     components: {
@@ -144,6 +172,35 @@
         comment: "comment/getData",
         progress: 'progress/getData',
         progress_exam: 'progress_exam/getData',
+        creation_table: 'creation_table/getData',
+        proective_table: 'proective_table/getData',
+        complex: 'complex/getData',
+        class_rooms: 'class_rooms/getData',
+        education: 'education/getData',
+        working_program: 'working_program/getData',
+        reconstruction: 'reconstruction/getData',
+        sdo: 'sdo/getData',
+        programs: 'programs/getData',
+        teaching_aids: 'teaching_aids/getData',
+        circle: 'circle/getData',
+        institutions: 'institutions/getData',
+        plan: 'plan/getData',
+        events:'events/getData',
+        plan_group: 'plan_group/getData',
+        activity: 'activity/getData',
+        obz: 'obz/getData',
+        cool_hours: 'cool_hours',
+        contest: 'contest/getData',
+        participation: 'participation/getData',
+        qualification: 'qualification/getData',
+        self_education: 'self_education/getData',
+        technologies: 'technologies/getData',
+        experience: 'experience/getData',
+        manual: 'manual/getData',
+        interaction: 'interaction/getData',
+        subject: 'subject/getData',
+        seminars: 'seminars/getData'
+
       })
     },
     data() {
@@ -163,7 +220,7 @@
       },
       onSubmit(){
         let dict=  {}
-        dict["data"] = Object.assign({}, this.comment, this.progress, this.progress_exam)
+        dict["data"] = Object.assign({}, this.comment, this.progress, this.progress_exam, this.creation_table, this.proective_table, this.class_rooms, this.complex, this.education, this.programs, this.reconstruction, this.sdo, this.teaching_aids, this.working_program, this.circle, this.events, this.institutions, this.plan, this.activity, this.obz, this.plan_group, this.cool_hours, this.contest, this.participation, this.qualification, this.self_education, this.seminars, this.technologies, this.experience, this.interaction, this.subject, this.manual)
         api.sentData(dict)
       }
     },
