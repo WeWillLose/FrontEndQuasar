@@ -1,8 +1,6 @@
 <template>
-  <div class="frame  q-my-lg q-mx-auto text_main">
-    <div class="q-pa-md flex flex-center">
+  <div class="frame  q-my-lg q-mx-auto text_main absolute-full">
       <login-form/>
-    </div>
   </div>
 </template>
 

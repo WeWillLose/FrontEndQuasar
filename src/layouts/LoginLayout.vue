@@ -1,10 +1,10 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <div class="text_main">
-      <q-page-container>
-        <login/>
+      <q-page-container class="text_main">
+        <q-page>
+          <login/>
+        </q-page>
       </q-page-container>
-    </div>
   </q-layout>
 </template>
 

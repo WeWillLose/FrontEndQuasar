@@ -1,9 +1,10 @@
 <template>
-  <div class="q-pa-md" style="min-width: 400px">
+  <div class="q-pa-md full-height flex flex-center" style="min-width:400px">
     <q-form
       @submit="onSubmit"
       @reset="onReset"
       class="q-gutter-md"
+      style="min-width: 400px"
     >
       <q-input
         filled
