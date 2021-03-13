@@ -57,7 +57,13 @@ export default {
     }
     return (val)=>  (val > min && val < max) || `Поле должно быть между ${min},${max}`
   },
-
-
-
+  numberBetweenNotStrict:(min,max)=>{
+    if(!!!min){
+      console.warn("min in numberBetween is " + min)
+    }
+    if(!!!max){
+      console.warn("max in numberBetween is " + max)
+    }
+    return (val)=>  (val >= min && val <= max) || `Поле должно быть между ${min},${max}`
+  },
 }
