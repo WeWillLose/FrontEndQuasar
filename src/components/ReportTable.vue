@@ -189,7 +189,7 @@
         plan_group: 'plan_group/getData',
         activity: 'activity/getData',
         obz: 'obz/getData',
-        cool_hours: 'cool_hours',
+        cool_hours: 'cool_hours/getData',
         contest: 'contest/getData',
         participation: 'participation/getData',
         qualification: 'qualification/getData',
@@ -220,7 +220,14 @@
       },
       onSubmit(){
         let dict=  {}
-        dict["data"] = Object.assign({}, this.comment, this.progress, this.progress_exam, this.creation_table, this.proective_table, this.class_rooms, this.complex, this.education, this.programs, this.reconstruction, this.sdo, this.teaching_aids, this.working_program, this.circle, this.events, this.institutions, this.plan, this.activity, this.obz, this.plan_group, this.cool_hours, this.contest, this.participation, this.qualification, this.self_education, this.seminars, this.technologies, this.experience, this.interaction, this.subject, this.manual)
+        dict["data"] = Object.assign({}, this.comment, this.progress, this.progress_exam, this.creation_table,
+          this.proective_table, this.class_rooms, this.complex, this.education,
+          this.programs, this.reconstruction, this.sdo, this.teaching_aids,
+          this.working_program, this.circle, this.events, this.institutions,
+          this.plan, this.activity, this.obz, this.plan_group, this.cool_hours,
+          this.contest, this.participation, this.qualification, this.self_education,
+          this.seminars, this.technologies, this.experience, this.interaction,
+          this.subject, this.manual)
         api.sentData(dict)
       }
     },

@@ -12,7 +12,7 @@
         v-model="username"
         label="Ваш логин"
         lazy-rules
-        :rules="[ val => val && val.length > 0 || 'Поле обязательное']"
+        :rules="[rules.required()]"
       />
 
       <q-input
@@ -21,7 +21,7 @@
         v-model="password"
         label="Ваш пароль"
         lazy-rules
-        :rules="[ val => val && val.length > 0 || 'Поле обязательное']"
+        :rules="[rules.required(),rules.withoutSpaces(),rules.alpha()]"
       />
 
       <div>
@@ -35,6 +35,7 @@
 <script>
     import api from "src/api/api";
     import notifyApi from "src/api/notifyApi";
+    import rules from 'src/api/rules'
 
     export default {
       name:"LoginForm",
@@ -43,6 +44,9 @@
           username:"",
           password:"",
         }
+      },
+      computed:{
+        rules: () => rules,
       },
       methods:{
         onReset () {
