@@ -19,9 +19,7 @@
           />
         </div>
         <div class="q-ma-md col">
-          <q-input type="number" v-model="year2" min="2000"
-
-                   max="3000"/>
+          <q-input type="number" v-model="year2" min="2000" max="3000"/>
         </div>
       </div>
       <progress-exam-table/>
@@ -29,6 +27,13 @@
       <comment-table/>
       <creation-table/>
       <proective-table/>
+      <div class="column items-end q-ma-md">
+        <div class="col">
+          <q-input style="max-width: 200px" v-model="sum1" outlined dense readonly>
+          </q-input>
+
+        </div>
+      </div>
       <working-program-table/>
       <class-rooms-table/>
       <programs-table/>
@@ -57,9 +62,14 @@
       <manual-table/>
       <div class="column items-end q-ma-md">
         <div class="col">
+          <q-input style="max-width: 200px" v-model="sum2" readonly
+          label="Сумма баллов по 1-2 критерию:"></q-input>
+        </div>
+      </div>
+      <div class="column items-end q-ma-md">
+        <div class="col">
           <q-btn type="submit" color="dark" label="Сохранить"/>
         </div>
-
       </div>
     </q-form>
   </div>
@@ -200,8 +210,15 @@
         interaction: 'interaction/getData',
         subject: 'subject/getData',
         seminars: 'seminars/getData'
-
-      })
+      }),
+      sum1(){
+        return this.$store.getters["comment/getScore"] + this.$store.getters["creation_table/getScore"]+
+          this.$store.getters["proective_table/getScore"]
+      },
+      sum2(){
+        return this.$store.getters["comment/getScore"] + this.$store.getters["creation_table/getScore"]+
+          this.$store.getters["proective_table/getScore"]
+      }
     },
     data() {
       return {

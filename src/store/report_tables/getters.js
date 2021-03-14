@@ -18,5 +18,19 @@ export default {
     let dict = {}
     dict[state.name] = state.rows
     return dict
+  },
+  getScore: state =>{
+    let scoreRate = 0;
+    state.rows.forEach(t=>{
+      if(!!t.score){
+        try{
+          scoreRate+= Number.parseFloat(t.score);
+        }catch (e) {
+
+        }
+
+      }
+    })
+    return scoreRate
   }
 }
