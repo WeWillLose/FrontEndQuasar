@@ -90,23 +90,23 @@
 
   export default {
     computed:{
-      ...mapGetters('progress',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
+      ...mapGetters('report_tables/progress',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
     },
     methods: {
       addRow() {
-        this.$store.commit('progress/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
+        this.$store.commit('report_tables/progress/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
         this.close()
       },
       deleteItem(item) {
-        confirm("Вы уверены что хотите удалить строку") && this.$store.commit('progress/deleteItem1',item)
+        confirm("Вы уверены что хотите удалить строку") && this.$store.commit('report_tables/progress/deleteItem1',item)
       },
       editItem(item) {
-        this.$store.commit('progress/editItem1',item)
+        this.$store.commit('report_tables/progress/editItem1',item)
         this.show_dialog = true;
       },
       close () {
         this.show_dialog = false
-        setTimeout(() => {this.$store.commit('progress/setDefault1')}, 300)
+        setTimeout(() => {this.$store.commit('report_tables/progress/setDefault1')}, 300)
       }
     },
     data(){

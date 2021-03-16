@@ -58,24 +58,24 @@
 import {mapGetters} from 'vuex'
 export default {
   computed:{
-    ...mapGetters('experience',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
+    ...mapGetters('report_tables/experience',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
   },
   methods: {
     addRow() {
-      this.$store.commit('experience/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
+      this.$store.commit('report_tables/experience/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
       this.close()
       console.log(this.getRows1)
     },
     deleteItem(item) {
-      confirm("Вы уверены что хотите удалить строку") && this.$store.commit('experience/deleteItem1',item)
+      confirm("Вы уверены что хотите удалить строку") && this.$store.commit('report_tables/experience/deleteItem1',item)
     },
     editItem(item) {
-      this.$store.commit('experience/editItem1',item)
+      this.$store.commit('report_tables/experience/editItem1',item)
       this.show_dialog = true;
     },
     close () {
       this.show_dialog = false
-      setTimeout(() => {this.$store.commit('experience/setDefault1')}, 300)
+      setTimeout(() => {this.$store.commit('report_tables/experience/setDefault1')}, 300)
     }
   },
   data() {

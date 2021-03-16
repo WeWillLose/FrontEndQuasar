@@ -55,24 +55,24 @@
 import {mapGetters} from 'vuex'
 export default {
   computed:{
-    ...mapGetters('participation',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
+    ...mapGetters('report_tables/participation',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
   },
   methods: {
     addRow() {
-      this.$store.commit('participation/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
+      this.$store.commit('report_tables/participation/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
       this.close()
       console.log(this.getRows1)
     },
     deleteItem(item) {
-      confirm("Вы уверены что хотите удалить строку") && this.$store.commit('participation/deleteItem1',item)
+      confirm("Вы уверены что хотите удалить строку") && this.$store.commit('report_tables/participation/deleteItem1',item)
     },
     editItem(item) {
-      this.$store.commit('participation/editItem1',item)
+      this.$store.commit('report_tables/participation/editItem1',item)
       this.show_dialog = true;
     },
     close () {
       this.show_dialog = false
-      setTimeout(() => {this.$store.commit('participation/setDefault1')}, 300)
+      setTimeout(() => {this.$store.commit('report_tables/participation/setDefault1')}, 300)
     }
   },
   data() {

@@ -72,7 +72,7 @@
       },
       showDelete(){
           confirm("Are you sure you want to delete this item?") &&
-          this.$store.dispatch('to_do/deleteItemAction',this.item).catch(t=>notifyApi.showErrorNotify("Произошла ошибка"))
+          this.$store.dispatch('to_do/deleteItemAction',this.item).catch(t=>notifyApi.showErrorNotify(t.message))
     },
     }
   }

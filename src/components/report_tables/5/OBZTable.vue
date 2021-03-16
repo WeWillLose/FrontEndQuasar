@@ -52,19 +52,19 @@
 import {mapGetters} from 'vuex'
 export default {
   computed:{
-    ...mapGetters('obz',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
+    ...mapGetters('report_tables/obz',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
   },
   methods: {
     addRow() {
-      this.$store.commit('obz/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
+      this.$store.commit('report_tables/obz/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
       this.close()
       console.log(this.getRows1)
     },
     deleteItem(item) {
-      confirm("Вы уверены что хотите удалить строку") && this.$store.commit('obz/deleteItem1',item)
+      confirm("Вы уверены что хотите удалить строку") && this.$store.commit('report_tables/obz/deleteItem1',item)
     },
     editItem(item) {
-      this.$store.commit('obz/editItem1',item)
+      this.$store.commit('report_tables/obz/editItem1',item)
       this.show_dialog = true;
     },
     close () {

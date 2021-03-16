@@ -60,24 +60,24 @@
 import {mapGetters} from 'vuex'
 export default {
   computed:{
-    ...mapGetters('circle',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
+    ...mapGetters('report_tables/circle',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
   },
   methods: {
     addRow() {
-      this.$store.commit('circle/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
+      this.$store.commit('report_tables/circle/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
       this.close()
       console.log(this.getRows1)
     },
     deleteItem(item) {
-      confirm("Вы уверены что хотите удалить строку") && this.$store.commit('circle/deleteItem1',item)
+      confirm("Вы уверены что хотите удалить строку") && this.$store.commit('report_tables/circle/deleteItem1',item)
     },
     editItem(item) {
-      this.$store.commit('circle/editItem1',item)
+      this.$store.commit('report_tables/circle/editItem1',item)
       this.show_dialog = true;
     },
     close () {
       this.show_dialog = false
-      setTimeout(() => {this.$store.commit('circle/setDefault1')}, 300)
+      setTimeout(() => {this.$store.commit('report_tables/circle/setDefault1')}, 300)
     }
   },
   data() {

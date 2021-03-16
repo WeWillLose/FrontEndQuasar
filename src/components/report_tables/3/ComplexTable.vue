@@ -58,24 +58,24 @@
 import {mapGetters} from 'vuex'
 export default {
   computed:{
-    ...mapGetters('complex',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
+    ...mapGetters('report_tables/complex',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
   },
   methods: {
     addRow() {
-      this.$store.commit('complex/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
+      this.$store.commit('report_tables/complex/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
       this.close()
       console.log(this.getRows1)
     },
     deleteItem(item) {
-      confirm("Вы уверены что хотите удалить строку") && this.$store.commit('complex/deleteItem1',item)
+      confirm("Вы уверены что хотите удалить строку") && this.$store.commit('report_tables/complex/deleteItem1',item)
     },
     editItem(item) {
-      this.$store.commit('complex/editItem1',item)
+      this.$store.commit('report_tables/complex/editItem1',item)
       this.show_dialog = true;
     },
     close () {
       this.show_dialog = false
-      setTimeout(() => {this.$store.commit('complex/setDefault1')}, 300)
+      setTimeout(() => {this.$store.commit('report_tables/complex/setDefault1')}, 300)
     }
   },
   data() {

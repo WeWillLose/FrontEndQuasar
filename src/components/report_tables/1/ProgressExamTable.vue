@@ -88,18 +88,18 @@
 import {mapGetters} from 'vuex'
   export default {
   computed:{
-    ...mapGetters('progress_exam',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
+    ...mapGetters('report_tables/progress_exam',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
   },
     methods: {
       addRow() {
-        this.$store.commit('progress_exam/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
+        this.$store.commit('report_tables/progress_exam/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
         this.close()
       },
       deleteItem(item) {
-        confirm("Вы уверены что хотите удалить строку") && this.$store.commit('progress_exam/deleteItem1',item)
+        confirm("Вы уверены что хотите удалить строку") && this.$store.commit('report_tables/progress_exam/deleteItem1',item)
       },
       editItem(item) {
-        this.$store.commit('progress_exam/editItem1',item)
+        this.$store.commit('report_tables/progress_exam/editItem1',item)
         this.show_dialog = true;
       },
       close () {

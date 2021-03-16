@@ -198,46 +198,46 @@
     },
     computed: {
       ...mapGetters({
-        comment: "comment/getData",
-        progress: 'progress/getData',
-        progress_exam: 'progress_exam/getData',
-        creation_table: 'creation_table/getData',
-        proective_table: 'proective_table/getData',
-        complex: 'complex/getData',
-        class_rooms: 'class_rooms/getData',
-        education: 'education/getData',
-        working_program: 'working_program/getData',
-        reconstruction: 'reconstruction/getData',
-        sdo: 'sdo/getData',
-        programs: 'programs/getData',
-        teaching_aids: 'teaching_aids/getData',
-        circle: 'circle/getData',
-        institutions: 'institutions/getData',
-        plan: 'plan/getData',
-        events: 'events/getData',
-        plan_group: 'plan_group/getData',
-        activity: 'activity/getData',
-        obz: 'obz/getData',
-        cool_hours: 'cool_hours/getData',
-        contest: 'contest/getData',
-        participation: 'participation/getData',
-        qualification: 'qualification/getData',
-        self_education: 'self_education/getData',
-        technologies: 'technologies/getData',
-        experience: 'experience/getData',
-        manual: 'manual/getData',
-        interaction: 'interaction/getData',
-        subject: 'subject/getData',
-        seminars: 'seminars/getData'
+        comment: "report_tables/comment/getData",
+        progress: 'report_tables/progress/getData',
+        progress_exam: 'report_tables/progress_exam/getData',
+        creation_table: 'report_tables/creation_table/getData',
+        proective_table: 'report_tables/proective_table/getData',
+        complex: 'report_tables/complex/getData',
+        class_rooms: 'report_tables/class_rooms/getData',
+        education: 'report_tables/education/getData',
+        working_program: 'report_tables/working_program/getData',
+        reconstruction: 'report_tables/reconstruction/getData',
+        sdo: 'report_tables/sdo/getData',
+        programs: 'report_tables/programs/getData',
+        teaching_aids: 'report_tables/teaching_aids/getData',
+        circle: 'report_tables/circle/getData',
+        institutions: 'report_tables/institutions/getData',
+        plan: 'report_tables/plan/getData',
+        events: 'report_tables/events/getData',
+        plan_group: 'report_tables/plan_group/getData',
+        activity: 'report_tables/activity/getData',
+        obz: 'report_tables/obz/getData',
+        cool_hours: 'report_tables/cool_hours/getData',
+        contest: 'report_tables/contest/getData',
+        participation: 'report_tables/participation/getData',
+        qualification: 'report_tables/qualification/getData',
+        self_education: 'report_tables/self_education/getData',
+        technologies: 'report_tables/technologies/getData',
+        experience: 'report_tables/experience/getData',
+        manual: 'report_tables/manual/getData',
+        interaction: 'report_tables/interaction/getData',
+        subject: 'report_tables/subject/getData',
+        seminars: 'report_tables/seminars/getData'
       }),
       rules: () => rules,
       sum1() {
-        return this.$store.getters["comment/getScore"] + this.$store.getters["creation_table/getScore"] +
-          this.$store.getters["proective_table/getScore"]
+        return this.$store.getters["report_tables/comment/getScore"] + this.$store.getters["report_tables/creation_table/getScore"] +
+          this.$store.getters["report_tables/proective_table/getScore"]
       },
       sum2() {
-        return this.$store.getters["comment/getScore"] + this.$store.getters["creation_table/getScore"] +
-          this.$store.getters["proective_table/getScore"]
+        return this.$store.getters["report_tables/comment/getScore"] + this.$store.getters["report_tables/creation_table/getScore"] +
+          this.$store.getters["report_tables/proective_table/getScore"]
       },
       fio() {
         return this.first_name.trim() + " " + this.last_name.trim() + " " + this.patronymic.trim();
@@ -276,7 +276,8 @@
         dict["data"]["year1"] = this.year1;
         dict["data"]["year2"] = this.year2;
         dict["data"]["quarter"] = this.quarter;
-        api.sentData(dict)
+        this.$store.dispatch('report_tables/sentData',dict).then(t =>notifyApi.showPositiveNotify("Отчет сохранен"))
+        .catch(err=> notifyApi.showErrorNotify(err.message))
       }
     },
 

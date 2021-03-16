@@ -29,8 +29,11 @@ import interaction from "./9/Interaction"
 import subject from "./10/Subject"
 import manual from "./11/Manual"
 import seminars from "./6/Seminars"
+import actions from './actions'
 
 export default {
+  actions,
+  namespaced:true,
   modules:{
     comment,
     progress_exam,

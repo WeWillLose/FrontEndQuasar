@@ -57,24 +57,24 @@
 import {mapGetters} from 'vuex'
 export default {
   computed:{
-    ...mapGetters('qualification',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
+    ...mapGetters('report_tables/qualification',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
   },
   methods: {
     addRow() {
-      this.$store.commit('qualification/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
+      this.$store.commit('report_tables/qualification/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
       this.close()
       console.log(this.getRows1)
     },
     deleteItem(item) {
-      confirm("Вы уверены что хотите удалить строку") && this.$store.commit('qualification/deleteItem1',item)
+      confirm("Вы уверены что хотите удалить строку") && this.$store.commit('report_tables/qualification/deleteItem1',item)
     },
     editItem(item) {
-      this.$store.commit('qualification/editItem1',item)
+      this.$store.commit('report_tables/qualification/editItem1',item)
       this.show_dialog = true;
     },
     close () {
       this.show_dialog = false
-      setTimeout(() => {this.$store.commit('qualification/setDefault1')}, 300)
+      setTimeout(() => {this.$store.commit('report_tables/qualification/setDefault1')}, 300)
     }
   },
   data() {

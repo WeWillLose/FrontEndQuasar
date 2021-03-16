@@ -174,22 +174,22 @@
       },
       addRow(){
         this.new_user_dialog = false;
-        this.$store.dispatch('admin_table/registrationUser',this.geEditedUser).catch(t=>notifyApi.showErrorNotify(t))
+        this.$store.dispatch('admin_table/registrationUser',this.geEditedUser).catch(t=>notifyApi.showErrorNotify(t.message))
         this.show_password = false;
       },
       editUser(){
         this.edit_user_dialog = false;
-        this.$store.dispatch('admin_table/editUser',this.geEditedUser).catch(t=>notifyApi.showErrorNotify(t))
+        this.$store.dispatch('admin_table/editUser',this.geEditedUser).catch(t=>notifyApi.showErrorNotify(t.message))
       },
       resetPassword(){
         this.reset_password_dialog = false;
-        this.$store.dispatch('admin_table/resetPassword',this.geEditedUser).catch(t=>notifyApi.showErrorNotify(t))
+        this.$store.dispatch('admin_table/resetPassword',this.geEditedUser).catch(t=>notifyApi.showErrorNotify(t.message))
       }
     },
     beforeCreate(){
       this.$store.dispatch("admin_table/getUsers").catch(e=>
       {
-        this.$q.notify({type:"negative",message:e})
+        this.$q.notify({type:"negative",message:e.message})
       })
     },
 

@@ -24,23 +24,23 @@
 
   export default {
     computed:{
-      ...mapGetters('comment',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
+      ...mapGetters('report_tables/comment',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
     },
     methods: {
       addRow() {
-        this.$store.commit('comment/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
+        this.$store.commit('report_tables/comment/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
         this.close()
       },
       deleteItem(item) {
-        confirm("Вы уверены что хотите удалить строку") && this.$store.commit('comment/deleteItem1',item)
+        confirm("Вы уверены что хотите удалить строку") && this.$store.commit('report_tables/comment/deleteItem1',item)
       },
       editItem(item) {
-        this.$store.commit('comment/editItem1',item)
+        this.$store.commit('report_tables/comment/editItem1',item)
         this.show_dialog = true;
       },
       close () {
         this.show_dialog = false
-        setTimeout(() => {this.$store.commit('comment/setDefault1')}, 300)
+        setTimeout(() => {this.$store.commit('report_tables/comment/setDefault1')}, 300)
       }
     },
     data() {

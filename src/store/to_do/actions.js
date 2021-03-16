@@ -19,7 +19,7 @@ export default {
         context.commit('editItem', {item: data, index: index})
       } catch (e) {
         if (e.response.status == 403) {
-          throw "У вас нет доступа или залогинтесь опять"
+          throw {"message":"У вас нет доступа или залогинтесь опять"}
         }
         throw e.response.data
       }
@@ -32,7 +32,7 @@ export default {
         context.commit('addItem', data)
       } catch (e) {
         if (e.response.status == 403) {
-          throw "У вас нет доступа или залогинтесь опять"
+          throw {"message":"У вас нет доступа или залогинтесь опять"}
         }
         throw e.response.data
       }
@@ -54,7 +54,7 @@ export default {
       context.commit('deleteItem', item)
     } catch (e) {
       if (e.response.status == 403) {
-        throw "У вас нет доступа или залогинтесь опять"
+        throw {"message":"У вас нет доступа или залогинтесь опять"}
       }
       throw e.response.data
     }
@@ -66,7 +66,7 @@ export default {
       context.commit('setToDo', data)
     }catch (e) {
       if (e.response.status == 403) {
-        throw "У вас нет доступа или залогинтесь опять"
+        throw {"message":"У вас нет доступа или залогинтесь опять"}
       }
       throw e.response.data
     }

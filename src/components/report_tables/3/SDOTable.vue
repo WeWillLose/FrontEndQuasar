@@ -50,16 +50,16 @@
 import {mapGetters} from 'vuex'
 export default {
   computed:{
-    ...mapGetters('sdo',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
+    ...mapGetters('report_tables/sdo',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
   },
   methods: {
     addRow() {
-      this.$store.commit('sdo/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
+      this.$store.commit('report_tables/sdo/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
       this.close()
       console.log(this.getRows1)
     },
     deleteItem(item) {
-      confirm("Вы уверены что хотите удалить строку") && this.$store.commit('sdo/deleteItem1',item)
+      confirm("Вы уверены что хотите удалить строку") && this.$store.commit('report_tables/sdo/deleteItem1',item)
     },
     editItem(item) {
       this.$store.commit('sdo/editItem1',item)
@@ -67,7 +67,7 @@ export default {
     },
     close () {
       this.show_dialog = false
-      setTimeout(() => {this.$store.commit('sdo/setDefault1')}, 300)
+      setTimeout(() => {this.$store.commit('report_tables/sdo/setDefault1')}, 300)
     }
   },
   data() {

@@ -30,7 +30,7 @@
         this.$refs.card_dialog.edit()
       },
       init(){
-          this.$store.dispatch('to_do/getToDoFromServer').catch(t=>this.$q.notify({type:'negative',message:t}))
+          this.$store.dispatch('to_do/getToDoFromServer').catch(t=>this.$q.notify({type:'negative',message:t.message}))
       }
     },
     mounted(){

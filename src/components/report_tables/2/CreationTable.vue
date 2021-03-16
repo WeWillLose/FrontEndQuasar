@@ -54,24 +54,24 @@
 import {mapGetters} from 'vuex'
 export default {
   computed:{
-    ...mapGetters('creation_table',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
+    ...mapGetters('report_tables/creation_table',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
   },
   methods: {
     addRow() {
-      this.$store.commit('creation_table/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
+      this.$store.commit('report_tables/creation_table/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
       this.close()
       console.log(this.getRows1)
     },
     deleteItem(item) {
-      confirm("Вы уверены что хотите удалить строку") && this.$store.commit('creation_table/deleteItem1',item)
+      confirm("Вы уверены что хотите удалить строку") && this.$store.commit('report_tables/creation_table/deleteItem1',item)
     },
     editItem(item) {
-      this.$store.commit('creation_table/editItem1',item)
+      this.$store.commit('report_tables/creation_table/editItem1',item)
       this.show_dialog = true;
     },
     close () {
       this.show_dialog = false
-      setTimeout(() => {this.$store.commit('creation_table/setDefault1')}, 300)
+      setTimeout(() => {this.$store.commit('report_tables/creation_table/setDefault1')}, 300)
     }
   },
   data() {
