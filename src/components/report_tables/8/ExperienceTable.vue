@@ -4,6 +4,7 @@
       <q-table title="Обобщение и распространение опыта" :hide-no-data="true" :data="getRows1" :columns="getColumns1">
         <template v-slot:top-right>
           <div>
+            <q-btn dense color="secondary" label="Добавить строку" @click="show_dialog = true" no-caps ></q-btn>
           </div>
           <div class="q-pa-sm q-gutter-sm">
             <q-dialog v-model="show_dialog">
@@ -14,6 +15,9 @@
 
                 <q-card-section class="">
                   <div class="row q-gutter-md q-ma-md">
+                    <q-input  type="textarea" clearable v-model="getEditedItem1.name" label="Название мероприятия, издания"></q-input>
+                    <q-input  type="text" v-model="getEditedItem1.level" label="Уровень"></q-input>
+                    <q-input  type="text" v-model="getEditedItem1.application" label="Тема выступления, публикации"></q-input>
                   </div>
 
 
@@ -31,10 +35,10 @@
         <template v-slot:body="props">
           <q-tr :props="props">
             <q-td key="name" :props="props">
-              <q-input type="text" v-model="props.row.name" dense autofocus></q-input>
+              <q-input type="textarea" v-model="props.row.name" dense autofocus></q-input>
             </q-td>
             <q-td key="level" :props="props">
-              <q-input type="number" v-model="props.row.level" dense autofocus></q-input>
+              <q-input type="text" v-model="props.row.level" dense autofocus></q-input>
             </q-td>
             <q-td key="application" :props="props">
               <q-input type="text" v-model="props.row.application" dense autofocus></q-input>

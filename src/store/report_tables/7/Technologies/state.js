@@ -20,7 +20,7 @@ export default {
     },
     {
       name: "application",
-      label: "",
+      label: "Практическое применение",
       align: "center",
       field:"application"
     },
@@ -34,7 +34,7 @@ export default {
   ],
   rows: [
     {
-      name: "Практическое применение",
+      name: "",
       application: "",
       score: 0,
     },
