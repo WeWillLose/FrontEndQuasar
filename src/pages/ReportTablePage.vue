@@ -7,7 +7,7 @@
 <script>
     import ReportTable from "components/ReportTable";
     export default {
-        name: "Report",
+        name: "ReportTablePage",
       components: {ReportTable}
     }
 </script>

@@ -2,16 +2,30 @@
   <q-page class="bg_gradient flex full-height ">
     <div class="frame q-my-lg q-mx-auto text_main">
       <div class="q-pa-md flex flex-center">
-        <to-do-list/>
+        <report-list/>
       </div>
     </div>
   </q-page>
+
 </template>
 
 <script>
-    import ToDoList from "components/ToDo/ToDoList";
+    import ReportList from "components/report/ReportList";
     export default {
-      components: {ToDoList}
+      name: "MyReportsPage",
+      components: {ReportList},
+      data(){
+          return{
+          }
+      },
+      computed:{
+
+      },
+      methods:{
+
+      },
+      created(){
+      }
     }
 </script>
 

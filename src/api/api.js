@@ -6,7 +6,7 @@ const resource = axios.create({
 export default {
   sentData: data =>resource.post('/api/api/report/save',data),
   sendDocxFiles: files =>resource.post('/api/api/v1/docx/',files),
-  getForm: () =>resource.get('/api/api/form'),
+  getReports: () =>resource.get('/api/api/report/author/current'),
   getToDo: () => resource.get('/api/api/toDo/author/current/'),
   updateToDo: (item) => resource.put(`/api/api/toDo/edit/${item.id}/`, item),
   deleteToDo: (item) => resource.post(`/api/api/toDo/delete/${item.id}/`),

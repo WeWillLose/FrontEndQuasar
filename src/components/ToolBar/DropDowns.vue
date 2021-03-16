@@ -12,8 +12,8 @@
     </q-btn-dropdown>
     <q-btn-dropdown auto-close stretch flat label="Пользователь" class="text_main">
       <q-list>
-        <q-item clickable to="#">
-          <q-item-section>Отчеты</q-item-section>
+        <q-item clickable to="/myreports">
+          <q-item-section>Мои очтеты</q-item-section>
         </q-item>
         <q-item clickable to="#">
           <q-item-section>Заглушка</q-item-section>

@@ -5,10 +5,11 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Index.vue') },
-      { path: '/form', component: () => import('pages/Report.vue') },
+      { path: '/form', component: () => import('pages/ReportTablePage.vue') },
       { path: '/todo', component: () => import('pages/ToDoPage.vue') },
       { path: '/admin', component: () => import('pages/Admin.vue') },
       { path: '/test', component: () => import('pages/Test.vue') },
+      { path: '/myreports', component: () => import('pages/MyReportsPage.vue') },
     ]
   },
   {
