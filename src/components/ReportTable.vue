@@ -1,25 +1,47 @@
 <template>
   <div>
     <q-form
-    @submit="onSubmit">
+      @submit="onSubmit">
       <div class="q-ma-md">
-        <q-input label="ФИО" v-model="fio"
-
-        ></q-input>
+        <div class="column">
+          <div class="col">
+            <h6 class="q-ma-none text-center">Преподаватель</h6>
+          </div>
+          <div class="col">
+            <div class="row q-gutter-md">
+              <div class="col">
+                <q-input label="Фамилия" v-model="last_name"
+                         :rules="[rules.required()]"
+                ></q-input>
+              </div>
+              <div class="col">
+                <q-input label="Имя" v-model="first_name"
+                         :rules="[rules.required()]"
+                ></q-input>
+              </div>
+              <div class="col">
+                <q-input label="Отчество" v-model="patronymic"
+                         :rules="[rules.required()]"
+                ></q-input>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="q-ma-md">
         <q-select
-
-          filled v-model="model" :options="options" label="Квартал"/>
+          filled v-model="quarter" :options="options" label="Квартал"
+          :rules="[rules.required()]"/>
       </div>
       <div class="row">
         <div class="q-ma-md col">
-          <q-input type="number" v-model="year1" min="2000" max="3000"
-
+          <q-input type="number" v-model="year1" label="Год"
+                   :rules="[rules.required(),rules.numberBetweenNotStrict(2000,3000)]"
           />
         </div>
         <div class="q-ma-md col">
-          <q-input type="number" v-model="year2" min="2000" max="3000"/>
+          <q-input type="number" v-model="year2" label="Год" min="2000" max="3000"
+                   :rules="[rules.required(),rules.numberBetweenNotStrict(2000,3000)]"/>
         </div>
       </div>
       <progress-exam-table/>
@@ -63,7 +85,7 @@
       <div class="column items-end q-ma-md">
         <div class="col">
           <q-input style="max-width: 200px" v-model="sum2" readonly
-          label="Сумма баллов по 1-2 критерию:"></q-input>
+                   label="Сумма баллов по 1-2 критерию:"></q-input>
         </div>
       </div>
       <div class="column items-end q-ma-md">
@@ -76,10 +98,7 @@
 </template>
 
 <script>
-  // :rules="[v=>!!v||'Поле обязательно']"
-  // :rules="[v=>!!v||'Поле обязательно']"
-  // :rules="[v=> (v > 2000 && v<3000) || 'Год не корректен']"
-  // :rules="[v=> (v > 2000 && v<3000) || 'Год не корректен']"
+  import rules from 'src/api/rules';
   import ProgressExamTable from "components/report_tables/1/ProgressExamTable";
   import ProgressTable from "components/report_tables/1/ProgressTable";
   import CreationTable from "components/report_tables/2/CreationTable";
@@ -195,7 +214,7 @@
         circle: 'circle/getData',
         institutions: 'institutions/getData',
         plan: 'plan/getData',
-        events:'events/getData',
+        events: 'events/getData',
         plan_group: 'plan_group/getData',
         activity: 'activity/getData',
         obz: 'obz/getData',
@@ -211,32 +230,38 @@
         subject: 'subject/getData',
         seminars: 'seminars/getData'
       }),
-      sum1(){
-        return this.$store.getters["comment/getScore"] + this.$store.getters["creation_table/getScore"]+
+      rules: () => rules,
+      sum1() {
+        return this.$store.getters["comment/getScore"] + this.$store.getters["creation_table/getScore"] +
           this.$store.getters["proective_table/getScore"]
       },
-      sum2(){
-        return this.$store.getters["comment/getScore"] + this.$store.getters["creation_table/getScore"]+
+      sum2() {
+        return this.$store.getters["comment/getScore"] + this.$store.getters["creation_table/getScore"] +
           this.$store.getters["proective_table/getScore"]
+      },
+      fio() {
+        return this.first_name.trim() + " " + this.last_name.trim() + " " + this.patronymic.trim();
       }
     },
     data() {
       return {
-        model: null,
+        quarter: null,
         options: [
           1, 2, 3, 4
         ],
         year1: null,
         year2: null,
-        fio:"",
+        first_name: "",
+        last_name: "",
+        patronymic: "",
       }
     },
     methods: {
       saveToServer() {
         console.log(Object.assign({}, this.comment, this.progress, this.progress_exam))
       },
-      onSubmit(){
-        let dict=  {}
+      onSubmit() {
+        let dict = {}
         dict["data"] = Object.assign({}, this.comment, this.progress, this.progress_exam, this.creation_table,
           this.proective_table, this.class_rooms, this.complex, this.education,
           this.programs, this.reconstruction, this.sdo, this.teaching_aids,
@@ -245,6 +270,12 @@
           this.contest, this.participation, this.qualification, this.self_education,
           this.seminars, this.technologies, this.experience, this.interaction,
           this.subject, this.manual)
+        dict["data"]["sum1"] = this.sum1;
+        dict["data"]["sum2"] = this.sum2;
+        dict["data"]["fio"] = this.fio;
+        dict["data"]["year1"] = this.year1;
+        dict["data"]["year2"] = this.year2;
+        dict["data"]["quarter"] = this.quarter;
         api.sentData(dict)
       }
     },

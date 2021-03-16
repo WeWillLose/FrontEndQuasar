@@ -9,7 +9,7 @@ export default {
     return (val) => withoutSpacesRegexp.test(val) || 'Поле не должно содержать пробелы'
   },
   required: () => {
-    return (val) => val.length > 0 || 'Поле обязательное'
+    return (val) => !!val || 'Поле обязательное'
   },
   username:()=> true,
   lengthLess: (len)=>{
