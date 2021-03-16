@@ -35,7 +35,7 @@
               <q-input type="text" v-model="props.row.name" dense autofocus></q-input>
             </q-td>
             <q-td key="role" :props="props">
-              <q-input type="number" v-model="props.row.role" dense autofocus></q-input>
+              <q-input type="text" v-model="props.row.role" dense autofocus></q-input>
             </q-td>
             <q-td key="score" :props="props">
               <q-input type="number" v-model="props.row.score" dense autofocus></q-input>
