@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-      <q-page-container class="text_main">
+      <q-page-container class="text_main bg_gradient">
         <q-page>
           <login/>
         </q-page>
