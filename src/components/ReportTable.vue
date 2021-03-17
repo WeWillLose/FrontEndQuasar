@@ -133,34 +133,7 @@
   import InteractionTable from "components/report_tables/9/InteractionTable";
   import SubjectTable from "components/report_tables/10/SubjectTable";
   import ManualTable from "components/report_tables/11/ManualTable";
-  import creation_table from "src/store/report_tables/2/CreationTable";
-  import proective_table from "src/store/report_tables/2/ProectiveTable";
-  import complex from "src/store/report_tables/3/Complex";
-  import class_rooms from "src/store/report_tables/3/ClassRooms";
-  import education from "src/store/report_tables/3/Education";
-  import working_program from "src/store/report_tables/3/WorkingProgram";
-  import reconstruction from "src/store/report_tables/3/Reconstruction";
-  import sdo from "src/store/report_tables/3/SDO";
-  import programs from "src/store/report_tables/3/Programs";
-  import teaching_aids from "src/store/report_tables/3/Teachingaids";
-  import circle from "src/store/report_tables/4/Circle";
-  import institutions from "src/store/report_tables/4/Institutions";
-  import plan from "src/store/report_tables/4/Plan";
-  import events from "src/store/report_tables/4/Events";
-  import plan_group from "src/store/report_tables/5/PlanGroup";
-  import activity from "src/store/report_tables/5/Activity";
-  import obz from "src/store/report_tables/5/OBZ";
-  import cool_hours from "src/store/report_tables/5/Сoolhours";
-  import contest from "src/store/report_tables/6/Contest";
-  import participation from "src/store/report_tables/6/Participation";
-  import qualification from "src/store/report_tables/6/Qualification";
-  import self_education from "src/store/report_tables/6/Selfeducation";
-  import technologies from "src/store/report_tables/7/Technologies";
-  import experience from "src/store/report_tables/8/Experience";
-  import manual from "src/store/report_tables/11/Manual";
-  import interaction from "src/store/report_tables/9/Interaction";
-  import subject from "src/store/report_tables/10/Subject";
-  import seminars from "src/store/report_tables/6/Seminars";
+
 
   export default {
     components: {
@@ -206,8 +179,20 @@
           this.$store.getters["report_tables/proective_table/getScore"]
       },
       sum2() {
-        return this.$store.getters["report_tables/comment/getScore"] + this.$store.getters["report_tables/creation_table/getScore"] +
-          this.$store.getters["report_tables/proective_table/getScore"]
+        return this.$store.getters["report_tables/class_rooms/getScore"] + this.$store.getters["report_tables/complex/getScore"] +
+          this.$store.getters["report_tables/education/getScore"] + this.$store.getters["report_tables/programs/getScore"] +
+          this.$store.getters["report_tables/reconstruction/getScore"] + this.$store.getters["report_tables/sdo/getScore"] +
+          this.$store.getters["report_tables/teaching_aids/getScore"] + this.$store.getters["report_tables/working_program/getScore"] +
+          this.$store.getters["report_tables/circle/getScore"] + this.$store.getters["report_tables/events/getScore"] +
+          this.$store.getters["report_tables/institutions/getScore"] + this.$store.getters["report_tables/plan/getScore"] +
+          this.$store.getters["report_tables/activity/getScore"] + this.$store.getters["report_tables/cool_hours/getScore"] +
+          this.$store.getters["report_tables/obz/getScore"] + this.$store.getters["report_tables/plan_group/getScore"] +
+          this.$store.getters["report_tables/contest/getScore"] + this.$store.getters["report_tables/participation/getScore"] +
+          this.$store.getters["report_tables/qualification/getScore"] + this.$store.getters["report_tables/self_education/getScore"] +
+          this.$store.getters["report_tables/seminars/getScore"] + this.$store.getters["report_tables/technologies/getScore"] +
+          this.$store.getters["report_tables/experience/getScore"] + this.$store.getters["report_tables/interaction/getScore"] +
+          this.$store.getters["report_tables/subject/getScore"] + this.$store.getters["report_tables/manual/getScore"]
+
       },
       fio() {
         return this.first_name.trim() + " " + this.last_name.trim() + " " + this.patronymic.trim();
