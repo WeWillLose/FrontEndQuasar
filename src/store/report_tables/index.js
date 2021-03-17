@@ -30,9 +30,11 @@ import subject from "./10/Subject"
 import manual from "./11/Manual"
 import seminars from "./6/Seminars"
 import actions from './actions'
+import getters from './gettersIndex'
 
 export default {
   actions,
+  getters,
   namespaced:true,
   modules:{
     comment,
