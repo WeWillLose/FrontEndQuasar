@@ -12,6 +12,9 @@ export default{
   },
   showPositiveNotify(message) {
     Vue.prototype.$q.notify({type:"positive",message:message})
+  },
+  showForbiddenNotify() {
+    Vue.prototype.$q.notify({type:"positive",message:"У вас нет прав или залогинтесь опять"})
   }
 }
 

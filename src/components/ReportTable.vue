@@ -171,37 +171,7 @@
     },
     computed: {
       ...mapGetters({
-        comment: "report_tables/comment/getData",
-        progress: 'report_tables/progress/getData',
-        progress_exam: 'report_tables/progress_exam/getData',
-        creation_table: 'report_tables/creation_table/getData',
-        proective_table: 'report_tables/proective_table/getData',
-        complex: 'report_tables/complex/getData',
-        class_rooms: 'report_tables/class_rooms/getData',
-        education: 'report_tables/education/getData',
-        working_program: 'report_tables/working_program/getData',
-        reconstruction: 'report_tables/reconstruction/getData',
-        sdo: 'report_tables/sdo/getData',
-        programs: 'report_tables/programs/getData',
-        teaching_aids: 'report_tables/teaching_aids/getData',
-        circle: 'report_tables/circle/getData',
-        institutions: 'report_tables/institutions/getData',
-        plan: 'report_tables/plan/getData',
-        events: 'report_tables/events/getData',
-        plan_group: 'report_tables/plan_group/getData',
-        activity: 'report_tables/activity/getData',
-        obz: 'report_tables/obz/getData',
-        cool_hours: 'report_tables/cool_hours/getData',
-        contest: 'report_tables/contest/getData',
-        participation: 'report_tables/participation/getData',
-        qualification: 'report_tables/qualification/getData',
-        self_education: 'report_tables/self_education/getData',
-        technologies: 'report_tables/technologies/getData',
-        experience: 'report_tables/experience/getData',
-        manual: 'report_tables/manual/getData',
-        interaction: 'report_tables/interaction/getData',
-        subject: 'report_tables/subject/getData',
-        seminars: 'report_tables/seminars/getData'
+        getData: "report_tables/getData",
       }),
       rules: () => rules,
       sum1() {
@@ -247,14 +217,7 @@
       },
       onSubmit() {
         let dict = {}
-        dict["data"] = Object.assign({}, this.comment, this.progress, this.progress_exam, this.creation_table,
-          this.proective_table, this.class_rooms, this.complex, this.education,
-          this.programs, this.reconstruction, this.sdo, this.teaching_aids,
-          this.working_program, this.circle, this.events, this.institutions,
-          this.plan, this.activity, this.obz, this.plan_group, this.cool_hours,
-          this.contest, this.participation, this.qualification, this.self_education,
-          this.seminars, this.technologies, this.experience, this.interaction,
-          this.subject, this.manual)
+        dict["data"] = Object.assign({}, this.getData)
         dict["data"]["sum1"] = this.sum1;
         dict["data"]["sum2"] = this.sum2;
         dict["data"]["fio"] = this.fio;
@@ -265,7 +228,8 @@
         .catch(err=> notifyApi.showErrorNotify(err.message))
       }
     },
-
+    created(){
+    }
   }
 </script>
 

@@ -104,7 +104,7 @@ import {mapGetters} from 'vuex'
       },
       close () {
         this.show_dialog = false
-        setTimeout(() => {this.$store.commit('progress_exam/setDefault1')}, 300)
+        setTimeout(() => {this.$store.commit('report_tables/progress_exam/setDefault1')}, 300)
       }
     },
     data() {

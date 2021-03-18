@@ -58,7 +58,7 @@
             .then(t=>this.$router.push("/"))
             .catch(err=> notifyApi.showErrorNotify(err.message))
           }
-        }
+        },
     }
 </script>
 

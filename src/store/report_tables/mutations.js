@@ -6,6 +6,13 @@ export default {
       state.rows.push(data.editedItem);
     }
   },
+  setRow:(state,data) =>{
+    if (!!!data ) {
+      state.rows = Object.assign([], []);
+    } else {
+      state.rows = Object.assign([], data);
+    }
+  },
   deleteItem1:(state,item) =>{
     const index = state.rows.indexOf(item);
     state.rows.splice(index, 1);

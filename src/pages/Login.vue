@@ -1,5 +1,5 @@
 <template>
-  <div class="frame  q-my-lg q-mx-auto text_main absolute-full">
+  <div class="frame q-my-lg q-mx-auto text_main absolute-full">
       <login-form/>
   </div>
 </template>
