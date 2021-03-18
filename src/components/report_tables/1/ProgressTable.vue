@@ -1,7 +1,7 @@
 <template>
   <div id="q-app">
     <div class="q-pa-sm q-gutter-sm">
-      <q-table title="Успеваемость по предметам, не вынессеным на екзаменны" :hide-no-data="true" :data="getRows1" :columns="getColumns1">
+      <q-table title="Успеваемость по предметам, не вынессеным на экзамены" :hide-no-data="true" :data="getRows1" :columns="getColumns1">
         <template v-slot:top-right>
           <div>
             <q-btn dense color="secondary" label="Добавить строку" @click="show_dialog = true" no-caps ></q-btn>
@@ -15,7 +15,7 @@
 
                 <q-card-section class="">
                   <div class="row q-gutter-md q-ma-md">
-                    <q-input  type="text"clearable v-model="getEditedItem1.group" label="Группа"></q-input>
+                    <q-input  type="text" clearable v-model="getEditedItem1.group" label="Группа"></q-input>
                     <q-input  type="text" v-model="getEditedItem1.subject" label="Дисциплина"></q-input>
                     <q-input  type="number" v-model="getEditedItem1.amount" label="Колво студентов"></q-input>
                   </div>
