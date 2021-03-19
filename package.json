@@ -6,16 +6,22 @@
   "author": "WeWillLose <artem2001sarg@gmail.ru>",
   "private": true,
   "scripts": {
+    "build": "quasar build",
+    "start": "node server.js",
+    "heroku-postbuild": "yarn && yarn build",
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
     "axios-https-proxy-fix": "^0.17.1",
+    "connect-history-api-fallback": "^1.6.0",
     "core-js": "^3.6.5",
+    "express": "^4.17.1",
     "form-data": "^3.0.0",
     "js-file-download": "^0.4.12",
     "quasar": "^1.0.0",
+    "serve-static": "^1.14.1",
     "vue-uuid": "^2.0.2",
     "vuex": "^3.6.2"
   },

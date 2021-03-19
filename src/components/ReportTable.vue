@@ -11,17 +11,17 @@
             <div class="row q-gutter-md">
               <div class="col">
                 <q-input label="Фамилия" v-model="last_name"
-                         :rules="[rules.required()]"
+                         :rules="[rules.required(),rules.alpha(),,rules.withoutSpaces()]"
                 ></q-input>
               </div>
               <div class="col">
                 <q-input label="Имя" v-model="first_name"
-                         :rules="[rules.required()]"
+                         :rules="[rules.required(),rules.alpha(),rules.withoutSpaces()]"
                 ></q-input>
               </div>
               <div class="col">
                 <q-input label="Отчество" v-model="patronymic"
-                         :rules="[rules.required()]"
+                         :rules="[rules.required(),rules.alpha(),rules.withoutSpaces()]"
                 ></q-input>
               </div>
             </div>
@@ -53,7 +53,6 @@
         <div class="col">
           <q-input style="max-width: 200px" v-model="sum1" outlined dense readonly>
           </q-input>
-
         </div>
       </div>
       <working-program-table/>

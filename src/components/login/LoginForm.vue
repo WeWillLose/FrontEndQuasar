@@ -21,7 +21,7 @@
         v-model="password"
         label="Ваш пароль"
         lazy-rules
-        :rules="[rules.required(),rules.withoutSpaces(),rules.alpha()]"
+        :rules="[rules.required(),rules.withoutSpaces()]"
       />
 
       <div>

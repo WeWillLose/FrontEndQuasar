@@ -1,9 +1,13 @@
 const numberRegexp = new RegExp('^[+-]?\\d+(\\.\\d+)?$');
 const withoutSpacesRegexp = new RegExp(/^\S+$/);
+const alphaWithRusExp = new RegExp(/^[a-zA-Zа-яА-Я]+$/);
 const alphaExp = new RegExp(/^[a-zA-Z]+$/);
 export default {
   alpha: ()=>{
-    return (val) => alphaExp.test(val) || 'Поле может содержать только буквы'
+    return (val) => alphaExp.test(val) || 'Поле может содержать только латинские буквы'
+  },
+  alphaWithRus: ()=>{
+    return (val) => alphaWithRusExp.test(val) || 'Поле может содержать только буквы'
   },
   withoutSpaces: ()=>{
     return (val) => withoutSpacesRegexp.test(val) || 'Поле не должно содержать пробелы'
