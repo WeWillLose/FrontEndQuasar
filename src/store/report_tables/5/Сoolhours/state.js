@@ -33,10 +33,6 @@ export default {
     },
   ],
   rows: [
-    {
-      theme: "",
-      thoroughness: "",
-      score: 0,
-    },
+
   ]
 };

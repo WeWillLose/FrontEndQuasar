@@ -25,9 +25,6 @@ export default {
     },
   ],
   rows: [
-    {
-      name: "",
-      score: 0,
-    },
+
   ]
 };

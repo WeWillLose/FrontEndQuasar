@@ -31,9 +31,6 @@ export default {
     }
   ],
   rows: [
-    {
-      reconstruction: "",
-      score: 0,
-    },
+
   ]
 };

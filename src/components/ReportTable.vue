@@ -11,17 +11,17 @@
             <div class="row q-gutter-md">
               <div class="col">
                 <q-input label="Фамилия" v-model="last_name"
-                         :rules="[rules.required(),rules.alpha(),,rules.withoutSpaces()]"
+                         :rules="[rules.required(),rules.alphaWithRus(),,rules.withoutSpaces()]"
                 ></q-input>
               </div>
               <div class="col">
                 <q-input label="Имя" v-model="first_name"
-                         :rules="[rules.required(),rules.alpha(),rules.withoutSpaces()]"
+                         :rules="[rules.required(),rules.alphaWithRus(),rules.withoutSpaces()]"
                 ></q-input>
               </div>
               <div class="col">
                 <q-input label="Отчество" v-model="patronymic"
-                         :rules="[rules.required(),rules.alpha(),rules.withoutSpaces()]"
+                         :rules="[rules.required(),rules.alphaWithRus(),rules.withoutSpaces()]"
                 ></q-input>
               </div>
             </div>
@@ -194,7 +194,7 @@
 
       },
       fio() {
-        return this.first_name.trim() + " " + this.last_name.trim() + " " + this.patronymic.trim();
+        return this.last_name.trim()+" "+ this.first_name.trim() + " " + this.patronymic.trim();
       }
     },
     data() {

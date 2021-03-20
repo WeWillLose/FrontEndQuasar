@@ -42,10 +42,6 @@ export default {
     }
   ],
   rows: [
-    {
-      class: "",
-      status: "",
-      score: 0,
-    },
+
   ]
 };

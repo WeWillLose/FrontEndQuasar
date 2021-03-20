@@ -47,11 +47,6 @@ export default {
     }
   ],
   rows: [
-    {
-      group: "",
-      students: "",
-      lessons: "",
-      score: 0,
-    },
+
   ]
 };

@@ -25,9 +25,6 @@ export default {
     },
   ],
   rows: [
-    {
-      role: "",
-      score: 0,
-    },
+
   ]
 };

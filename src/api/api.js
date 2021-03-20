@@ -7,6 +7,7 @@ export default {
   sentData: data =>resource.post('/api/api/report/save',data),
   sendDocxFiles: files =>resource.post('/api/api/v1/docx/',files),
   getReports: () =>resource.get('/api/api/report/author/current'),
+  downloadScoreList: (id) =>resource.get(`/api/api/score/${id}`,{responseType:'arraybuffer'}),
   downloadReport: (id) =>resource.get(`/api/api/report/docx/${id}`,{responseType:'arraybuffer'}),
   getToDo: () => resource.get('/api/api/toDo/author/current/'),
   updateToDo: (item) => resource.put(`/api/api/toDo/edit/${item.id}/`, item),

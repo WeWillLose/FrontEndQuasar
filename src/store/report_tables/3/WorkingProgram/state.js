@@ -17,8 +17,5 @@ export default {
     },
   ],
   rows: [
-    {
-      name: "",
-    },
   ]
 };

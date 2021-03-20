@@ -1,32 +1,20 @@
 export default {
-  name:'plan_group',
+  name: 'plan_group',
   editedIndex: -1,
   editedItem: {
     presence: "",
-    yen: "",
   },
   defaultItem: {
     presence: "",
-    yen: "",
   },
   columns: [
     {
       name: "presence",
-      label: "",
+      label: "Наличие плана воспитательной работы с группой",
       align: "center",
-      field:"presence"
+      field: "presence"
     },
-    {
-      name: "yen",
-      label: "",
-      align: "right",
-      field:"yen"
-    },
-    ],
-    rows: [
-  {
-    presence: "Наличие плана воспитательной работы с группой",
-    yen: "",
-  },
-],
+  ],
+  rows: [
+  ],
 };

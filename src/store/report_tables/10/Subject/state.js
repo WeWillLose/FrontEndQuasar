@@ -24,10 +24,6 @@ export default {
       style: "width:100px"
     },
   ],
-  rows: [
-    {
-      name: "",
-      score: 0,
-    },
+  rows: [,
   ]
 };

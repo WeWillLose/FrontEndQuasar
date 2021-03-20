@@ -14,7 +14,7 @@
 
                 <q-card-section class="">
                   <div class="row q-gutter-md q-ma-md">
-                    <q-input  type="text" clearable v-model="getEditedItem1.presence" label=""></q-input>
+                    <q-input  type="textarea" clearable v-model="getEditedItem1.presence" label=""></q-input>
                   </div>
                 </q-card-section>
 
@@ -30,10 +30,7 @@
         <template v-slot:body="props">
           <q-tr :props="props">
             <q-td key="presence" :props="props">
-              <q-input type="text" v-model="props.row.presence" dense autofocus></q-input>
-            </q-td>
-            <q-td key="yen" :props="props">
-              <q-input type="text" v-model="props.row.yen" dense autofocus></q-input>
+              <q-input type="textarea" v-model="props.row.presence" dense autofocus></q-input>
             </q-td>
             <q-td key="actions" :props="props" auto-width>
               <!--                <q-btn color="blue" label="Update" @click="editItem(props.row)" size=sm no-caps></q-btn>-->

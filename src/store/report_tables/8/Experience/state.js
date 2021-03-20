@@ -47,11 +47,5 @@ export default {
     },
   ],
   rows: [
-    {
-      name: "",
-      application: "",
-      level: "",
-      score: 0,
-    },
   ]
 };

@@ -26,9 +26,6 @@ export default {
     },
   ],
   rows: [
-    {
-      comment: "",
-      score: 0,
-    },
+
   ]
 };

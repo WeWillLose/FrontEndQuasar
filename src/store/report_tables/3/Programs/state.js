@@ -41,10 +41,5 @@ export default {
     },
   ],
   rows: [
-    {
-      title: "",
-      quantity: 0,
-      score: 0,
-    },
   ]
 };

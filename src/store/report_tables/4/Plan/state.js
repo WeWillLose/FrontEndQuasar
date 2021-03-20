@@ -25,9 +25,6 @@ export default {
     },
   ],
   rows: [
-    {
-      level: "",
-      score: 0,
-    },
+
   ]
 };

@@ -78,17 +78,5 @@ export default {
       }
     ],
     rows: [
-      {
-        group: "2-1 A9",
-        subject: "История",
-        amount: 24,
-        mark5: 9,
-        mark4: 11,
-        mark3: 3,
-        mark2: 0,
-        progress: 96,
-        quality: 83,
-        unsuccs: "Грудинин",
-      },
     ]
 };

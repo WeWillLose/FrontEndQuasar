@@ -11,7 +11,10 @@
               <q-menu cover auto-close>
                 <q-list>
                   <q-item clickable @click="download(report)">
-                    <q-item-section>Скачать</q-item-section>
+                    <q-item-section>Скачать отчет</q-item-section>
+                  </q-item>
+                  <q-item clickable @click="downloadScoreList(report)">
+                    <q-item-section>Скачать оценочный лист</q-item-section>
                   </q-item>
                 </q-list>
               </q-menu>
@@ -74,12 +77,6 @@
           if(!!report.id){
             try{
               const response = await api.downloadReport(report.id);
-              // const url = window.URL.createObjectURL(new Blob([response.data]))
-              // const link = document.createElement('a')
-              // link.href = url
-              // link.setAttribute('download', "text.docx")
-              // document.body.appendChild(link)
-              // link.click()
               fileDownload(response.data,!!report.name?report.name:`report_${this.$uuid.v4()}.docx`);
             }catch (e) {
               if(e?.response?.status == 403){
@@ -92,7 +89,26 @@
                 }
               }
             }
-
+          }
+        }
+      },
+      async downloadScoreList(report){
+        if(!!report){
+          if(!!report.id){
+            try{
+              const response = await api.downloadScoreList(report.id);
+              fileDownload(response.data,!!report.name?report.name:`score_list_${this.$uuid.v4()}.docx`);
+            }catch (e) {
+              if(e?.response?.status == 403){
+                notifyApi.showForbiddenNotify()
+              }else{
+                if(!!e.response?.data?.message){
+                  notifyApi.showErrorNotify(e.response.data.message)
+                } else{
+                  console.error(e)
+                }
+              }
+            }
           }
         }
       }
