@@ -29,5 +29,11 @@ export default {
       name: "",
       score: 0,
     }
+  ],
+  defaultRows: [
+    {
+      name: "",
+      score: 0,
+    }
   ]
 };

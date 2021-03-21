@@ -64,5 +64,31 @@ export default {
       smaterials: "",
       score: 0,
     },
+  ],
+  defaultRows: [
+    {
+      typework: "Теоретический материал",
+      MDK: "",
+      smaterials: "",
+      score: 0,
+    },
+    {
+      typework: "Комплекты КОС, тесты",
+      MDK: "",
+      smaterials: "",
+      score: 0,
+    },
+    {
+      typework: "Электронные презентаци",
+      MDK: "",
+      smaterials: "",
+      score: 0,
+    },
+    {
+      typework: "Видеоматериалы",
+      MDK: "",
+      smaterials: "",
+      score: 0,
+    },
   ]
 };

@@ -77,6 +77,11 @@ export default {
       align: "center",
     }
   ],
-  rows: [
+  rows: [{
+
+  }
+  ],
+  defaultRows: [
+
   ]
 };

@@ -1,12 +1,13 @@
 <template>
-  <div class="q-pa-md full-height flex flex-center bg_gradient " style="min-width:400px">
+  <div class="q-pa-md full-height flex flex-center" style="min-width:400px">
+    <h2 class="frame_h2">Login</h2>
     <q-form
       @submit="onSubmit"
       @reset="onReset"
-      class="q-gutter-md frame_back form-signin"
+      class="q-gutter-md"
       style="min-width: 400px"
     >
-      <q-input label-color="white"
+      <q-input
         filled
         type="text"
         v-model="username"
@@ -15,7 +16,7 @@
         :rules="[rules.required()]"
       />
 
-      <q-input label-color="white"
+      <q-input
         filled
         type="password"
         v-model="password"
@@ -25,7 +26,7 @@
       />
 
       <div>
-        <q-btn label="Авторизоватся" type="submit" color="primary"/>
+        <q-btn label="Авторизоваться" type="submit" color="primary"/>
         <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm " />
       </div>
     </q-form>

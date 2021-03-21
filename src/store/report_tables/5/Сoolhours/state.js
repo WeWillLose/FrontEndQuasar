@@ -38,5 +38,12 @@ export default {
       thoroughness: "",
       score: 0,
     }
+  ],
+  defaultRows: [
+    {
+      theme: "",
+      thoroughness: "",
+      score: 0,
+    }
   ]
 };

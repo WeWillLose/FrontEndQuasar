@@ -30,5 +30,11 @@ export default {
       proof: "",
       score: 0,
     }
+  ],
+  defaultRows: [
+    {
+      proof: "",
+      score: 0,
+    }
   ]
 };

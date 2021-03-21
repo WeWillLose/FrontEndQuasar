@@ -43,5 +43,17 @@ export default {
       date: "",
       score: 0,
     },
+  ],
+  defaultRows: [
+    {
+      qualification: "Курсы:",
+      date: "",
+      score: 0,
+    },
+    {
+      qualification: "Стажировка:",
+      date: "",
+      score: 0,
+    },
   ]
 };

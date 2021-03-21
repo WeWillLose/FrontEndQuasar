@@ -29,5 +29,11 @@ export default {
       level: "",
       score: 0,
     }
+  ],
+  defaultRows: [
+    {
+      level: "",
+      score: 0,
+    }
   ]
 };
