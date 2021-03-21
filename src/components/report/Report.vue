@@ -10,6 +10,9 @@
             <q-btn color="grey-7" round flat icon="more_vert">
               <q-menu cover auto-close>
                 <q-list>
+                  <q-item clickable @click="editReport(report)">
+                    <q-item-section>Редактировать</q-item-section>
+                  </q-item>
                   <q-item clickable @click="download(report)">
                     <q-item-section>Скачать отчет</q-item-section>
                   </q-item>
@@ -81,6 +84,14 @@
       }
     },
     methods:{
+      editReport(report){
+        if(!!report){
+          if(!!report.id){
+            this.$store.dispatch('report_tables/setReportTablesData',report.id)
+            this.$router.push({path: '/form'});
+          }
+        }
+      },
       async download(report){
         if(!!report){
           if(!!report.id){

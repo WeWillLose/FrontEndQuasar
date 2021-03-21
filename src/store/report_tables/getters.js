@@ -21,16 +21,24 @@ export default {
   },
   getScore: state =>{
     let scoreRate = 0;
-    state.rows.forEach(t=>{
-      if(!!t.score){
-        try{
-          scoreRate+= Number.parseFloat(t.score);
-        }catch (e) {
+    try{
+      if(!!!state.rows){
+        return scoreRate;
+      }
+      state.rows.forEach(t=>{
+        if(!!t.score){
+          try{
+            scoreRate+= Number.parseFloat(t.score);
+          }catch (e) {
+
+          }
 
         }
+      })
+    }catch (e) {
+      console.error(e)
+    }
 
-      }
-    })
     return scoreRate
   }
 }

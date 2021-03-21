@@ -8,7 +8,13 @@
     import ReportTable from "components/ReportTable";
     export default {
         name: "ReportTablePage",
-      components: {ReportTable}
+      components: {ReportTable},
+      data(){
+        return {
+      }
+    },
+      created(){
+      }
     }
 </script>
 

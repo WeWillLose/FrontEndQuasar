@@ -15,8 +15,8 @@
         <q-item clickable to="/myreports">
           <q-item-section>Мои очтеты</q-item-section>
         </q-item>
-        <q-item clickable to="#">
-          <q-item-section>Заглушка</q-item-section>
+        <q-item clickable to="/followersreports" v-if="isChairman">
+          <q-item-section>Отчеты учителей</q-item-section>
         </q-item>
       </q-list>
     </q-btn-dropdown>
@@ -37,7 +37,7 @@
   export default {
     name: "DropDowns",
     computed:{
-      ...mapGetters('user',['isAdmin'])
+      ...mapGetters('user',['isAdmin','isChairman'])
     }
   }
 </script>

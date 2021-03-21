@@ -31,10 +31,14 @@ import manual from "./11/Manual"
 import seminars from "./6/Seminars"
 import actions from './actions'
 import getters from './gettersIndex'
+import mutations from './mutationsIndex'
+import meta from './meta/index'
+
 
 export default {
   actions,
   getters,
+  mutations,
   namespaced:true,
   modules:{
     comment,
@@ -68,5 +72,6 @@ export default {
     interaction,
     subject,
     seminars,
+    meta
   }
 }

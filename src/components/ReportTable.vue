@@ -10,12 +10,12 @@
           <div class="col">
             <div class="row q-gutter-md">
               <div class="col">
-                <q-input label="Фамилия" v-model="last_name"
-                         :rules="[rules.required(),rules.alphaWithRus(),,rules.withoutSpaces()]"
+                <q-input label="Фамилия" v-model="lastName"
+                         :rules="[rules.required(),rules.alphaWithRus(),rules.withoutSpaces()]"
                 ></q-input>
               </div>
               <div class="col">
-                <q-input label="Имя" v-model="first_name"
+                <q-input label="Имя" v-model="firstName"
                          :rules="[rules.required(),rules.alphaWithRus(),rules.withoutSpaces()]"
                 ></q-input>
               </div>
@@ -97,6 +97,7 @@
 </template>
 
 <script>
+  import { createHelpers } from 'vuex-map-fields';
   import rules from 'src/api/rules';
   import ProgressExamTable from "components/report_tables/1/ProgressExamTable";
   import ProgressTable from "components/report_tables/1/ProgressTable";
@@ -133,7 +134,10 @@
   import SubjectTable from "components/report_tables/10/SubjectTable";
   import ManualTable from "components/report_tables/11/ManualTable";
 
-
+  const { mapFields } = createHelpers({
+    getterType: 'report_tables/meta/getField',
+    mutationType: 'report_tables/meta/updateField',
+  });
   export default {
     components: {
       ManualTable,
@@ -169,9 +173,17 @@
       ProgramsTable
     },
     computed: {
-      ...mapGetters({
-        getData: "report_tables/getData",
-      }),
+      ...mapFields({
+        firstName:'first_name',
+        lastName:'last_name',
+        patronymic:'patronymic',
+        quarter:'quarter',
+        options:'options',
+        year1:'year1',
+        year2:'year2',
+        fio:'fio',
+        fioShort:'fioShort',
+    }),
       rules: () => rules,
       sum1() {
         return this.$store.getters["report_tables/comment/getScore"] + this.$store.getters["report_tables/creation_table/getScore"] +
@@ -191,47 +203,35 @@
           this.$store.getters["report_tables/seminars/getScore"] + this.$store.getters["report_tables/technologies/getScore"] +
           this.$store.getters["report_tables/experience/getScore"] + this.$store.getters["report_tables/interaction/getScore"] +
           this.$store.getters["report_tables/subject/getScore"] + this.$store.getters["report_tables/manual/getScore"]
-
       },
-      fio() {
-        return this.last_name.trim()+" "+ this.first_name.trim() + " " + this.patronymic.trim();
-      },
-      fioShort() {
-        return this.last_name.trim()+" "+ this.first_name.trim().slice(0,1).toUpperCase() + "." + this.patronymic.trim().slice(0,1).toUpperCase()+".";
-      }
     },
     data() {
       return {
-        quarter: null,
-        options: [
-          1, 2, 3, 4
-        ],
-        year1: null,
-        year2: null,
-        first_name: "",
-        last_name: "",
-        patronymic: "",
       }
     },
     methods: {
-      saveToServer() {
-        console.log(Object.assign({}, this.comment, this.progress, this.progress_exam))
-      },
       onSubmit() {
         let dict = {}
+        dict["id"] = this.$store.getters["report_tables/meta/getId"];
         dict["data"] = Object.assign({}, this.getData)
         dict["data"]["sum1"] = this.sum1;
         dict["data"]["sum2"] = this.sum2;
-        dict["data"]["fio"] = this.fio;
+        dict["data"]["fio"] = this.$store.getters["report_tables/meta/getFIO"];
         dict["data"]["year1"] = this.year1;
         dict["data"]["year2"] = this.year2;
         dict["data"]["quarter"] = this.quarter;
-        dict["data"]["fioShort"] = this.fioShort;
+        dict["data"]["fioShort"] = this.$store.getters["report_tables/meta/getFIOShort"];
+        dict["data"]["first_name"] = this.$store.getters["report_tables/meta/getFirstName"];
+        dict["data"]["last_name"] = this.$store.getters["report_tables/meta/getLastName"];
+        dict["data"]["patronymic"] = this.$store.getters["report_tables/meta/getPatronymic"];
+        console.log(this.$store.getters["report_tables/meta/getId"])
+        console.log(dict.id)
         this.$store.dispatch('report_tables/sentData',dict).then(t =>notifyApi.showPositiveNotify("Отчет сохранен"))
         .catch(err=> notifyApi.showErrorNotify(err.message))
       }
     },
     created(){
+      this.$store.commit("report_tables/setDefault")
     }
   }
 </script>
