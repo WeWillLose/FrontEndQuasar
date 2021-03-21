@@ -39,6 +39,12 @@ export default {
     }
   ],
   rows: [
+    {
+
+    }
+
+  ],
+  defaultRows: [
 
   ]
 };

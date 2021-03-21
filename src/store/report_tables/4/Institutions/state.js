@@ -38,5 +38,12 @@ export default {
       students: "",
       score: 0,
     }
+  ],
+  defaultRows: [
+    {
+      institutions: "",
+      students: "",
+      score: 0,
+    }
   ]
 };

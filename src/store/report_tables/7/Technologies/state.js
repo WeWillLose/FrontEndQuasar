@@ -38,5 +38,12 @@ export default {
       application: "",
       score: 0,
     }
+  ],
+  defaultRows: [
+    {
+      name: "",
+      application: "",
+      score: 0,
+    }
   ]
 };

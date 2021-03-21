@@ -19,4 +19,9 @@ export default {
     presence: "",
   }
   ],
+  defaultRows: [
+    {
+      presence: "",
+    }
+  ]
 };

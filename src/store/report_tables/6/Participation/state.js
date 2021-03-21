@@ -53,5 +53,27 @@ export default {
       name: "",
       score: 0,
     },
+  ],
+  defaultRows: [
+    {
+      methodical: "Методическая тема",
+      name: "",
+      score: 0,
+    },
+    {
+      methodical: "Открытый урок",
+      name: "",
+      score: 0,
+    },
+    {
+      methodical: "Открытое внеурочное мероприятие",
+      name: "",
+      score: 0,
+    },
+    {
+      methodical: "Тематические выступления на заседании ЦК, педсовет",
+      name: "",
+      score: 0,
+    },
   ]
 };

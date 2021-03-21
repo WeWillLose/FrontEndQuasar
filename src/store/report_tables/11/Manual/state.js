@@ -29,5 +29,12 @@ export default {
       quantity: "",
       score: 0,
     }
+  ],
+  defaultRows: [
+    {
+      quantity: "",
+      score: 0,
+    }
   ]
+
 };

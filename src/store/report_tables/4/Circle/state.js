@@ -47,6 +47,12 @@ export default {
     }
   ],
   rows: [
+    {
+
+    }
+
+  ],
+  defaultRows: [
 
   ]
 };

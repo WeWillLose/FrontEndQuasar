@@ -45,5 +45,17 @@ export default {
       proof: "",
       score: 0,
     },
+  ],
+  defaultRows: [
+    {
+      interesting: "Учатсие обучающихся в конференциях",
+      proof: "",
+      score: 0,
+    },
+    {
+      interesting:"Участие обучающихся в проектах, в т.ч. ВКР",
+      proof: "",
+      score: 0,
+    },
   ]
 };

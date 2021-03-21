@@ -43,5 +43,17 @@ export default {
       justification: "",
       score: 0,
     },
+  ],
+  defaultRows: [
+    {
+      selfeducation: "Наличие протоколов посещения уроков, классных часов и открытых мероприятий",
+      justification: "",
+      score: 0,
+    },
+    {
+      selfeducation: "Наличие материалов работы с источниками",
+      justification: "",
+      score: 0,
+    },
   ]
 };
