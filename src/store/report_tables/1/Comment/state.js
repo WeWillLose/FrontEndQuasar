@@ -26,6 +26,9 @@ export default {
     },
   ],
   rows: [
-
+    {
+      proof: "",
+      score: 0,
+    }
   ]
 };

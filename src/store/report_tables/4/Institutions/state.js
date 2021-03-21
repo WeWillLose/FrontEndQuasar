@@ -33,6 +33,10 @@ export default {
     },
   ],
   rows: [
-
+    {
+      institutions: "",
+      students: "",
+      score: 0,
+    }
   ]
 };

@@ -25,5 +25,9 @@ export default {
     },
   ],
   rows: [
+    {
+      quantity: "",
+      score: 0,
+    }
   ]
 };
