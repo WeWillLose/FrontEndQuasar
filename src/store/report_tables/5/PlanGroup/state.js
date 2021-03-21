@@ -15,6 +15,8 @@ export default {
       field: "presence"
     },
   ],
-  rows: [
+  rows: [{
+    presence: "",
+  }
   ],
 };

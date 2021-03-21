@@ -33,5 +33,10 @@ export default {
     },
   ],
   rows: [
+    {
+      name: "",
+      application: "",
+      score: 0,
+    }
   ]
 };
