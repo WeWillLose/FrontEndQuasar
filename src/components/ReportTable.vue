@@ -195,6 +195,9 @@
       },
       fio() {
         return this.last_name.trim()+" "+ this.first_name.trim() + " " + this.patronymic.trim();
+      },
+      fioShort() {
+        return this.last_name.trim()+" "+ this.first_name.trim().slice(0,1).toUpperCase() + "." + this.patronymic.trim().slice(0,1).toUpperCase()+".";
       }
     },
     data() {
@@ -223,6 +226,7 @@
         dict["data"]["year1"] = this.year1;
         dict["data"]["year2"] = this.year2;
         dict["data"]["quarter"] = this.quarter;
+        dict["data"]["fioShort"] = this.fioShort;
         this.$store.dispatch('report_tables/sentData',dict).then(t =>notifyApi.showPositiveNotify("Отчет сохранен"))
         .catch(err=> notifyApi.showErrorNotify(err.message))
       }

@@ -69,6 +69,15 @@
     computed:{
       getDate(){
        return  new Date(this.report.createdDate).toLocaleDateString();
+      },
+      getFIO(){
+        console.log(this.report)
+        if(!!this.report && !!this.report.author && !!this.report.author.lastName
+          && !!this.report.author.firstName
+          && !!this.report.author.patronymic){
+          return this.report.author.lastName + "_" + this.report.author.firstName.slice(0,1)+"." + this.report.author.patronymic.slice(0,1)
+        }
+        return null;
       }
     },
     methods:{
@@ -97,7 +106,7 @@
           if(!!report.id){
             try{
               const response = await api.downloadScoreList(report.id);
-              fileDownload(response.data,!!report.name?report.name:`score_list_${this.$uuid.v4()}.docx`);
+              fileDownload(response.data,!!this.getFIO?`score_list_${this.getFIO}.docx`:`score_list_${this.$uuid.v4()}.docx`);
             }catch (e) {
               if(e?.response?.status == 403){
                 notifyApi.showForbiddenNotify()
