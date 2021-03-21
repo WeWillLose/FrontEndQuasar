@@ -72,6 +72,29 @@
               </q-card>
             </q-dialog>
 
+            <q-dialog v-model="set_roles_dialog">
+              <q-card class="add-row-dialog">
+                <q-form
+                  @submit="editUser">
+                  <q-card-section>
+                    <div class="text-h6">Изменить пользователя</div>
+                  </q-card-section>
+                  <q-card-section class="">
+                    <div class="row q-gutter-md q-ma-md">
+                      <q-input  v-model="geEditedUser.id" class="hidden" readonly></q-input>
+                      <q-input  :rules="[v=>!!v || 'Заполните поле', v=>v.length > 4 || 'Логин должен быть длинее 4 символов']" type="text" label="Логин" v-model="geEditedUser.username"></q-input>
+                      <q-input  type="text" label="Имя" v-model="geEditedUser.firstName"></q-input>
+                      <q-input  type="text" label="Фамилия" v-model="geEditedUser.lastName"></q-input>
+                      <q-input  type="text" label="Отчество" v-model="geEditedUser.patronymic"></q-input>
+                    </div>
+                  </q-card-section>
+                  <q-card-actions align="right">
+                    <q-btn flat label="OK" color="primary" type="submit" ></q-btn>
+                  </q-card-actions>
+                </q-form>
+              </q-card>
+            </q-dialog>
+
           </div>
           </template>
           <template v-slot:body="props">
@@ -91,9 +114,14 @@
               <q-td key="patronymic" :props="props">
                 <q-tr  :props="props" dense autofocus>{{props.row.patronymic}}</q-tr>
               </q-td>
+              <q-td key="roles" :props="props">
+                <q-tr  :props="props" dense autofocus>{{getRoles(props.row)}}</q-tr>
+              </q-td>
               <q-td key="actions" :props="props" auto-width>
                 <q-btn color="blue" label="Изменить данные" @click="showEditUserDialog(props.row)" size=sm no-caps></q-btn>
                 <q-btn color="blue" label="Сбросить пароль" @click="showResetPasswordDialog(props.row)" size=sm no-caps></q-btn>
+                <q-btn color="blue" label="Назначить роль" @click="showSetRolesDialog(props.row)" size=sm no-caps></q-btn>
+                <q-btn color="blue" label="Назначить председателя" @click="showSetChairmanDialog(props.row)" size=sm no-caps></q-btn>
                 <q-btn color="red" label="Удалить" @click="deleteUser(props.row)" size=sm no-caps></q-btn>
               </q-td>
             </q-tr>
@@ -117,6 +145,8 @@
         edit_user_dialog:false,
         reset_password_dialog:false,
         show_password:false,
+        set_roles_dialog:false,
+        set_chairman_dialog : false,
         columns: [
           {
             name: "username",
@@ -145,6 +175,13 @@
             style: "width:100px"
           },
           {
+            name: "roles",
+            align: "center",
+            label: "Роли",
+            field: "roles",
+            style: "width:100px"
+          },
+          {
             name: "actions",
             align: "center",
             label: "Действия",
@@ -155,9 +192,35 @@
       }
     },
     computed:{
-     ...mapGetters('admin_table',['getUsers','geEditedUser',])
+     ...mapGetters('admin_table',['getUsers','geEditedUser',]),
     },
     methods:{
+      getRoles(user){
+        if(!!!user || !!!user.roles){
+          return []
+        }
+        let roles = []
+        user.roles.forEach(t=>roles.push(t.name))
+        return roles;
+      },
+      showSetRolesDialog(user){
+        this.$store.commit('admin_table/setEditedUser',{
+          id:user.id,
+          roles: this.getRoles(user),
+          firstName:user.firstName,
+          lastName:user.lastName,
+          patronymic:user.patronymic,
+        })
+        this.set_roles_dialog = true;
+      },
+      showSetChairmanDialog(user){
+        this.$store.commit('admin_table/setEditedUser',{
+          id:user.id,
+        })
+        this.set_chairman_dialog = true;
+      },
+
+
       deleteUser(user){
         this.$store.dispatch('admin_table/deleteUser',user).catch(e=>
         {

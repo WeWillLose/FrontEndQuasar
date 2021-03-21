@@ -2,6 +2,7 @@ export default {
   users: [],
   editedUser:{
     id:"",
+    roles:[],
     username:"",
     password:"",
     firstName:"",
@@ -10,6 +11,7 @@ export default {
   },
   defaultUser:{
     id:"",
+    roles:[],
     username:"",
     password:"",
     firstName:"",
