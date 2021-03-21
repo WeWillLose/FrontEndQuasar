@@ -5,13 +5,15 @@ export default {
     username:"",
     password:"",
     firstName:"",
-    lastName:""
+    lastName:"",
+    patronymic:""
   },
   defaultUser:{
     id:"",
     username:"",
     password:"",
     firstName:"",
-    lastName:""
+    lastName:"",
+    patronymic:""
   }
 };

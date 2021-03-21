@@ -19,6 +19,7 @@
                     <q-input  :rules="[v=>!!v || 'Заполните поле', v=>v.length > 6 || 'Пароль должен быть длинее 6 символов']" v-if="show_password" type="text" label="Пароль" v-model="geEditedUser.password"></q-input>
                     <q-input  type="text" label="Имя" v-model="geEditedUser.firstName"></q-input>
                     <q-input  type="text" label="Фамилия" v-model="geEditedUser.lastName"></q-input>
+                    <q-input  type="text" label="Отчество" v-model="geEditedUser.patronymic"></q-input>
                   </div>
                 </q-card-section>
                 <q-card-actions align="right">
@@ -41,6 +42,7 @@
                     <q-input  :rules="[v=>!!v || 'Заполните поле', v=>v.length > 4 || 'Логин должен быть длинее 4 символов']" type="text" label="Логин" v-model="geEditedUser.username"></q-input>
                     <q-input  type="text" label="Имя" v-model="geEditedUser.firstName"></q-input>
                     <q-input  type="text" label="Фамилия" v-model="geEditedUser.lastName"></q-input>
+                    <q-input  type="text" label="Отчество" v-model="geEditedUser.patronymic"></q-input>
                   </div>
                 </q-card-section>
                 <q-card-actions align="right">
@@ -85,6 +87,9 @@
               </q-td>
               <q-td key="lastName" :props="props">
                 <q-tr  :props="props" dense autofocus>{{props.row.lastName}}</q-tr>
+              </q-td>
+              <q-td key="patronymic" :props="props">
+                <q-tr  :props="props" dense autofocus>{{props.row.patronymic}}</q-tr>
               </q-td>
               <q-td key="actions" :props="props" auto-width>
                 <q-btn color="blue" label="Изменить данные" @click="showEditUserDialog(props.row)" size=sm no-caps></q-btn>
@@ -133,6 +138,13 @@
             field: "lastName",
           },
           {
+            name: "patronymic",
+            align: "center",
+            label: "Отчество",
+            field: "patronymic",
+            style: "width:100px"
+          },
+          {
             name: "actions",
             align: "center",
             label: "Действия",
@@ -143,7 +155,7 @@
       }
     },
     computed:{
-     ...mapGetters('admin_table',['getUsers','geEditedUser'])
+     ...mapGetters('admin_table',['getUsers','geEditedUser',])
     },
     methods:{
       deleteUser(user){
@@ -153,6 +165,7 @@
         })
       },
       showNewUserDialog(show_password){
+        this.$store.commit("admin_table/setDefaultEditedUser")
         this.show_password = show_password;
         this.new_user_dialog = true;
       },
@@ -174,16 +187,18 @@
       },
       addRow(){
         this.new_user_dialog = false;
-        this.$store.dispatch('admin_table/registrationUser',this.geEditedUser).catch(t=>notifyApi.showErrorNotify(t.message))
+        this.$store.dispatch('admin_table/registrationUser',this.geEditedUser).catch(t=>{
+          notifyApi.showErrorNotify(t)
+        })
         this.show_password = false;
       },
       editUser(){
         this.edit_user_dialog = false;
-        this.$store.dispatch('admin_table/editUser',this.geEditedUser).catch(t=>notifyApi.showErrorNotify(t.message))
+        this.$store.dispatch('admin_table/editUser',this.geEditedUser).catch(t=>notifyApi.showErrorNotify(t))
       },
       resetPassword(){
         this.reset_password_dialog = false;
-        this.$store.dispatch('admin_table/resetPassword',this.geEditedUser).catch(t=>notifyApi.showErrorNotify(t.message))
+        this.$store.dispatch('admin_table/resetPassword',this.geEditedUser).catch(t=>notifyApi.showErrorNotify(t))
       }
     },
     beforeCreate(){
