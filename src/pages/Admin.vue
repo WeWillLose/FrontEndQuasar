@@ -182,6 +182,7 @@
           username:user.username,
           firstName:user.firstName,
           lastName:user.lastName,
+          patronymic:user.patronymic,
         })
         this.edit_user_dialog = true;
       },
