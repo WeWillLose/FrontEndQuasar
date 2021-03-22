@@ -184,6 +184,9 @@
         fio:'fio',
         fioShort:'fioShort',
     }),
+      ...mapGetters({
+        getData: "report_tables/getData",
+      }),
       rules: () => rules,
       sum1() {
         return this.$store.getters["report_tables/comment/getScore"] + this.$store.getters["report_tables/creation_table/getScore"] +
@@ -212,6 +215,7 @@
     methods: {
       onSubmit() {
         let dict = {}
+        console.log(this.getData)
         dict["id"] = this.$store.getters["report_tables/meta/getId"];
         dict["data"] = Object.assign({}, this.getData)
         dict["data"]["sum1"] = this.sum1;
