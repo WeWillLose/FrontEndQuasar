@@ -283,7 +283,8 @@
 
 
       deleteUser(user){
-        this.$store.dispatch('admin_table/deleteUser',user).catch(e=>
+
+        confirm("Вы действительно хотите удалить пользователя") && this.$store.dispatch('admin_table/deleteUser',user).catch(e=>
         {
           this.$q.notify({type:"negative",message:e})
         })

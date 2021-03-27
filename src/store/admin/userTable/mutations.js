@@ -39,6 +39,9 @@ export default {
       if(!user){
         this.setDefaultEditedUser()
       }
+      if(!user.chairman){
+        user.chairman = {}
+      }
       state.editedUser = user
     }catch (e) {
       console.error(e)
