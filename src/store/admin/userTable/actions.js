@@ -85,5 +85,37 @@ export default {
 
     }
   },
+  async setRoles(context,user){
+    try{
+      if(!!!user){
+        console.error("IN setRoles user is null")
+        return;
+      }
+      if(!!!user.roles){
+        console.error("IN setRoles user.roles is null")
+        return;
+      }
+      if(!Array.isArray(user.roles)){
+        console.error(`IN setRoles user.roles is ${typeof user.roles} must be array`)
+        return;
+      }
+      if(!!!user.id){
+        console.error("IN setRoles user.id is null")
+        return;
+      }
+      const res = await api.setRoles(user.id,user.roles)
+      const data = res.data
+      context.commit("editUser",{index:getIndexInSourceById(context.state.users, data.id),user:data})
+      context.commit("setDefaultEditedUser")
+      return true
+    }catch (e) {
+      console.error(e)
+      if(e.response.status == 403){
+        throw {"message":"У вас нет доступа или залогинтесь опять"}
+      }
+      throw e.response.data.message
+
+    }
+  },
 }
 

@@ -8,6 +8,7 @@ export default {
   sendDocxFiles: files =>resource.post('/api/api/v1/docx/',files),
   getReports: () =>resource.get('/api/api/report/author/current'),
   updateReport: (id,data) =>resource.put(`/api/api/report/${id}`,data),
+  setRoles: (id,data) =>resource.put(`/api/api/user/roles/${id}`,data),
   getReportTableData: (id) =>resource.get(`/api/api/report/${id}`),
   getFollowersReports: () =>resource.get('/api/api/report/chairman/followersReports/current'),
   downloadScoreList: (id) =>resource.get(`/api/api/score/${id}`,{responseType:'arraybuffer'}),

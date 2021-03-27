@@ -75,17 +75,17 @@
             <q-dialog v-model="set_roles_dialog">
               <q-card class="add-row-dialog">
                 <q-form
-                  @submit="editUser">
+                  @submit="setRoles">
                   <q-card-section>
-                    <div class="text-h6">Изменить пользователя</div>
+                    <div class="text-h6">Назначить роли</div>
                   </q-card-section>
                   <q-card-section class="">
                     <div class="row q-gutter-md q-ma-md">
                       <q-input  v-model="geEditedUser.id" class="hidden" readonly></q-input>
-                      <q-input  :rules="[v=>!!v || 'Заполните поле', v=>v.length > 4 || 'Логин должен быть длинее 4 символов']" type="text" label="Логин" v-model="geEditedUser.username"></q-input>
-                      <q-input  type="text" label="Имя" v-model="geEditedUser.firstName"></q-input>
-                      <q-input  type="text" label="Фамилия" v-model="geEditedUser.lastName"></q-input>
-                      <q-input  type="text" label="Отчество" v-model="geEditedUser.patronymic"></q-input>
+                      <q-select
+                        v-model="geEditedUser.roles"
+                        multiple
+                        :options="options"></q-select>
                     </div>
                   </q-card-section>
                   <q-card-actions align="right">
@@ -141,6 +141,8 @@
     name: "Admin",
     data() {
       return {
+        roles:[],
+        options:["ROLE_TEACHER","ROLE_CHAIRMAN"],
         new_user_dialog:false,
         edit_user_dialog:false,
         reset_password_dialog:false,
@@ -211,6 +213,7 @@
           lastName:user.lastName,
           patronymic:user.patronymic,
         })
+        this.roles = Object.assign([],this.getRoles(user))
         this.set_roles_dialog = true;
       },
       showSetChairmanDialog(user){
@@ -263,6 +266,9 @@
       resetPassword(){
         this.reset_password_dialog = false;
         this.$store.dispatch('admin_table/resetPassword',this.geEditedUser).catch(t=>notifyApi.showErrorNotify(t))
+      },
+      setRoles(){
+        this.$store.dispatch('admin_table/setRoles',{id:this.geEditedUser.id,roles:this.geEditedUser.roles}).catch(t=>notifyApi.showErrorNotify(t))
       }
     },
     beforeCreate(){

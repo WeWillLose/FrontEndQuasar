@@ -7,7 +7,7 @@
             <q-tree
               style="font-size: 16px"
               :nodes="nodes"
-              node-key="id"
+              node-key="label"
             />
           </div>
         </div>
