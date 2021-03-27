@@ -2,7 +2,7 @@ export default {
   users: [],
   editedUser:{
     id:"",
-    chairman: null,
+    chairman: {},
     roles:[],
     username:"",
     password:"",
@@ -13,7 +13,7 @@ export default {
   defaultUser:{
     id:"",
     roles:[],
-    chairman: null,
+    chairman: {},
     username:"",
     password:"",
     firstName:"",

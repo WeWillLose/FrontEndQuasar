@@ -107,7 +107,7 @@
                       <q-input  v-model="geEditedUser.id" class="hidden" readonly></q-input>
                       <q-select
                         emit-value
-                        v-model="geEditedUser.chairman"
+                        v-model="geEditedUser.chairman.id"
                         :options="chairmans">
                       </q-select>
                     </div>
@@ -140,6 +140,9 @@
               </q-td>
               <q-td key="roles" :props="props">
                 <q-tr  :props="props" dense autofocus>{{getRoles(props.row)}}</q-tr>
+              </q-td>
+              <q-td key="chairman" :props="props">
+                <q-tr  :props="props" dense autofocus>{{getFIO(props.row.chairman)}}</q-tr>
               </q-td>
               <q-td key="actions" :props="props" auto-width>
                 <q-btn color="blue" label="Изменить данные" @click="showEditUserDialog(props.row)" size=sm no-caps></q-btn>
@@ -209,6 +212,13 @@
             style: "width:100px"
           },
           {
+            name: "chairman",
+            align: "center",
+            label: "Председатель",
+            field: "chairman",
+            style: "width:100px"
+          },
+          {
             name: "actions",
             align: "center",
             label: "Действия",
@@ -229,7 +239,7 @@
         }
         let res = []
         chairmans.forEach(t=>{
-          res.push({label: `${t.firstName?t.firstName:""}${t.lastName?" "+t.lastName:""}${t.patronymic?" "+t.patronymic:""}`
+          res.push({label: this.getFIO(t)
             ,value : t.id})
         })
         return res;
@@ -241,6 +251,12 @@
         let roles = []
         user.roles.forEach(t=>roles.push(t.name))
         return roles;
+      },
+      getFIO(user){
+        if(!!!user || !!!user.roles){
+          return ""
+        }
+        return `${user.firstName?user.firstName:""}${user.lastName?" "+user.lastName:""}${user.patronymic?" "+user.patronymic:""}`
       },
       showSetRolesDialog(user){
         this.$store.commit('admin_table/setEditedUser',{
@@ -256,6 +272,7 @@
       showSetChairmanDialog(user){
         this.$store.commit('admin_table/setEditedUser',{
           id:user.id,
+          chairman: user.chairman?user.chairman:{}
         })
         if(!!!this.chairmans || this.chairmans.length ==0){
           api.getChairmans().then(t=> this.chairmans = this.toChairmansArray(t.data))
@@ -313,9 +330,8 @@
         this.$store.dispatch('admin_table/setRoles',{id:this.geEditedUser.id,roles:this.geEditedUser.roles}).catch(t=>notifyApi.showErrorNotify(t))
       },
       setChairman(){
-        console.log(this.geEditedUser.chairman)
         this.set_chairman_dialog = false;
-        this.$store.dispatch('admin_table/setChairman',{userId:this.geEditedUser.id,chairmanId:this.geEditedUser.chairman}).catch(t=>notifyApi.showErrorNotify(t))
+        this.$store.dispatch('admin_table/setChairman',{userId:this.geEditedUser.id,chairmanId:this.geEditedUser.chairman.id}).catch(t=>notifyApi.showErrorNotify(t))
       },
     },
     beforeCreate(){
