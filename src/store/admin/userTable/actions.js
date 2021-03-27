@@ -114,6 +114,31 @@ export default {
         throw {"message":"У вас нет доступа или залогинтесь опять"}
       }
       throw e.response.data.message
+    }
+  },
+  async setChairman(context,user){
+    try{
+      if(!!!user){
+        console.error("IN setChairman user is null")
+        return;
+      }
+      if(!!!user.userId) {
+        console.error("IN setChairman user.userId is null")
+      }
+      if(!!!user.chairmanId) {
+        console.error("IN setChairman user.chairmanId is null")
+      }
+      const res = await api.setChairman(user.userId,user.chairmanId)
+      const data = res.data
+      context.commit("editUser",{index:getIndexInSourceById(context.state.users, data.id),user:data})
+      context.commit("setDefaultEditedUser")
+      return true
+    }catch (e) {
+      console.error(e)
+      if(e.response.status == 403){
+        throw {"message":"У вас нет доступа или залогинтесь опять"}
+      }
+      throw e.response.data.message
 
     }
   },

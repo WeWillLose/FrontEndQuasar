@@ -95,6 +95,30 @@
               </q-card>
             </q-dialog>
 
+            <q-dialog v-model="set_chairman_dialog">
+              <q-card class="add-row-dialog">
+                <q-form
+                  @submit="setChairman">
+                  <q-card-section>
+                    <div class="text-h6">Назначить председателя</div>
+                  </q-card-section>
+                  <q-card-section class="">
+                    <div class="row q-gutter-md q-ma-md">
+                      <q-input  v-model="geEditedUser.id" class="hidden" readonly></q-input>
+                      <q-select
+                        emit-value
+                        v-model="geEditedUser.chairman"
+                        :options="chairmans">
+                      </q-select>
+                    </div>
+                  </q-card-section>
+                  <q-card-actions align="right">
+                    <q-btn flat label="OK" color="primary" type="submit" ></q-btn>
+                  </q-card-actions>
+                </q-form>
+              </q-card>
+            </q-dialog>
+
           </div>
           </template>
           <template v-slot:body="props">
@@ -143,6 +167,7 @@
       return {
         roles:[],
         options:["ROLE_TEACHER","ROLE_CHAIRMAN"],
+        chairmans:[],
         new_user_dialog:false,
         edit_user_dialog:false,
         reset_password_dialog:false,
@@ -197,6 +222,18 @@
      ...mapGetters('admin_table',['getUsers','geEditedUser',]),
     },
     methods:{
+      toChairmansArray(chairmans){
+        if(!!!chairmans || !Array.isArray(chairmans)){
+          console.error(`IN toChairmansArray chairmans: ${typeof  chairmans} must be array`)
+          return [];
+        }
+        let res = []
+        chairmans.forEach(t=>{
+          res.push({label: `${t.firstName?t.firstName:""}${t.lastName?" "+t.lastName:""}${t.patronymic?" "+t.patronymic:""}`
+            ,value : t.id})
+        })
+        return res;
+      },
       getRoles(user){
         if(!!!user || !!!user.roles){
           return []
@@ -220,6 +257,10 @@
         this.$store.commit('admin_table/setEditedUser',{
           id:user.id,
         })
+        if(!!!this.chairmans || this.chairmans.length ==0){
+          api.getChairmans().then(t=> this.chairmans = this.toChairmansArray(t.data))
+        }
+
         this.set_chairman_dialog = true;
       },
 
@@ -268,8 +309,14 @@
         this.$store.dispatch('admin_table/resetPassword',this.geEditedUser).catch(t=>notifyApi.showErrorNotify(t))
       },
       setRoles(){
+        this.set_roles_dialog = false;
         this.$store.dispatch('admin_table/setRoles',{id:this.geEditedUser.id,roles:this.geEditedUser.roles}).catch(t=>notifyApi.showErrorNotify(t))
-      }
+      },
+      setChairman(){
+        console.log(this.geEditedUser.chairman)
+        this.set_chairman_dialog = false;
+        this.$store.dispatch('admin_table/setChairman',{userId:this.geEditedUser.id,chairmanId:this.geEditedUser.chairman}).catch(t=>notifyApi.showErrorNotify(t))
+      },
     },
     beforeCreate(){
       this.$store.dispatch("admin_table/getUsers").catch(e=>

@@ -6,6 +6,8 @@ const resource = axios.create({
 export default {
   sentData: data =>resource.post('/api/api/report/save',data),
   sendDocxFiles: files =>resource.post('/api/api/v1/docx/',files),
+  getChairmans: () => resource.get("api/api/user/chairman/all"),
+  setChairman: (userId,chairmanId) => resource.put(`api/api/user/followers/setChairmanFor/${userId}`,{id:chairmanId}),
   getReports: () =>resource.get('/api/api/report/author/current'),
   updateReport: (id,data) =>resource.put(`/api/api/report/${id}`,data),
   setRoles: (id,data) =>resource.put(`/api/api/user/roles/${id}`,data),
