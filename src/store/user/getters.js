@@ -18,10 +18,10 @@ export default {
   },
   isChairman: state => {
     if (!!state.user != null) {
-      if (!!state.user.isChairman) {
+      if (!!state.user?.isChairman) {
         return state.user.isChairman == "true"
       } else {
-        for (let i = 0; i < state.user.roles.length; i++) {
+        for (let i = 0; i < state.user?.roles.length; i++) {
           if (state.user.roles[i].name == "ROLE_CHAIRMAN") {
             return true;
           }
