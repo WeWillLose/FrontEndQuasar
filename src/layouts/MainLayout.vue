@@ -1,6 +1,6 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <div class="text_main">
+  <q-layout view="lHh Lpr lFf ">
+    <div class="text_main bg_gradient">
       <q-header elevated >
         <tool-bar/>
       </q-header>

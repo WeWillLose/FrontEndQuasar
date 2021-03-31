@@ -23,7 +23,7 @@ export default {
   getReports: () =>resource.get('/api/api/report/author/current'),
   updateReport: (id,data) =>resource.put(`/api/api/report/${id}`,data),
   downloadReport: (id) =>resource.get(`/api/api/report/docx/${id}`,{responseType:'arraybuffer'}),
-  getFollowersReports: () =>resource.get('/api/api/report/chairman/followersReports/current'),
+  getFollowersReports: () =>resource.get('/api/api/report/followersReports/current'),
 
   //ToDO
   getToDo: () => resource.get('/api/api/toDo/author/current/'),

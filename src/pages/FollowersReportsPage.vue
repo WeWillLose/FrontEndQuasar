@@ -38,6 +38,7 @@
         }
         this.$router.push({path: '/form'});
       },
+
       getIconAndColorByStatus(status){
         if(!!!status || status=="UNCHECKED"){
           return {icon:"visibility_off",color:"red"}

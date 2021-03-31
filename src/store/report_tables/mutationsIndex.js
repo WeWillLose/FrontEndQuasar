@@ -49,5 +49,10 @@ export default {
   },
   setDefault(state){
     console.log(Object.assign([],state.comment.defaultItem,state.comment.defaultItem))
+  },
+  setDefaultTablesData(state){
+    for (let stateKey in state) {
+        state[stateKey].rows = Object.assign([],state[stateKey].defaultRows)
+    }
   }
 }
