@@ -30,6 +30,7 @@ export default {
   },
   async setReportTablesData(context,id){
     console.log(id)
+    context.commit("setDefaultTablesData")
       api.getReportTableData(id).then(t=>{
         let data = t.data
         context.commit('setTablesData',data)

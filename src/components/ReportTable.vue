@@ -1,103 +1,138 @@
 <template>
-  <div>
-    <q-form
-      @submit="onSubmit">
-      <div class="q-ma-md">
-        <div class="column">
-          <div class="col">
-            <h6 class="q-ma-none text-center">Преподаватель</h6>
-          </div>
-          <div class="col">
-            <div class="row q-gutter-md">
-              <div class="col">
-                <q-input label="Фамилия" v-model="lastName"
-                         :rules="[rules.required(),rules.alphaWithRus(),rules.withoutSpaces()]"
-                ></q-input>
-              </div>
-              <div class="col">
-                <q-input label="Имя" v-model="firstName"
-                         :rules="[rules.required(),rules.alphaWithRus(),rules.withoutSpaces()]"
-                ></q-input>
-              </div>
-              <div class="col">
-                <q-input label="Отчество" v-model="patronymic"
-                         :rules="[rules.required(),rules.alphaWithRus(),rules.withoutSpaces()]"
-                ></q-input>
+<!--  <div class="q-ma-md">-->
+<!--    <q-card>-->
+<!--      <q-tabs-->
+<!--        v-model="tab"-->
+<!--        dense-->
+<!--        class="text-grey"-->
+<!--        active-color="primary"-->
+<!--        indicator-color="primary"-->
+<!--        align="justify"-->
+<!--        narrow-indicator-->
+<!--      >-->
+<!--        <q-tab name="mails" label="Mails"/>-->
+<!--        <q-tab name="alarms" label="Alarms"/>-->
+<!--        <q-tab name="movies" label="Movies"/>-->
+<!--      </q-tabs>-->
+
+<!--      <q-separator/>-->
+
+<!--      <q-tab-panels v-model="tab" animated>-->
+<!--        <q-tab-panel name="mails">-->
+<!--          <progress-exam-table></progress-exam-table>-->
+<!--        </q-tab-panel>-->
+
+<!--        <q-tab-panel name="alarms">-->
+<!--          <div class="text-h6">Alarms</div>-->
+<!--          Lorem ipsum dolor sit amet consectetur adipisicing elit.-->
+<!--        </q-tab-panel>-->
+
+<!--        <q-tab-panel name="movies">-->
+<!--          <div class="text-h6">Movies</div>-->
+<!--          Lorem ipsum dolor sit amet consectetur adipisicing elit.-->
+<!--        </q-tab-panel>-->
+<!--      </q-tab-panels>-->
+<!--    </q-card>-->
+<!--  </div>-->
+    <div>
+      <q-form
+        @submit="onSubmit">
+        <div class="q-ma-md">
+          <div class="column">
+            <div class="col">
+              <h6 class="q-ma-none text-center">Преподаватель</h6>
+            </div>
+            <div class="col">
+              <div class="row q-gutter-md">
+                <div class="col">
+                  <q-input label="Фамилия" v-model="lastName"
+                           :rules="[rules.required(),rules.alphaWithRus(),rules.withoutSpaces()]"
+                  ></q-input>
+                </div>
+                <div class="col">
+                  <q-input label="Имя" v-model="firstName"
+                           :rules="[rules.required(),rules.alphaWithRus(),rules.withoutSpaces()]"
+                  ></q-input>
+                </div>
+                <div class="col">
+                  <q-input label="Отчество" v-model="patronymic"
+                           :rules="[rules.required(),rules.alphaWithRus(),rules.withoutSpaces()]"
+                  ></q-input>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="q-ma-md">
-        <q-select
-          filled v-model="quarter" :options="options" label="Квартал"
-          :rules="[rules.required()]"/>
-      </div>
-      <div class="row">
-        <div class="q-ma-md col">
-          <q-input type="number" v-model="year1" label="Год"
-                   :rules="[rules.required(),rules.numberBetweenNotStrict(2000,3000)]"
-          />
+        <div class="q-ma-md">
+          <q-select
+            filled v-model="quarter" :options="options" label="Квартал"
+            :rules="[rules.required()]"/>
         </div>
-        <div class="q-ma-md col">
-          <q-input type="number" v-model="year2" label="Год" min="2000" max="3000"
-                   :rules="[rules.required(),rules.numberBetweenNotStrict(2000,3000)]"/>
+        <div class="row">
+          <div class="q-ma-md col">
+            <q-input type="number" v-model="year1" label="Год"
+                     :rules="[rules.required(),rules.numberBetweenNotStrict(2000,3000)]"
+            />
+          </div>
+          <div class="q-ma-md col">
+            <q-input type="number" v-model="year2" label="Год" min="2000" max="3000"
+                     :rules="[rules.required(),rules.numberBetweenNotStrict(2000,3000)]"/>
+          </div>
         </div>
-      </div>
-      <progress-exam-table/>
-      <progress-table/>
-      <comment-table/>
-      <creation-table/>
-      <proective-table/>
-      <div class="column items-end q-ma-md">
-        <div class="col">
-          <q-input style="max-width: 200px" v-model="sum1" outlined dense readonly>
-          </q-input>
+        <progress-exam-table/>
+        <progress-table/>
+        <comment-table/>
+        <creation-table/>
+        <proective-table/>
+        <div class="column items-end q-ma-md">
+          <div class="col">
+            <q-input style="max-width: 200px" v-model="sum1" outlined dense readonly>
+            </q-input>
+          </div>
         </div>
-      </div>
-      <working-program-table/>
-      <class-rooms-table/>
-      <programs-table/>
-      <reconstruction-table/>
-      <complex-table/>
-      <teachingaids-table/>
-      <education-table/>
-      <s-d-o-table/>
-      <plan-table/>
-      <circle-table/>
-      <institutions-table/>
-      <events-table/>
-      <plan-group-table/>
-      <coolhours-table/>
-      <activity-table/>
-      <o-b-z-table/>
-      <selfeducation-table/>
-      <qualification-table/>
-      <seminars-table/>
-      <participation-table/>
-      <contest-table/>
-      <technologies-table/>
-      <experience-table/>
-      <interaction-table/>
-      <subject-table/>
-      <manual-table/>
-      <div class="column items-end q-ma-md">
-        <div class="col">
-          <q-input style="max-width: 200px" v-model="sum2" readonly
-                   label="Сумма баллов по 1-2 критерию:"></q-input>
+        <working-program-table/>
+        <class-rooms-table/>
+        <programs-table/>
+        <reconstruction-table/>
+        <complex-table/>
+        <teachingaids-table/>
+        <education-table/>
+        <s-d-o-table/>
+        <plan-table/>
+        <circle-table/>
+        <institutions-table/>
+        <events-table/>
+        <plan-group-table/>
+        <coolhours-table/>
+        <activity-table/>
+        <o-b-z-table/>
+        <selfeducation-table/>
+        <qualification-table/>
+        <seminars-table/>
+        <participation-table/>
+        <contest-table/>
+        <technologies-table/>
+        <experience-table/>
+        <interaction-table/>
+        <subject-table/>
+        <manual-table/>
+        <div class="column items-end q-ma-md">
+          <div class="col">
+            <q-input style="max-width: 200px" v-model="sum2" readonly
+                     label="Сумма баллов по 1-2 критерию:"></q-input>
+          </div>
         </div>
-      </div>
-      <div class="column items-end q-ma-md">
-        <div class="col">
-          <q-btn type="submit" color="dark" label="Сохранить"/>
+        <div class="column items-end q-ma-md">
+          <div class="col">
+            <q-btn type="submit" color="dark" label="Сохранить"/>
+          </div>
         </div>
-      </div>
-    </q-form>
-  </div>
+      </q-form>
+    </div>
 </template>
 
 <script>
-  import { createHelpers } from 'vuex-map-fields';
+  import {createHelpers} from 'vuex-map-fields';
   import rules from 'src/api/rules';
   import ProgressExamTable from "components/report_tables/1/ProgressExamTable";
   import ProgressTable from "components/report_tables/1/ProgressTable";
@@ -134,7 +169,7 @@
   import SubjectTable from "components/report_tables/10/SubjectTable";
   import ManualTable from "components/report_tables/11/ManualTable";
 
-  const { mapFields } = createHelpers({
+  const {mapFields} = createHelpers({
     getterType: 'report_tables/meta/getField',
     mutationType: 'report_tables/meta/updateField',
   });
@@ -174,16 +209,16 @@
     },
     computed: {
       ...mapFields({
-        firstName:'first_name',
-        lastName:'last_name',
-        patronymic:'patronymic',
-        quarter:'quarter',
-        options:'options',
-        year1:'year1',
-        year2:'year2',
-        fio:'fio',
-        fioShort:'fioShort',
-    }),
+        firstName: 'first_name',
+        lastName: 'last_name',
+        patronymic: 'patronymic',
+        quarter: 'quarter',
+        options: 'options',
+        year1: 'year1',
+        year2: 'year2',
+        fio: 'fio',
+        fioShort: 'fioShort',
+      }),
       ...mapGetters({
         getData: "report_tables/getData",
       }),
@@ -210,6 +245,7 @@
     },
     data() {
       return {
+        tab: 'mails'
       }
     },
     methods: {
@@ -230,11 +266,11 @@
         dict["data"]["patronymic"] = this.$store.getters["report_tables/meta/getPatronymic"];
         console.log(this.$store.getters["report_tables/meta/getId"])
         console.log(dict.id)
-        this.$store.dispatch('report_tables/sentData',dict).then(t =>notifyApi.showPositiveNotify("Отчет сохранен"))
-        .catch(err=> notifyApi.showErrorNotify(err.message))
+        this.$store.dispatch('report_tables/sentData', dict).then(t => notifyApi.showPositiveNotify("Отчет сохранен"))
+          .catch(err => notifyApi.showErrorNotify(err.message))
       }
     },
-    created(){
+    created() {
       this.$store.commit("report_tables/setDefault")
     }
   }

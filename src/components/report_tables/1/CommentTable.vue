@@ -1,8 +1,6 @@
 <template>
-  <div id="q-app">
     <div class="q-pa-sm q-gutter-sm">
-      <q-table title="Коментарии" :data="getRows1" :columns="getColumns1" >
-
+      <q-table title="Коментарии" :data="getRows1" :columns="getColumns1" bordered>
         <template v-slot:body="props">
           <q-tr :props="props">
             <q-td key="comment" :props="props">
@@ -15,7 +13,6 @@
         </template>
       </q-table>
     </div>
-  </div>
 </template>
 
 <script>
