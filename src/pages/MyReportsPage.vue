@@ -1,6 +1,6 @@
 <template>
   <q-page class="bg_gradient flex full-height ">
-    <div class="frame q-my-lg q-mx-auto text_main">
+    <div class="q-my-lg q-mx-auto text_main">
       <div class="q-pa-md flex flex-center">
         <report-list/>
       </div>

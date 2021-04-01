@@ -13,7 +13,7 @@
         v-model="username"
         label="Ваш логин"
         lazy-rules
-        :rules="[rules.required(),rules.alpha()]"
+        :rules="[rules.required()]"
       />
 
       <q-input

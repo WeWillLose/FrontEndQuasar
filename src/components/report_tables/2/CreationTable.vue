@@ -37,7 +37,8 @@
               <q-input type="text" v-model="props.row.proof" dense autofocus ></q-input>
             </q-td>
             <q-td key="score" :props="props">
-              <q-input type="number" v-model="props.row.score" dense autofocus ></q-input>
+              <q-input type="number" v-model="props.row.score" dense autofocus
+              :rules="rules.withoutSpaces"></q-input>
             </q-td>
             <q-td key="actions" :props="props" auto-width>
               <!--                <q-btn color="blue" label="Update" @click="editItem(props.row)" size=sm no-caps></q-btn>-->
@@ -52,6 +53,7 @@
 
 <script>
 import {mapGetters} from 'vuex'
+import rules from 'src/api/rules';
 export default {
   computed:{
     ...mapGetters('report_tables/creation_table',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])

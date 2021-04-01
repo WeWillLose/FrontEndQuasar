@@ -70,4 +70,13 @@ export default {
     }
     return (val)=>  (val >= min && val <= max) || `Поле должно быть между ${min},${max}`
   },
+  numberBetweenNotStrictScore:(min,max)=>{
+    if(!!!min){
+      console.warn("min in numberBetweenNotStrict is " + min)
+    }
+    if(!!!max){
+      console.warn("max in numberBetweenNotStrict is " + max)
+    }
+    return (val)=>  (val >= min && val <= max) || `Min ${min}, Max ${max}`
+  },
 }
