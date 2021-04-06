@@ -1,7 +1,27 @@
 <template>
-  <q-page class="">
+  <q-page class="q-ma-md">
     <q-table :data="data" :columns="columns" row-key="id">
-
+      <template v-slot:body="props">
+        <q-tr :props="props">
+          <q-td key="author" :props="props">
+            {{commonUtils.User.extractShortFioByUser(props.row.author)}}
+          </q-td>
+          <q-td key="name" :props="props">
+              {{ props.row.name }}
+          </q-td>
+          <q-td key="status" :props="props">
+              <div :class="commonUtils.Report.getStatusClassByStatus(props.row.status )">
+                <q-icon :name="commonUtils.Report.getIconNameByStatus(props.row.status )" size="sm"/>
+                {{props.row.status }}
+              </div>
+          </q-td>
+          <q-td key="createdDate" :props="props">
+            {{qDate.formatDate(props.row.createdDate,"DD-MM-YYYY")}}
+          </q-td>
+          <q-td key="actions" :props="props">
+          </q-td>
+        </q-tr>
+      </template>
     </q-table>
   </q-page>
 
@@ -24,23 +44,25 @@
             name:"author",
             label:"Автор",
             field: "author",
-            format: val =>commonUtils.extractShortFio(val)
+            sortable: true,
           },
           {
             name:"name",
             label:"Название",
             field: "name",
+            sortable: true,
           },
           {
             name:"status",
             label:"Статус",
             field: "status",
+            sortable: true,
           },
           {
             name:"createdDate",
             label:"Дата создания",
             field: "createdDate",
-            format: val => qDate.formatDate(val,"DD-MM-YYYY")
+            sortable: true,
           },
           {
             name:"actions",
@@ -51,6 +73,8 @@
       }
     },
     computed: {
+      commonUtils:()=>commonUtils,
+      qDate:()=>qDate,
     },
     methods: {
       openReportForm(data){
@@ -64,8 +88,6 @@
         let l = []
         let res = await api.getFollowersReports()
          this.data = [...res.data]
-         console.log(this.data)
-
       }
     },
     created() {

@@ -27,7 +27,8 @@
     "vuex-map-fields": "^1.4.1"
   },
   "devDependencies": {
-    "@quasar/app": "^2.0.0"
+    "@quasar/app": "^2.0.0",
+    "quasar-app-extension-ide-helper": "^1.0.0"
   },
   "browserslist": [
     "last 10 Chrome versions",

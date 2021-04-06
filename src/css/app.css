@@ -67,6 +67,16 @@ h2 {
 .text_back{
   color: #ffffff;
 }
+
+.status_unchecked{
+  color:#b7110e;
+}
+.status_checked{
+  color:#4e52ff;
+}
+.status_completed{
+  color:#0ab715;
+}
 /*1st Color*/
 /* #F5F5F5*/
 /*2nd Color*/
