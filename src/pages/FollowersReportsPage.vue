@@ -19,6 +19,8 @@
             {{qDate.formatDate(props.row.createdDate,"DD-MM-YYYY")}}
           </q-td>
           <q-td key="actions" :props="props">
+            <q-btn label="Редактировать" size="sm" class="q-mr-sm" color="blue" @click="openReportForm(props.row)"></q-btn>
+            <q-btn label="Удалить" size="sm" color="red" @click="deleteReport(props.row)"></q-btn>
           </q-td>
         </q-tr>
       </template>
@@ -91,6 +93,13 @@
           this.$store.dispatch('report_tables/setReportTablesData',data.id)
         }
         this.$router.push({path: '/form'});
+      },
+      async deleteReport(report) {
+        let res = await api.deleteReport(report.id)
+        if(res.status == 200){
+          const ind = this.data.indexOf(report)
+          if(ind!==-1) this.data.splice(ind,1)
+        }
       },
 
        async getFollowersReports() {

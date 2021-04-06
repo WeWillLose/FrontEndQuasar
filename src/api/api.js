@@ -24,7 +24,7 @@ export default {
   updateReport: (id,data) =>resource.put(`/api/api/report/${id}`,data),
   downloadReport: (id) =>resource.get(`/api/api/report/docx/${id}`,{responseType:'arraybuffer'}),
   getFollowersReports: () =>resource.get('/api/api/report/followersReports/current'),
-
+  deleteReport: (id) =>resource.delete(`/api/api/report/${id}`),
   //ToDO
   getToDo: () => resource.get('/api/api/toDo/author/current/'),
   updateToDo: (item) => resource.put(`/api/api/toDo/${item.id}/`, item),
