@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-ma-md">
-    <q-table :data="data" :columns="columns" row-key="id">
+    <q-table :data="data" :columns="columns" row-key="id" :filter="filter">
       <template v-slot:body="props">
         <q-tr :props="props">
           <q-td key="author" :props="props">
@@ -22,6 +22,13 @@
           </q-td>
         </q-tr>
       </template>
+      <template v-slot:top-right>
+        <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
+          <template v-slot:append>
+            <q-icon name="search" />
+          </template>
+        </q-input>
+      </template>
     </q-table>
   </q-page>
 
@@ -37,6 +44,7 @@
     name: "FollowersReportsPage",
     data() {
       return {
+        filter:'',
         nodes:[],
         data: [],
         columns:[
@@ -44,6 +52,7 @@
             name:"author",
             label:"Автор",
             field: "author",
+            format: (val, row) => commonUtils.User.extractShortFioByUser(val),
             sortable: true,
           },
           {
@@ -88,7 +97,7 @@
         let l = []
         let res = await api.getFollowersReports()
          this.data = [...res.data]
-      }
+      },
     },
     created() {
       this.getFollowersReports()
