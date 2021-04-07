@@ -24,15 +24,13 @@ export default {
             state.meta.patronymic = tablesData[metaKey];
           }
         }
-        console.log(metaKey, tablesData[metaKey],  state[`meta/${metaKey}`])
       } catch (e) {
         console.error(e)
       }
     }
-    console.log("------------------------------")
-    console.log("comment" in state)
     for (let stateKey in state) {
       try {
+        if(stateKey == "proective"){console.log(state[`${stateKey}`].rows,tablesData[stateKey])}
         if (tablesData[stateKey] != null ) {
           if(stateKey in state){
             state[`${stateKey}`].rows = tablesData[stateKey]
@@ -41,18 +39,22 @@ export default {
         // else {
         //   state[`${stateKey}`].rows = []
         // }
-        console.log(stateKey, tablesData[stateKey], state[`${stateKey}`].rows)
       } catch (e) {
         console.error(e)
       }
     }
   },
-  setDefault(state){
-    console.log(Object.assign([],state.comment.defaultItem,state.comment.defaultItem))
-  },
   setDefaultTablesData(state){
     for (let stateKey in state) {
         state[stateKey].rows = Object.assign([],state[stateKey].defaultRows)
     }
+      state.meta.quarter = 1
+      state.meta.options = [1, 2, 3, 4]
+      state.meta.year1 = null
+      state.meta.year2 = null
+      state.meta.first_name = ""
+      state.meta.last_name = ""
+      state.meta.patronymic = ""
+      state.meta.id = null
   }
 }

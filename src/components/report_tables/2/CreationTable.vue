@@ -1,5 +1,5 @@
 <template>
-  <div id="q-app">
+
     <div class="q-pa-sm q-gutter-sm">
       <q-table title="Познавательная активность обучающихся" :hide-no-data="true" :data="getRows1" :columns="getColumns1">
         <template v-slot:top-right>
@@ -38,7 +38,7 @@
             </q-td>
             <q-td key="score" :props="props">
               <q-input type="number" v-model="props.row.score" dense autofocus
-              :rules="rules.withoutSpaces"></q-input>
+              :rules="[rules.withoutSpaces()]"></q-input>
             </q-td>
             <q-td key="actions" :props="props" auto-width>
               <!--                <q-btn color="blue" label="Update" @click="editItem(props.row)" size=sm no-caps></q-btn>-->
@@ -48,7 +48,7 @@
         </template>
       </q-table>
     </div>
-  </div>
+
 </template>
 
 <script>
@@ -56,24 +56,24 @@ import {mapGetters} from 'vuex'
 import rules from 'src/api/rules';
 export default {
   computed:{
-    ...mapGetters('report_tables/creation_table',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
+    ...mapGetters('report_tables/creation',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1']),
+    rules:()=>rules
   },
   methods: {
     addRow() {
-      this.$store.commit('report_tables/creation_table/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
+      this.$store.commit('report_tables/creation/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
       this.close()
-      console.log(this.getRows1)
     },
     deleteItem(item) {
-      confirm("Вы уверены что хотите удалить строку") && this.$store.commit('report_tables/creation_table/deleteItem1',item)
+      confirm("Вы уверены что хотите удалить строку") && this.$store.commit('report_tables/creation/deleteItem1',item)
     },
     editItem(item) {
-      this.$store.commit('report_tables/creation_table/editItem1',item)
+      this.$store.commit('report_tables/creation/editItem1',item)
       this.show_dialog = true;
     },
     close () {
       this.show_dialog = false
-      setTimeout(() => {this.$store.commit('report_tables/creation_table/setDefault1')}, 300)
+      setTimeout(() => {this.$store.commit('report_tables/creation/setDefault1')}, 300)
     }
   },
   data() {

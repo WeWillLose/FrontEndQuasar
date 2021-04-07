@@ -5,7 +5,7 @@
         <q-item clickable to="/todo">
           <q-item-section>Заметки</q-item-section>
         </q-item>
-        <q-item clickable to="/form">
+        <q-item clickable @click="toFormWithDefaultData">
           <q-item-section>Создать отчет</q-item-section>
         </q-item>
       </q-list>
@@ -38,6 +38,12 @@
     name: "DropDowns",
     computed:{
       ...mapGetters('user',['isAdmin','isChairman'])
+    },
+    methods:{
+      toFormWithDefaultData(){
+        this.$store.commit('report_tables/setDefaultTablesData')
+        this.$router.push('/form')
+      }
     }
   }
 </script>

@@ -1,7 +1,7 @@
 import comment from './1/Comment/index'
 import progress_exam from "./1/ProgressExam"
-import creation_table from "./2/CreationTable"
-import proective_table from "./2/ProectiveTable"
+import creation from "./2/CreationTable"
+import proective from "./2/ProectiveTable"
 import progress from "./1/Progress"
 import class_rooms from "./3/ClassRooms"
 import complex from "./3/Complex"
@@ -43,8 +43,8 @@ export default {
   modules:{
     comment,
     progress_exam,
-    creation_table,
-    proective_table,
+    creation,
+    proective,
     progress,
     complex,
     class_rooms,

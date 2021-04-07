@@ -20,7 +20,7 @@
         }
       },
       computed:{
-        getReports(){
+        getReportsCurrentUser(){
           return this.getReportsHelper().then(t=>{return t})
         }
 
@@ -28,7 +28,7 @@
       methods:{
         async getReportsHelper(){
           try{
-            let response = await api.getReports()
+            let response = await api.getReportsCurrentUser()
             let data = response.data
             this.reports = data
           }catch (e) {
@@ -36,8 +36,8 @@
           }
         }
       },
-      created(){
-        console.log(this.getReports)
+      mounted(){
+        this.getReportsHelper()
       }
     }
 </script>

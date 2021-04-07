@@ -1,5 +1,5 @@
 <template>
-  <div id="q-app">
+
     <div class="q-pa-sm q-gutter-sm">
       <q-table title="Работа по развитию материальной базы кабинета (лаборатории), реконструкции кабинета (лаборатории)" :hide-no-data="true" :data="getRows1" :columns="getColumns1">
         <template v-slot:top-right>
@@ -47,7 +47,7 @@
         </template>
       </q-table>
     </div>
-  </div>
+
 </template>
 
 <script>
@@ -60,7 +60,7 @@ export default {
     addRow() {
       this.$store.commit('report_tables/reconstruction/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
       this.close()
-      console.log(this.getRows1)
+
     },
     deleteItem(item) {
       confirm("Вы уверены что хотите удалить строку") && this.$store.commit('report_tables/reconstruction/deleteItem1',item)

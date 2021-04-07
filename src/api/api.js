@@ -20,7 +20,7 @@ export default {
   //Report
   getReportTableData: (id) =>resource.get(`/api/api/report/${id}`),
   sentData: data =>resource.post('/api/api/report/save',data),
-  getReports: () =>resource.get('/api/api/report/author/current'),
+  getReportsCurrentUser: () =>resource.get('/api/api/report/author/current'),
   updateReport: (id,data) =>resource.put(`/api/api/report/${id}`,data),
   downloadReport: (id) =>resource.get(`/api/api/report/docx/${id}`,{responseType:'arraybuffer'}),
   getFollowersReports: () =>resource.get('/api/api/report/followersReports/current'),

@@ -1,5 +1,5 @@
 <template>
-  <div id="q-app">
+
     <div class="q-pa-sm q-gutter-sm">
       <q-table title="Познавательная активность обучающихся" :hide-no-data="true" :data="getRows1" :columns="getColumns1">
         <template v-slot:top-right>
@@ -47,31 +47,31 @@
         </template>
       </q-table>
     </div>
-  </div>
+
 </template>
 
 <script>
 import {mapGetters} from 'vuex'
 export default {
   computed:{
-    ...mapGetters('report_tables/proective_table',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
+    ...mapGetters('report_tables/proective',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
   },
   methods: {
     addRow() {
-      this.$store.commit('report_tables/proective_table/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
+      this.$store.commit('report_tables/proective/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
       this.close()
-      console.log(this.getRows1)
+
     },
     deleteItem(item) {
-      confirm("Вы уверены что хотите удалить строку") && this.$store.commit('report_tables/proective_table/deleteItem1',item)
+      confirm("Вы уверены что хотите удалить строку") && this.$store.commit('report_tables/proective/deleteItem1',item)
     },
     editItem(item) {
-      this.$store.commit('report_tables/proective_table/editItem1',item)
+      this.$store.commit('report_tables/proective/editItem1',item)
       this.show_dialog = true;
     },
     close () {
       this.show_dialog = false
-      setTimeout(() => {this.$store.commit('report_tables/proective_table/setDefault1')}, 300)
+      setTimeout(() => {this.$store.commit('report_tables/proective/setDefault1')}, 300)
     }
   },
   data() {

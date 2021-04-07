@@ -1,9 +1,10 @@
 import { getField, updateField } from 'vuex-map-fields';
+import commonUtils from "src/api/commonUtils";
 
 export default {
   namespaced:true,
   state: {
-    quarter: null,
+    quarter: 1,
     options: [
       1, 2, 3, 4
     ],
@@ -22,7 +23,11 @@ export default {
       return state.last_name.trim() + " " + state.first_name.trim() + " " + state.patronymic.trim();
     },
     getFIOShort(state) {
-      return state.last_name.trim() + " " + state.first_name.trim().slice(0, 1).toUpperCase() + "." + state.patronymic.trim().slice(0, 1).toUpperCase() + ".";
+      return commonUtils.User.extractShortFioByUser({
+        lastName:state.last_name,
+        firstName:state.first_name,
+        patronymic:state.patronymic,
+      })
     },
     getFirstName(state) {
       return state.first_name
@@ -53,14 +58,14 @@ export default {
   },
   mutations: {
     setDefault(state) {
-      state.quarter = null
+      state.quarter = 1
         state.options = [1, 2, 3, 4]
         state.year1 = null
         state.year2 = null
         state.first_name = ""
         state.last_name = ""
         state.patronymic = ""
-        state.is = null
+        state.id = null
     },
     updateField
   }

@@ -7,27 +7,30 @@
             {{commonUtils.User.extractShortFioByUser(props.row.author)}}
           </q-td>
           <q-td key="name" :props="props">
-              {{ props.row.name }}
+            {{ props.row.name }}
           </q-td>
           <q-td key="status" :props="props">
-              <div :class="commonUtils.Report.getStatusClassByStatus(props.row.status )">
-                <q-icon :name="commonUtils.Report.getIconNameByStatus(props.row.status )" size="sm"/>
-                {{props.row.status }}
-              </div>
+            <div :class="commonUtils.Report.getStatusClassByStatus(props.row.status )">
+              <q-icon :name="commonUtils.Report.getIconNameByStatus(props.row.status )" size="sm"/>
+              {{props.row.status }}
+            </div>
           </q-td>
           <q-td key="createdDate" :props="props">
             {{qDate.formatDate(props.row.createdDate,"DD-MM-YYYY")}}
           </q-td>
           <q-td key="actions" :props="props">
-            <q-btn label="Редактировать" size="sm" class="q-mr-sm" color="blue" @click="openReportForm(props.row)"></q-btn>
+            <q-btn label="Редактировать" size="sm" class="q-mr-sm" color="blue"
+                   @click="openReportForm(props.row)"></q-btn>
             <q-btn label="Удалить" size="sm" color="red" @click="deleteReport(props.row)"></q-btn>
+            <q-btn label="Скачать отчет" size="sm" color="red" @click="downloadReport(props.row.id)"></q-btn>
+            <q-btn label="Скачать лист" size="sm" color="red" @click="downloadScoreList(props.row.id)"></q-btn>
           </q-td>
         </q-tr>
       </template>
       <template v-slot:top-right>
         <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
           <template v-slot:append>
-            <q-icon name="search" />
+            <q-icon name="search"/>
           </template>
         </q-input>
       </template>
@@ -39,73 +42,79 @@
 <script>
   import api from "src/api/api";
   import notifyApi from "src/api/notifyApi";
-  import { date as qDate } from 'quasar'
+  import {date as qDate} from 'quasar'
   import commonUtils from "src/api/commonUtils";
 
   export default {
     name: "FollowersReportsPage",
     data() {
       return {
-        filter:'',
-        nodes:[],
+        filter: '',
+        nodes: [],
         data: [],
-        columns:[
+        columns: [
           {
-            name:"author",
-            label:"Автор",
+            name: "author",
+            label: "Автор",
             field: "author",
             format: (val, row) => commonUtils.User.extractShortFioByUser(val),
             sortable: true,
           },
           {
-            name:"name",
-            label:"Название",
+            name: "name",
+            label: "Название",
             field: "name",
             sortable: true,
           },
           {
-            name:"status",
-            label:"Статус",
+            name: "status",
+            label: "Статус",
             field: "status",
             sortable: true,
           },
           {
-            name:"createdDate",
-            label:"Дата создания",
+            name: "createdDate",
+            label: "Дата создания",
             field: "createdDate",
             sortable: true,
           },
           {
-            name:"actions",
-            label:"Действия",
+            name: "actions",
+            label: "Действия",
             field: "actions",
           }
         ]
       }
     },
     computed: {
-      commonUtils:()=>commonUtils,
-      qDate:()=>qDate,
+      commonUtils: () => commonUtils,
+      qDate: () => qDate,
     },
     methods: {
-      openReportForm(data){
-        if(!!data && !!data.id){
-          this.$store.dispatch('report_tables/setReportTablesData',data.id)
+      downloadReport(id) {
+        commonUtils.Report.downloadReportByIdAnd(id)
+      },
+      downloadScoreList(id) {
+        commonUtils.Report.downloadScoreListById(id)
+      },
+      openReportForm(data) {
+        if (!!data && !!data.id) {
+          this.$store.dispatch('report_tables/setReportTablesData', data.id)
         }
         this.$router.push({path: '/form'});
       },
       async deleteReport(report) {
         let res = await api.deleteReport(report.id)
-        if(res.status == 200){
+        if (res.status == 200) {
           const ind = this.data.indexOf(report)
-          if(ind!==-1) this.data.splice(ind,1)
+          if (ind !== -1) this.data.splice(ind, 1)
         }
       },
 
-       async getFollowersReports() {
+      async getFollowersReports() {
         let l = []
         let res = await api.getFollowersReports()
-         this.data = [...res.data]
+        this.data = [...res.data]
       },
     },
     created() {

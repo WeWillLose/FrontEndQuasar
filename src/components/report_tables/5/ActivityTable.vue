@@ -1,5 +1,5 @@
 <template>
-  <div id="q-app">
+
     <div class="q-pa-sm q-gutter-sm">
       <q-table title="Организация и проведение мероприятий (отделение, колледж)" :hide-no-data="true" :data="getRows1" :columns="getColumns1">
         <template v-slot:top-right>
@@ -50,7 +50,7 @@
         </template>
       </q-table>
     </div>
-  </div>
+
 </template>
 
 <script>
@@ -63,7 +63,7 @@ export default {
     addRow() {
       this.$store.commit('report_tables/activity/addRow1',{'editedIndex':this.getEditedIndex1,'editedItem':this.getEditedItem1})
       this.close()
-      console.log(this.getRows1)
+
     },
     deleteItem(item) {
       confirm("Вы уверены что хотите удалить строку") && this.$store.commit('report_tables/activity/deleteItem1',item)

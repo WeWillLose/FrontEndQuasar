@@ -1,5 +1,4 @@
 <template>
-    <div id="q-app">
       <div class="q-pa-sm q-gutter-sm">
         <q-table title="Успеваемость по предметам, вынессеным на экзамены" :hide-no-data="true" :data="getRows1" :columns="getColumns1">
           <template v-slot:top-right>
@@ -81,7 +80,7 @@
           </template>
         </q-table>
       </div>
-    </div>
+
 </template>
 
 <script>

@@ -67,14 +67,12 @@
       }
     },
     created() {
-      console.log(this.report)
     },
     computed:{
       getDate(){
        return  new Date(this.report.createdDate).toLocaleDateString();
       },
       getFIO(){
-        console.log(this.report)
         if(!!this.report && !!this.report.author && !!this.report.author.lastName
           && !!this.report.author.firstName
           && !!this.report.author.patronymic){
