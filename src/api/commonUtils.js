@@ -12,6 +12,7 @@ function getFilenameFromHeaders(headers){
       filename = matches[1].replace(/['"]/g, '');
     }
   }
+  console.log(filename)
   return filename;
 }
 

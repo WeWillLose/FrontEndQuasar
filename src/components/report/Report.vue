@@ -57,6 +57,7 @@
   import api from "src/api/api"
   import fileDownload from 'js-file-download'
   import notifyApi from "src/api/notifyApi";
+  import commonUtils from "src/api/commonUtils";
 
   export default {
     props: ['report'],
@@ -90,46 +91,52 @@
           }
         }
       },
-      async download(report){
-        if(!!report){
-          if(!!report.id){
-            try{
-              const response = await api.downloadReport(report.id);
-              fileDownload(response.data,!!report.name?report.name:`report_${this.$uuid.v4()}.docx`);
-            }catch (e) {
-              if(e?.response?.status == 403){
-                notifyApi.showForbiddenNotify()
-              }else{
-                if(!!e.response?.data?.message){
-                  notifyApi.showErrorNotify(e.response.data.message)
-                } else{
-                 console.error(e)
-                }
-              }
-            }
-          }
-        }
+      // async download(report){
+      //   if(!!report){
+      //     if(!!report.id){
+      //       try{
+      //         const response = await api.downloadReport(report.id);
+      //         fileDownload(response.data,!!report.name?report.name:`report_${this.$uuid.v4()}.docx`);
+      //       }catch (e) {
+      //         if(e?.response?.status == 403){
+      //           notifyApi.showForbiddenNotify()
+      //         }else{
+      //           if(!!e.response?.data?.message){
+      //             notifyApi.showErrorNotify(e.response.data.message)
+      //           } else{
+      //            console.error(e)
+      //           }
+      //         }
+      //       }
+      //     }
+      //   }
+      // },
+      download(report){
+        commonUtils.Report.downloadReportByIdAnd(report.id);
       },
-      async downloadScoreList(report){
-        if(!!report){
-          if(!!report.id){
-            try{
-              const response = await api.downloadScoreList(report.id);
-              fileDownload(response.data,!!this.getFIO?`score_list_${this.getFIO}.docx`:`score_list_${this.$uuid.v4()}.docx`);
-            }catch (e) {
-              if(e?.response?.status == 403){
-                notifyApi.showForbiddenNotify()
-              }else{
-                if(!!e.response?.data?.message){
-                  notifyApi.showErrorNotify(e.response.data.message)
-                } else{
-                  console.error(e)
-                }
-              }
-            }
-          }
-        }
-      }
+      downloadScoreList(report){
+        commonUtils.Report.downloadScoreListById(report.id);
+      },
+      // async downloadScoreList(report){
+      //   if(!!report){
+      //     if(!!report.id){
+      //       try{
+      //         const response = await api.downloadScoreList(report.id);
+      //         fileDownload(response.data,!!this.getFIO?`score_list_${this.getFIO}.docx`:`score_list_${this.$uuid.v4()}.docx`);
+      //       }catch (e) {
+      //         if(e?.response?.status == 403){
+      //           notifyApi.showForbiddenNotify()
+      //         }else{
+      //           if(!!e.response?.data?.message){
+      //             notifyApi.showErrorNotify(e.response.data.message)
+      //           } else{
+      //             console.error(e)
+      //           }
+      //         }
+      //       }
+      //     }
+      //   }
+      // }
     }
   }
 </script>
