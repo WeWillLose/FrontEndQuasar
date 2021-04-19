@@ -41,8 +41,7 @@
               <q-input type="number" v-model="props.row.materials" dense autofocus ></q-input>
             </q-td>
             <q-td key="score" :props="props">
-              <q-input type="number" v-model="props.row.score"
-                       :rules="[rules.withoutSpaces(),rules.numberBetweenNotStrictScore(0.5,1)]"  dense autofocus ></q-input>
+              <q-input type="number" v-model="props.row.score" dense autofocus :rules="[rules.withoutSpaces(),rules.numberBetweenNotStrictScore(0.5,1)]"   ></q-input>
             </q-td>
             <q-td key="actions" :props="props" auto-width>
               <!--                <q-btn color="blue" label="Update" @click="editItem(props.row)" size=sm no-caps></q-btn>-->
@@ -57,9 +56,11 @@
 
 <script>
 import {mapGetters} from 'vuex'
+import rules from 'src/api/rules';
 export default {
   computed:{
-    ...mapGetters('report_tables/complex',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
+    ...mapGetters('report_tables/complex',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1']),
+    rules:()=>rules
   },
   methods: {
     addRow() {

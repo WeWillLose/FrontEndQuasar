@@ -52,9 +52,11 @@
 
 <script>
 import {mapGetters} from 'vuex'
+import rules from 'src/api/rules';
 export default {
   computed:{
-    ...mapGetters('report_tables/cool_hours',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1'])
+    ...mapGetters('report_tables/cool_hours',['getColumns1','getRows1','getDefaultItem1','getEditedIndex1','getEditedItem1']),
+    rules:()=>rules
   },
   methods: {
     addRow() {
