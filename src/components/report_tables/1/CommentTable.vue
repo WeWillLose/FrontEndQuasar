@@ -7,7 +7,8 @@
               <q-input type="textarea" v-model="props.row.comment" dense autofocus r></q-input>
             </q-td>
             <q-td key="score" :props="props">
-              <q-input type="number" v-model="props.row.score" dense autofocus></q-input>
+              <q-input type="number" v-model="props.row.score" dense autofocus
+                       :rules="[rules.withoutSpaces(),rules.numberBetweenNotStrictScore(4,8)]"></q-input>
             </q-td>
           </q-tr>
         </template>

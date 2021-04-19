@@ -77,6 +77,7 @@ export default {
     if(!!!max){
       console.warn("max in numberBetweenNotStrict is " + max)
     }
-    return (val)=>  (val >= min && val <= max) || `Min ${min}, Max ${max}`
+    return (val)=>  (val >= min && val <= max || val == 0) ||  `Min ${min}, Max ${max}`
   },
+
 }

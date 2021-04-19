@@ -37,7 +37,8 @@
               <q-input type="text" v-model="props.row.proof" dense autofocus ></q-input>
             </q-td>
             <q-td key="score" :props="props">
-              <q-input type="number" v-model="props.row.score" dense autofocus ></q-input>
+              <q-input type="number" v-model="props.row.score"
+                       :rules="[rules.withoutSpaces(),rules.numberBetweenNotStrictScore(0.5,1)]" dense autofocus ></q-input>
             </q-td>
             <q-td key="actions" :props="props" auto-width>
               <!--                <q-btn color="blue" label="Update" @click="editItem(props.row)" size=sm no-caps></q-btn>-->

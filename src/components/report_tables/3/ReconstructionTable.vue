@@ -36,7 +36,8 @@
               <q-input type="textarea" v-model="props.row.reconstruction" dense autofocus></q-input>
             </q-td>
             <q-td key="score" :props="props">
-              <q-input type="number" v-model="props.row.score" dense autofocus></q-input>
+              <q-input type="number" v-model="props.row.score" dense autofocus
+                       :rules="[rules.withoutSpaces(),rules.numberBetweenNotStrictScore(0.5,2)]"></q-input>
             </q-td>
 
             <q-td key="actions" :props="props" auto-width>
